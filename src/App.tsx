@@ -9,11 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/foundation/card'
+import { AppLayout } from '@/layouts/app-layout'
 import {
   BookOpen,
-  GraduationCap,
-  Moon,
-  Sun,
   CheckCircle2,
   AlertTriangle,
   XCircle,
@@ -22,38 +20,19 @@ import {
 } from 'lucide-react'
 
 function App(): React.ReactElement {
-  const { resolvedTheme, toggleTheme } = useTheme()
+  const { resolvedTheme } = useTheme()
 
   return (
-    <div className="flex min-h-screen flex-col gap-8 bg-background p-8 text-foreground transition-colors">
-      {/* Header */}
-      <header className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <GraduationCap className="h-8 w-8 text-primary" aria-hidden="true" />
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight">Concurso AI Platform</h1>
-            <p className="text-sm text-muted-foreground">
-              DATAPREV — Perfil 10 — Gestão Econômico-Financeira — FGV
-            </p>
-          </div>
+    <AppLayout>
+      <div className="space-y-8">
+        {/* Título da página */}
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+          <p className="text-sm text-muted-foreground">
+            DATAPREV — Perfil 10 — Gestão Econômico-Financeira — FGV
+          </p>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={toggleTheme}
-          aria-label={resolvedTheme === 'dark' ? 'Ativar modo claro' : 'Ativar modo escuro'}
-        >
-          {resolvedTheme === 'dark' ? (
-            <Sun className="h-4 w-4" aria-hidden="true" />
-          ) : (
-            <Moon className="h-4 w-4" aria-hidden="true" />
-          )}
-          {resolvedTheme === 'dark' ? 'Claro' : 'Escuro'}
-        </Button>
-      </header>
 
-      {/* Design System Showcase */}
-      <main className="mx-auto w-full max-w-4xl space-y-8">
         {/* Badges de Estado */}
         <section className="space-y-3">
           <h2 className="text-lg font-semibold">Estados de Estudo</h2>
@@ -92,11 +71,6 @@ function App(): React.ReactElement {
               Carregando
             </Button>
             <Button disabled>Desabilitado</Button>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Button size="sm">Pequeno</Button>
-            <Button size="md">Médio</Button>
-            <Button size="lg">Grande</Button>
           </div>
         </section>
 
@@ -144,8 +118,8 @@ function App(): React.ReactElement {
         <section className="rounded-lg border bg-card p-4 text-sm text-muted-foreground">
           Tema atual: <strong className="text-foreground">{resolvedTheme}</strong>
         </section>
-      </main>
-    </div>
+      </div>
+    </AppLayout>
   )
 }
 
