@@ -54,7 +54,7 @@ Responsividade
 
 Status
 
-Planejado
+Em andamento
 
 ---
 

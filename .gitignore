@@ -1,0 +1,41 @@
+node_modules
+dist
+dist-ssr
+*.local
+.pnpm-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-error.log*
+lerna-debug.log*
+
+# Testing
+coverage
+*.lcov
+
+# Misc
+*.pem
+.env
+.env.*
+!.env.example
+
+# TypeScript
+*.tsbuildinfo
