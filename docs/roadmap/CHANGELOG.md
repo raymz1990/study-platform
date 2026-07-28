@@ -55,6 +55,24 @@ Documentation
 
 ---
 
+# [1.2.0] - 2026-07-28
+
+## Added
+
+- Bootstrap do projeto: Vite + React 19 + TypeScript 6 strict mode configurado.
+- Tailwind CSS v4 com dark mode por classe (`dark` no `<html>`).
+- shadcn/ui inicializado (`components.json`) com Lucide React.
+- ESLint + Prettier configurados: regra `no-explicit-any` ativa, strict TypeScript.
+- Estrutura de diretórios oficial (`src/`, `content/`, `scripts/`, `config/`).
+- Path alias `@/` configurado no Vite e TypeScript.
+- App mínimo renderizando com alternância de tema claro/escuro.
+
+## Changed
+
+- Milestone 2 (MVP navegável): status atualizado para "Em andamento".
+
+---
+
 # [1.1.0] - 2026-07-28
 
 ## Added
