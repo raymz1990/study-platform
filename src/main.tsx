@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { ThemeProvider } from '@/contexts/theme-context'
+import { SidebarProvider } from '@/contexts/sidebar-context'
 import './index.css'
 import App from './App'
 
@@ -13,7 +14,9 @@ if (rootElement === null) {
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <App />
+      <SidebarProvider>
+        <App />
+      </SidebarProvider>
     </ThemeProvider>
   </StrictMode>
 )

@@ -55,39 +55,25 @@ Documentation
 
 ---
 
-# [1.2.0] - 2026-07-28
+# [1.4.0] - 2026-07-28
 
 ## Added
 
-- Bootstrap do projeto: Vite + React 19 + TypeScript 6 strict mode configurado.
-- Tailwind CSS v4 com dark mode por classe (`dark` no `<html>`).
-- shadcn/ui inicializado (`components.json`) com Lucide React.
-- ESLint + Prettier configurados: regra `no-explicit-any` ativa, strict TypeScript.
-- Estrutura de diretórios oficial (`src/`, `content/`, `scripts/`, `config/`).
-- Path alias `@/` configurado no Vite e TypeScript.
-- App mínimo renderizando com alternância de tema claro/escuro.
+- Layout Shell: `AppLayout` com Header, Sidebar, MainContent e Footer.
+- Sidebar recolhível com estado persistido em localStorage (`SidebarProvider` + `useSidebar`).
+- Sidebar responsiva: fixa em desktop (256px/64px), drawer overlay em mobile/tablet.
+- Navegação completa na sidebar: Dashboard, Cronograma, Disciplinas, Questões, Flashcards, Revisões, Simulados, Podcasts, Progresso, Configurações.
+- Header com logo, título e botão de tema; botão hamburger para mobile.
+- Skip link de acessibilidade ("Pular para o conteúdo principal").
+- Landmarks semânticos: `<header>`, `<nav>`, `<main>`, `<footer>`.
+- Testes unitários do `useSidebar`: 4 testes passando (toggle, persistência, restauração, mobile drawer).
+- Tipos de layout em `src/types/layout.ts`.
+- Componentes de layout reutilizáveis: `Header`, `Sidebar`, `Footer`, `MainContent`, `PageContainer`.
 
 ## Changed
 
-- Milestone 2 (MVP navegável): status atualizado para "Em andamento".
-
----
-
-# [1.2.0] - 2026-07-28
-
-## Added
-
-- Bootstrap do projeto: Vite + React 19 + TypeScript 6 strict mode configurado.
-- Tailwind CSS v4 com dark mode por classe (`dark` no `<html>`).
-- shadcn/ui inicializado (`components.json`) com Lucide React.
-- ESLint + Prettier configurados: regra `no-explicit-any` ativa, strict TypeScript.
-- Estrutura de diretórios oficial (`src/`, `content/`, `scripts/`, `config/`).
-- Path alias `@/` configurado no Vite e TypeScript.
-- App mínimo renderizando com alternância de tema claro/escuro.
-
-## Changed
-
-- Milestone 2 (MVP navegável): status atualizado para "Em andamento".
+- `App.tsx` envolvido por `AppLayout`; conteúdo renderizado dentro da área principal.
+- `main.tsx` atualizado para incluir `SidebarProvider`.
 
 ---
 
@@ -108,6 +94,24 @@ Documentation
 ## Removed
 
 - Placeholders `index.ts` vazios removidos de diretórios sem conteúdo.
+
+---
+
+# [1.2.0] - 2026-07-28
+
+## Added
+
+- Bootstrap do projeto: Vite + React 19 + TypeScript 6 strict mode configurado.
+- Tailwind CSS v4 com dark mode por classe (`dark` no `<html>`).
+- shadcn/ui inicializado (`components.json`) com Lucide React.
+- ESLint + Prettier configurados: regra `no-explicit-any` ativa, strict TypeScript.
+- Estrutura de diretórios oficial (`src/`, `content/`, `scripts/`, `config/`).
+- Path alias `@/` configurado no Vite e TypeScript.
+- App mínimo renderizando com alternância de tema claro/escuro.
+
+## Changed
+
+- Milestone 2 (MVP navegável): status atualizado para "Em andamento".
 
 ---
 
