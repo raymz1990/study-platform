@@ -73,6 +73,44 @@ Documentation
 
 ---
 
+# [1.2.0] - 2026-07-28
+
+## Added
+
+- Bootstrap do projeto: Vite + React 19 + TypeScript 6 strict mode configurado.
+- Tailwind CSS v4 com dark mode por classe (`dark` no `<html>`).
+- shadcn/ui inicializado (`components.json`) com Lucide React.
+- ESLint + Prettier configurados: regra `no-explicit-any` ativa, strict TypeScript.
+- Estrutura de diretórios oficial (`src/`, `content/`, `scripts/`, `config/`).
+- Path alias `@/` configurado no Vite e TypeScript.
+- App mínimo renderizando com alternância de tema claro/escuro.
+
+## Changed
+
+- Milestone 2 (MVP navegável): status atualizado para "Em andamento".
+
+---
+
+# [1.3.0] - 2026-07-28
+
+## Added
+
+- Design System implementado: tokens visuais tipados em `src/styles/tokens.ts` (cores, tipografia, espaçamento, bordas, sombras, transições, z-index).
+- Paleta semântica de estudo: concluído (verde), em andamento (azul), atenção (amarelo), urgente (vermelho).
+- Fontes Inter e JetBrains Mono carregadas via Google Fonts CDN.
+- Tema dark mode funcional com `ThemeProvider` e hook `useTheme`, persistência em localStorage.
+- Componentes foundation: `Button`, `Badge`, `Card` (com subcomponentes Header/Title/Description/Content/Footer) via class-variance-authority.
+- Estados implementados: default, hover, focus, active, disabled, loading, success, warning, danger, info.
+- Testes unitários do hook `useTheme`: 6 testes passando (alternância, persistência, restauração, exceção fora do provider).
+- Scripts `pnpm test` e `pnpm test:watch` configurados com Vitest + jsdom.
+- App.tsx demonstra o Design System com todos os componentes foundation nos dois temas.
+
+## Removed
+
+- Placeholders `index.ts` vazios removidos de diretórios sem conteúdo.
+
+---
+
 # [1.1.0] - 2026-07-28
 
 ## Added
