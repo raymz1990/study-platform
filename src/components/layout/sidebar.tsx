@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import { useSidebar } from '@/hooks/use-sidebar'
+import { NavLink, useLocation } from 'react-router-dom'
 import {
   LayoutDashboard,
   Calendar,
@@ -24,20 +25,21 @@ import {
  */
 
 const NAV_ITEMS = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, href: '#dashboard' },
-  { id: 'cronograma', label: 'Cronograma', icon: Calendar, href: '#cronograma' },
-  { id: 'disciplinas', label: 'Disciplinas', icon: BookOpen, href: '#disciplinas' },
-  { id: 'questoes', label: 'Questões', icon: HelpCircle, href: '#questoes' },
-  { id: 'flashcards', label: 'Flashcards', icon: Layers, href: '#flashcards' },
-  { id: 'revisoes', label: 'Revisões', icon: RotateCcw, href: '#revisoes' },
-  { id: 'simulados', label: 'Simulados', icon: ClipboardList, href: '#simulados' },
-  { id: 'podcasts', label: 'Podcasts', icon: Headphones, href: '#podcasts' },
-  { id: 'progresso', label: 'Progresso', icon: BarChart3, href: '#progresso' },
-  { id: 'configuracoes', label: 'Configurações', icon: Settings, href: '#configuracoes' },
+  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/' },
+  { id: 'cronograma', label: 'Cronograma', icon: Calendar, path: '/cronograma' },
+  { id: 'disciplinas', label: 'Disciplinas', icon: BookOpen, path: '/disciplinas' },
+  { id: 'questoes', label: 'Questões', icon: HelpCircle, path: '/questoes' },
+  { id: 'flashcards', label: 'Flashcards', icon: Layers, path: '/flashcards' },
+  { id: 'revisoes', label: 'Revisões', icon: RotateCcw, path: '/revisoes' },
+  { id: 'simulados', label: 'Simulados', icon: ClipboardList, path: '/simulados' },
+  { id: 'podcasts', label: 'Podcasts', icon: Headphones, path: '/podcasts' },
+  { id: 'progresso', label: 'Progresso', icon: BarChart3, path: '/progresso' },
+  { id: 'configuracoes', label: 'Configurações', icon: Settings, path: '/configuracoes' },
 ] as const
 
 export function Sidebar(): React.ReactElement {
   const { isOpen, isMobileOpen, toggle, closeMobile } = useSidebar()
+  const location = useLocation()
 
   return (
     <>
@@ -77,16 +79,23 @@ export function Sidebar(): React.ReactElement {
           <ul className="space-y-1" role="menubar">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon
+              const isActive = location.pathname === item.path || location.pathname.startsWith(`${item.path}/`)
+
               return (
                 <li key={item.id} role="none">
-                  <a
-                    href={item.href}
+                  <NavLink
+                    to={item.path}
+                    end={item.path === '/'}
                     role="menuitem"
-                    className={cn(
-                      'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-                      !isOpen && 'lg:justify-center lg:px-2'
-                    )}
                     onClick={closeMobile}
+                    className={cn(
+                      'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                      !isOpen && 'lg:justify-center lg:px-2',
+                      isActive
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-muted-foreground hover:bg-accent hover:text-accent-foreground'
+                    )}
+                    aria-current={isActive ? 'page' : undefined}
                   >
                     <Icon className="h-5 w-5 shrink-0" aria-hidden="true" />
                     <span
@@ -97,7 +106,7 @@ export function Sidebar(): React.ReactElement {
                     >
                       {item.label}
                     </span>
-                  </a>
+                  </NavLink>
                 </li>
               )
             })}

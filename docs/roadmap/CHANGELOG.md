@@ -55,6 +55,32 @@ Documentation
 
 ---
 
+# [1.5.0] - 2026-07-28
+
+## Added
+
+- Sistema de rotas com React Router DOM v7: 11 rotas definidas com lazy loading e code splitting.
+- Rotas implementadas: `/`, `/cronograma`, `/disciplinas`, `/disciplinas/:id`, `/questoes`, `/flashcards`, `/revisoes`, `/simulados`, `/podcasts`, `/progresso`, `/configuracoes`, `*` (404).
+- HashRouter para compatibilidade com GitHub Pages (SSG sem backend).
+- Suspense com fallback skeleton em todas as rotas de página.
+- Sidebar atualizada com `NavLink`: item ativo destacado (`bg-primary text-primary-foreground`), navegação SPA sem reload.
+- Breadcrumbs dinâmicos (`useBreadcrumbs`): refletem hierarquia da rota atual, com links navegáveis para níveis superiores.
+- Atalhos de teclado oficiais (`useKeyboardShortcuts`): D (Dashboard), Q (Questões), F (Flashcards), R (Revisões); desativados automaticamente em inputs/textarea.
+- Página 404 (`NotFoundPage`) com EmptyState e botão de retorno ao Dashboard.
+- Componentes de navegação: `Breadcrumb`, `RouteSkeleton`, `EmptyState`, `NotFoundPage`.
+- Páginas base para todas as rotas (placeholder com título e ícone).
+- Testes unitários: `useBreadcrumbs` (3 testes), `useKeyboardShortcuts` (2 testes); total: 15/15 passando.
+- Tipos de navegação em `src/types/navigation.ts`.
+
+## Changed
+
+- `App.tsx` simplificado: apenas `AppLayout` + `AppRoutes`.
+- `main.tsx` atualizado com `HashRouter`.
+- `Sidebar` migrada de `<a>` para `<NavLink>` do React Router.
+- `AppLayout` integra `Breadcrumb` e `useKeyboardShortcuts`.
+
+---
+
 # [1.4.0] - 2026-07-28
 
 ## Added
