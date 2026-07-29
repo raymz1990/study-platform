@@ -1,7 +1,9 @@
 # ROADMAP_DISCIPLINAS.md
 
 # Concurso AI Platform
+
 ## Study Roadmap — DATAPREV 2026, Perfil 10 (FGV)
+
 Version: 2.0
 Data de consolidação: 2026-07-27
 Fonte principal: FGV_EDITAL_ANALISE.md v2.0
@@ -29,18 +31,18 @@ Este documento é derivado exclusivamente do FGV_EDITAL_ANALISE.md e obedece à 
 
 # Parâmetros Obrigatórios
 
-| Parâmetro | Valor |
-|---|---|
-| Concurso | DATAPREV 2026 |
-| Perfil | 10 — Gestão Econômico-Financeira |
-| Banca | FGV |
-| Data da prova | 11/10/2026 (domingo), 13h às 17h |
-| Início do cronograma | 27/07/2026 (segunda) |
-| Janela total | 11 semanas (76 dias) |
-| Disponibilidade seg–sex | 1h30/dia (7h30/semana) |
-| Disponibilidade sábado | 3h |
-| Disponibilidade domingo | 3h |
-| Horas semanais | 13h30 |
+| Parâmetro                | Valor                                                       |
+| ------------------------ | ----------------------------------------------------------- |
+| Concurso                 | DATAPREV 2026                                               |
+| Perfil                   | 10 — Gestão Econômico-Financeira                            |
+| Banca                    | FGV                                                         |
+| Data da prova            | 11/10/2026 (domingo), 13h às 17h                            |
+| Início do cronograma     | 27/07/2026 (segunda)                                        |
+| Janela total             | 11 semanas (76 dias)                                        |
+| Disponibilidade seg–sex  | 1h30/dia (7h30/semana)                                      |
+| Disponibilidade sábado   | 3h                                                          |
+| Disponibilidade domingo  | 3h                                                          |
+| Horas semanais           | 13h30                                                       |
 | Horas totais até a prova | ~145h30 (10 semanas completas + semana da prova até sábado) |
 
 ## Confronto com a estimativa do edital
@@ -152,17 +154,17 @@ A revisão espaçada oficial (24h/7d/30d/60d/90d — SYSTEM_ARCHITECTURE.md) exi
 Registro oficial de dependências (conforme FGV_EDITAL_ANALISE.md):
 
 Raciocínio Lógico (apoio, não bloqueante)
-        ↓
+↓
 Matemática Financeira
-        ↓
+↓
 Administração Financeira
-        ↓
+↓
 Avaliações Econômicas de Projetos
 
 Contabilidade Empresarial
-        ↓
+↓
 Custos
-        ↓
+↓
 Orçamento
 
 Contabilidade Empresarial → Administração Financeira (reforço: indicadores)
@@ -184,54 +186,54 @@ Regras para o Planner (obrigatórias):
 
 ## Padrão semanal fixo
 
-| Dia | Tempo | Atividade |
-|---|---|---|
-| Segunda | 1h30 | Língua Portuguesa (teoria + questões FGV) |
-| Terça | 1h30 | Língua Inglesa (leitura + questões FGV) |
-| Quarta | 1h30 | Língua Portuguesa (interpretação e reescrita FGV) |
-| Quinta | 1h30 | Disciplina rotativa (RL → LGPD → Atualidades → Leg. Previdenciária) |
-| Sexta | 1h30 | Revisão espaçada da semana + flashcards + registro de erros |
-| Sábado | 3h | Bloco profundo Módulo II (ou simulado) |
-| Domingo | 3h | Bloco profundo Módulo II + questões |
+| Dia     | Tempo | Atividade                                                           |
+| ------- | ----- | ------------------------------------------------------------------- |
+| Segunda | 1h30  | Língua Portuguesa (teoria + questões FGV)                           |
+| Terça   | 1h30  | Língua Inglesa (leitura + questões FGV)                             |
+| Quarta  | 1h30  | Língua Portuguesa (interpretação e reescrita FGV)                   |
+| Quinta  | 1h30  | Disciplina rotativa (RL → LGPD → Atualidades → Leg. Previdenciária) |
+| Sexta   | 1h30  | Revisão espaçada da semana + flashcards + registro de erros         |
+| Sábado  | 3h    | Bloco profundo Módulo II (ou simulado)                              |
+| Domingo | 3h    | Bloco profundo Módulo II + questões                                 |
 
 Total: 13h30/semana.
 
 ## Semana a semana
 
-| Semana | Datas | Módulo II (fim de semana, 6h) | Quinta (rotativa) | Entregáveis / Marcos |
-|---|---|---|---|---|
-| S01 | 27/07–02/08 | Matemática Financeira: juros simples e compostos, capitalização e desconto, taxas (nominal, efetiva, equivalente, real, aparente) | Raciocínio Lógico: estruturas lógicas, proposições | Setup da plataforma de estudos; diagnóstico inicial de Português |
-| S02 | 03/08–09/08 | Matemática Financeira: prestações, SAC, Price, SAM, VPL, TIR, fluxo de caixa | Raciocínio Lógico: tabelas-verdade, equivalências | MS1 — Matemática Financeira concluída: cadeia quantitativa desbloqueada |
-| S03 | 10/08–16/08 | Administração Financeira: conceitos, capital de giro, tesouraria, contas a receber/pagar, planejamento de curto prazo | Raciocínio Lógico: diagramas lógicos, lógica de primeira ordem | Capital de giro dominado |
-| S04 | 17/08–23/08 | Administração Financeira: finanças corporativas, estrutura de capital, alavancagem, fontes de financiamento, risco x retorno | Raciocínio Lógico: problemas aritméticos, geométricos e matriciais | MS2 — Núcleo de Administração Financeira concluído |
-| S05 | 24/08–30/08 | Administração Financeira: valuation (valor intrínseco, custo de capital, múltiplos) — 2h; Avaliações de Projetos: conceito, etapas, TMA, VPL/TIR/payback — 4h | Legislação de Dados: LAI (Lei 12.527/2011, cap. I–V) | Valuation coberto; início da revisão de 30d de Mat. Financeira |
-| S06 | 31/08–06/09 | Avaliações de Projetos: parâmetros, sensibilidade e cenários, risco, projetos sociais, estrutura a termo, duration, VaR — 4h; SIMULADO 1 (bloco quantitativo, 20 questões cronometradas) — 1h + correção — 1h | Legislação de Dados: Marco Civil (Lei 12.965/2014) e Lei 12.737/2012 | MS3 — Bloco quantitativo concluído; Simulado 1 realizado |
-| S07 | 07/09–13/09 | Contabilidade Empresarial: noções básicas, demonstrações contábeis (BP, DRE, DOAR, DFC) | Legislação de Dados: LGPD (Lei 13.709/2018, cap. I–IV) | Folga opcional: feriado 07/09 (segunda) pode adicionar +1h30 de buffer |
-| S08 | 14/09–20/09 | Contabilidade Empresarial: indicadores (liquidez, endividamento, atividade, rentabilidade), coligadas e controladas, Excel avançado e Linguagem R (escopo delimitado) — 4h; Custos: métodos de custeio — 2h | Legislação de Dados: LGPD (cap. VII–IX) + revisão geral | MS4 — Contabilidade concluída; sexta: SIMULADO 2, parte 1 (20 questões Módulo I) |
-| S09 | 21/09–27/09 | Custos: margem de contribuição, ponto de equilíbrio, centros de custo, markup — 4h; Orçamento: princípios, proposta orçamentária de estatal — 2h | Legislação Previdenciária: RGPS — segurados, filiação e inscrição | Sexta: SIMULADO 2, parte 2 (20 questões Módulo I) + correção |
-| S10 | 28/09–04/10 | SIMULADO 3 (sábado): Módulo II completo, 30 questões cronometradas + correção — 3h; Orçamento: execução, indicadores, Orçamento Governamental (domingo) — 3h | Legislação Previdenciária: financiamento, arrecadação e recolhimento | MS5 — 100% do edital coberto (modo triagem); Simulado 3 realizado |
-| S11 | 05/10–11/10 | Reta final (seg–sáb): Legislação Previdenciária — FGTS, crimes, recursos, SST — 3h (quarta); revisão de erros dos simulados, flashcards e resumos executivos — 6h; sábado: revisão leve de fórmulas e lei seca | Legislação Previdenciária + Atualidades e IA (revisão final) | MS6 — Reta final concluída. DOMINGO 11/10: PROVA (13h–17h) |
+| Semana | Datas       | Módulo II (fim de semana, 6h)                                                                                                                                                                                  | Quinta (rotativa)                                                    | Entregáveis / Marcos                                                             |
+| ------ | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| S01    | 27/07–02/08 | Matemática Financeira: juros simples e compostos, capitalização e desconto, taxas (nominal, efetiva, equivalente, real, aparente)                                                                              | Raciocínio Lógico: estruturas lógicas, proposições                   | Setup da plataforma de estudos; diagnóstico inicial de Português                 |
+| S02    | 03/08–09/08 | Matemática Financeira: prestações, SAC, Price, SAM, VPL, TIR, fluxo de caixa                                                                                                                                   | Raciocínio Lógico: tabelas-verdade, equivalências                    | MS1 — Matemática Financeira concluída: cadeia quantitativa desbloqueada          |
+| S03    | 10/08–16/08 | Administração Financeira: conceitos, capital de giro, tesouraria, contas a receber/pagar, planejamento de curto prazo                                                                                          | Raciocínio Lógico: diagramas lógicos, lógica de primeira ordem       | Capital de giro dominado                                                         |
+| S04    | 17/08–23/08 | Administração Financeira: finanças corporativas, estrutura de capital, alavancagem, fontes de financiamento, risco x retorno                                                                                   | Raciocínio Lógico: problemas aritméticos, geométricos e matriciais   | MS2 — Núcleo de Administração Financeira concluído                               |
+| S05    | 24/08–30/08 | Administração Financeira: valuation (valor intrínseco, custo de capital, múltiplos) — 2h; Avaliações de Projetos: conceito, etapas, TMA, VPL/TIR/payback — 4h                                                  | Legislação de Dados: LAI (Lei 12.527/2011, cap. I–V)                 | Valuation coberto; início da revisão de 30d de Mat. Financeira                   |
+| S06    | 31/08–06/09 | Avaliações de Projetos: parâmetros, sensibilidade e cenários, risco, projetos sociais, estrutura a termo, duration, VaR — 4h; SIMULADO 1 (bloco quantitativo, 20 questões cronometradas) — 1h + correção — 1h  | Legislação de Dados: Marco Civil (Lei 12.965/2014) e Lei 12.737/2012 | MS3 — Bloco quantitativo concluído; Simulado 1 realizado                         |
+| S07    | 07/09–13/09 | Contabilidade Empresarial: noções básicas, demonstrações contábeis (BP, DRE, DOAR, DFC)                                                                                                                        | Legislação de Dados: LGPD (Lei 13.709/2018, cap. I–IV)               | Folga opcional: feriado 07/09 (segunda) pode adicionar +1h30 de buffer           |
+| S08    | 14/09–20/09 | Contabilidade Empresarial: indicadores (liquidez, endividamento, atividade, rentabilidade), coligadas e controladas, Excel avançado e Linguagem R (escopo delimitado) — 4h; Custos: métodos de custeio — 2h    | Legislação de Dados: LGPD (cap. VII–IX) + revisão geral              | MS4 — Contabilidade concluída; sexta: SIMULADO 2, parte 1 (20 questões Módulo I) |
+| S09    | 21/09–27/09 | Custos: margem de contribuição, ponto de equilíbrio, centros de custo, markup — 4h; Orçamento: princípios, proposta orçamentária de estatal — 2h                                                               | Legislação Previdenciária: RGPS — segurados, filiação e inscrição    | Sexta: SIMULADO 2, parte 2 (20 questões Módulo I) + correção                     |
+| S10    | 28/09–04/10 | SIMULADO 3 (sábado): Módulo II completo, 30 questões cronometradas + correção — 3h; Orçamento: execução, indicadores, Orçamento Governamental (domingo) — 3h                                                   | Legislação Previdenciária: financiamento, arrecadação e recolhimento | MS5 — 100% do edital coberto (modo triagem); Simulado 3 realizado                |
+| S11    | 05/10–11/10 | Reta final (seg–sáb): Legislação Previdenciária — FGTS, crimes, recursos, SST — 3h (quarta); revisão de erros dos simulados, flashcards e resumos executivos — 6h; sábado: revisão leve de fórmulas e lei seca | Legislação Previdenciária + Atualidades e IA (revisão final)         | MS6 — Reta final concluída. DOMINGO 11/10: PROVA (13h–17h)                       |
 
 ## Horas previstas por disciplina
 
-| Disciplina | Ideal (edital) | Planejado | Cobertura esperada |
-|---|---|---|---|
-| Língua Portuguesa | 60h | 33h (seg/qua × 11 semanas) | Alta nos padrões FGV (interpretação/reescrita) |
-| Língua Inglesa | 40h | 16h30 (terças) | Média-alta (compreensão de textos) |
-| Raciocínio Lógico | 40h | 6h (quintas S01–S04) | Núcleo de maior incidência |
-| Atualidades e IA | 25h | 6h (sextas + quinta S11) | Conceitual de IA + janela de 6 meses de fatos |
-| Legislação de Dados | 30h | 6h (quintas S05–S08) | Lei seca dos dispositivos com recorte |
-| Matemática Financeira | 50h | 12h | Alta nos tópicos centrais |
-| Administração Financeira | 60h | 12h | Alta; valuation com profundidade reduzida |
-| Avaliações de Projetos | 50h | 10h | Alta; VaR/duration em nível conceitual |
-| Contabilidade Empresarial | 55h | 10h | Média-alta; Excel/R no escopo delimitado |
-| Custos | 40h | 6h | Núcleo quantitativo |
-| Orçamento | 30h | 5h | Núcleo + Orçamento Governamental (noções) |
-| Legislação Previdenciária | 45h | 9h | Núcleos de maior incidência |
-| Revisões espaçadas | — | 16h30 (sextas) | — |
-| Simulados + correções | — | 9h | — |
-| Reta final (S11) | — | 6h | — |
-| **Total** | **~525h + revisões** | **~145h30** | **Triagem oficial** |
+| Disciplina                | Ideal (edital)       | Planejado                  | Cobertura esperada                             |
+| ------------------------- | -------------------- | -------------------------- | ---------------------------------------------- |
+| Língua Portuguesa         | 60h                  | 33h (seg/qua × 11 semanas) | Alta nos padrões FGV (interpretação/reescrita) |
+| Língua Inglesa            | 40h                  | 16h30 (terças)             | Média-alta (compreensão de textos)             |
+| Raciocínio Lógico         | 40h                  | 6h (quintas S01–S04)       | Núcleo de maior incidência                     |
+| Atualidades e IA          | 25h                  | 6h (sextas + quinta S11)   | Conceitual de IA + janela de 6 meses de fatos  |
+| Legislação de Dados       | 30h                  | 6h (quintas S05–S08)       | Lei seca dos dispositivos com recorte          |
+| Matemática Financeira     | 50h                  | 12h                        | Alta nos tópicos centrais                      |
+| Administração Financeira  | 60h                  | 12h                        | Alta; valuation com profundidade reduzida      |
+| Avaliações de Projetos    | 50h                  | 10h                        | Alta; VaR/duration em nível conceitual         |
+| Contabilidade Empresarial | 55h                  | 10h                        | Média-alta; Excel/R no escopo delimitado       |
+| Custos                    | 40h                  | 6h                         | Núcleo quantitativo                            |
+| Orçamento                 | 30h                  | 5h                         | Núcleo + Orçamento Governamental (noções)      |
+| Legislação Previdenciária | 45h                  | 9h                         | Núcleos de maior incidência                    |
+| Revisões espaçadas        | —                    | 16h30 (sextas)             | —                                              |
+| Simulados + correções     | —                    | 9h                         | —                                              |
+| Reta final (S11)          | —                    | 6h                         | —                                              |
+| **Total**                 | **~525h + revisões** | **~145h30**                | **Triagem oficial**                            |
 
 ---
 
@@ -245,13 +247,13 @@ Conforme SYSTEM_ARCHITECTURE.md, todo conteúdo gera revisões em: 24h → 7d �
 
 A janela total (76 dias) inviabiliza os intervalos de 60d e 90d para a maior parte do conteúdo. A adaptação OFICIAL deste roadmap é:
 
-| Revisão | Intervalo oficial | Aplicação neste cronograma |
-|---|---|---|
-| R1 | 24h | Exercícios/flashcards do tópico no dia seguinte ao estudo |
-| R2 | 7d | Sexta-feira seguinte (slot fixo de revisão semanal) |
-| R3 | 30d | Revisão mensal embutida nas sextas (rodízio por antiguidade) |
-| R4 | 60d | FUNDIDA com a revisão de reta final (S11) |
-| R5 | 90d | INVIÁVEL na janela — substituída pelo simulado completo + revisão de erros |
+| Revisão | Intervalo oficial | Aplicação neste cronograma                                                 |
+| ------- | ----------------- | -------------------------------------------------------------------------- |
+| R1      | 24h               | Exercícios/flashcards do tópico no dia seguinte ao estudo                  |
+| R2      | 7d                | Sexta-feira seguinte (slot fixo de revisão semanal)                        |
+| R3      | 30d               | Revisão mensal embutida nas sextas (rodízio por antiguidade)               |
+| R4      | 60d               | FUNDIDA com a revisão de reta final (S11)                                  |
+| R5      | 90d               | INVIÁVEL na janela — substituída pelo simulado completo + revisão de erros |
 
 Esta adaptação usa o tipo "livre" do modelo de Revisão (DATA_MODEL.md) para R4/R5 e deverá ser registrada em DECISIONS.md quando o documento for atualizado.
 
@@ -270,11 +272,11 @@ Esta adaptação usa o tipo "livre" do modelo de Revisão (DATA_MODEL.md) para R
 
 Conforme FGV_STRATEGY.md, simulados escalonam em escopo e fidelidade:
 
-| Simulado | Semana | Escopo | Formato | Tempo |
-|---|---|---|---|---|
-| Simulado 1 | S06 (domingo) | Bloco quantitativo: Mat. Financeira + Adm. Financeira + Avaliação de Projetos | 20 questões inéditas/FGV, cronometradas | 1h + 1h correção |
-| Simulado 2 | S08 e S09 (sextas) | Módulo I completo (Português, Inglês, RL, Atualidades/IA, Legislação de Dados) | 40 questões em 2 blocos de 20 | 2 × 1h30 (inclui correção) |
-| Simulado 3 | S10 (sábado) | Módulo II completo (30 questões específicas, peso 2,5) | 30 questões cronometradas no ritmo real (~2,6 min/questão) | 1h30 prova + 1h30 correção |
+| Simulado   | Semana             | Escopo                                                                         | Formato                                                    | Tempo                      |
+| ---------- | ------------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------- | -------------------------- |
+| Simulado 1 | S06 (domingo)      | Bloco quantitativo: Mat. Financeira + Adm. Financeira + Avaliação de Projetos  | 20 questões inéditas/FGV, cronometradas                    | 1h + 1h correção           |
+| Simulado 2 | S08 e S09 (sextas) | Módulo I completo (Português, Inglês, RL, Atualidades/IA, Legislação de Dados) | 40 questões em 2 blocos de 20                              | 2 × 1h30 (inclui correção) |
+| Simulado 3 | S10 (sábado)       | Módulo II completo (30 questões específicas, peso 2,5)                         | 30 questões cronometradas no ritmo real (~2,6 min/questão) | 1h30 prova + 1h30 correção |
 
 ## Regras dos simulados
 
@@ -295,14 +297,14 @@ Conforme FGV_STRATEGY.md, simulados escalonam em escopo e fidelidade:
 
 # Marcos (Milestones) de Aprendizagem
 
-| Marco | Semana | Critério de conclusão |
-|---|---|---|
+| Marco                     | Semana  | Critério de conclusão                                                                                 |
+| ------------------------- | ------- | ----------------------------------------------------------------------------------------------------- |
 | MS1 — Cadeia desbloqueada | Fim S02 | Matemática Financeira concluída: juros, taxas, SAC/Price/SAM, VPL/TIR com ≥ 70% de acerto em questões |
-| MS2 — Núcleo financeiro | Fim S04 | Administração Financeira (exceto valuation) concluída |
-| MS3 — Bloco quantitativo | Fim S06 | Avaliações de Projetos concluída + Simulado 1 com ≥ 60% de acerto |
-| MS4 — Contábil | Fim S08 | Contabilidade Empresarial concluída + Simulado 2 (parte 1) realizado |
-| MS5 — Cobertura total | Fim S10 | 100% das disciplinas com exposição mínima + Simulado 3 com ≥ 60% de acerto |
-| MS6 — Pronto para a prova | S11 | Reta final executada; revisão de erros concluída; véspera leve |
+| MS2 — Núcleo financeiro   | Fim S04 | Administração Financeira (exceto valuation) concluída                                                 |
+| MS3 — Bloco quantitativo  | Fim S06 | Avaliações de Projetos concluída + Simulado 1 com ≥ 60% de acerto                                     |
+| MS4 — Contábil            | Fim S08 | Contabilidade Empresarial concluída + Simulado 2 (parte 1) realizado                                  |
+| MS5 — Cobertura total     | Fim S10 | 100% das disciplinas com exposição mínima + Simulado 3 com ≥ 60% de acerto                            |
+| MS6 — Pronto para a prova | S11     | Reta final executada; revisão de erros concluída; véspera leve                                        |
 
 Critério geral: um marco só é encerrado quando os entregáveis estão concluídos e os indicadores mínimos atingidos. Se um marco atrasar, aplicar os ajustes da Avaliação Crítica (abaixo) — nunca cortar o piso semanal de nenhuma disciplina.
 
@@ -334,17 +336,17 @@ O plano executa ~145h contra ~650h ideais (22%). Ele NÃO entrega cobertura comp
 
 ## Riscos
 
-| Risco | Severidade | Mitigação no plano |
-|---|---|---|
-| Carga insuficiente (22% do ideal) | Crítica | Triagem por peso × incidência; aceitar profundidade reduzida em valuation, VaR e Excel/R |
-| Perfil 10 sem vagas imediatas | Alta | Meta 75–85 pontos; simulados com correção rigorosa |
-| Eliminação por zerar disciplina | Alta | Piso semanal: toda disciplina tem slot fixo (contínuas, quintas ou fim de semana) |
-| Português FGV (12 questões, estilo traiçoeiro) | Alta | 2 slots semanais fixos do início ao fim + questões FGV semanais |
-| Inglês subestimado (12 questões) | Média | Slot fixo de terça; 24 pontos em jogo entre as duas línguas |
-| Atraso na cadeia quantitativa propaga (MF → AdmFin → AvalProj) | Alta | MS1/MS2/MS3 com critérios objetivos; buffer do feriado 07/09 |
-| Conteúdo novo/pouco cobrado (VaR, duration, R, SAM) | Média | Tratamento conceitual (não aprofundar); prioridade explícita inferior |
-| Burnout (13h30/semana por 11 semanas) | Média | Sextas leves (revisão), véspera leve, buffer do feriado |
-| Atualidades perecível | Baixa | 20 min semanais contínuos + revisão na S11 |
+| Risco                                                          | Severidade | Mitigação no plano                                                                       |
+| -------------------------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
+| Carga insuficiente (22% do ideal)                              | Crítica    | Triagem por peso × incidência; aceitar profundidade reduzida em valuation, VaR e Excel/R |
+| Perfil 10 sem vagas imediatas                                  | Alta       | Meta 75–85 pontos; simulados com correção rigorosa                                       |
+| Eliminação por zerar disciplina                                | Alta       | Piso semanal: toda disciplina tem slot fixo (contínuas, quintas ou fim de semana)        |
+| Português FGV (12 questões, estilo traiçoeiro)                 | Alta       | 2 slots semanais fixos do início ao fim + questões FGV semanais                          |
+| Inglês subestimado (12 questões)                               | Média      | Slot fixo de terça; 24 pontos em jogo entre as duas línguas                              |
+| Atraso na cadeia quantitativa propaga (MF → AdmFin → AvalProj) | Alta       | MS1/MS2/MS3 com critérios objetivos; buffer do feriado 07/09                             |
+| Conteúdo novo/pouco cobrado (VaR, duration, R, SAM)            | Média      | Tratamento conceitual (não aprofundar); prioridade explícita inferior                    |
+| Burnout (13h30/semana por 11 semanas)                          | Média      | Sextas leves (revisão), véspera leve, buffer do feriado                                  |
+| Atualidades perecível                                          | Baixa      | 20 min semanais contínuos + revisão na S11                                               |
 
 ## Folgas e buffers
 

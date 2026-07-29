@@ -6,11 +6,11 @@ import { LayoutDashboard } from 'lucide-react'
 export function RouteSkeleton(): React.ReactElement {
   return (
     <div className="space-y-4">
-      <div className="h-8 w-1/3 animate-pulse rounded-md bg-muted" />
-      <div className="h-4 w-1/2 animate-pulse rounded-md bg-muted" />
+      <div className="bg-muted h-8 w-1/3 animate-pulse rounded-md" />
+      <div className="bg-muted h-4 w-1/2 animate-pulse rounded-md" />
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="h-32 animate-pulse rounded-lg bg-muted" />
-        <div className="h-32 animate-pulse rounded-lg bg-muted" />
+        <div className="bg-muted h-32 animate-pulse rounded-lg" />
+        <div className="bg-muted h-32 animate-pulse rounded-lg" />
       </div>
     </div>
   )
@@ -27,15 +27,20 @@ export interface EmptyStateProps {
   }
 }
 
-export function EmptyState({ title, description, icon, action }: EmptyStateProps): React.ReactElement {
+export function EmptyState({
+  title,
+  description,
+  icon,
+  action,
+}: EmptyStateProps): React.ReactElement {
   return (
     <Card className="mx-auto max-w-md">
       <CardHeader className="items-center text-center">
-        {icon && <div className="mb-2 text-muted-foreground">{icon}</div>}
+        {icon && <div className="text-muted-foreground mb-2">{icon}</div>}
         <CardTitle>{title}</CardTitle>
       </CardHeader>
       <CardContent className="text-center">
-        {description && <p className="text-sm text-muted-foreground">{description}</p>}
+        {description && <p className="text-muted-foreground text-sm">{description}</p>}
         {action && (
           <Button className="mt-4" onClick={action.onClick}>
             {action.label}

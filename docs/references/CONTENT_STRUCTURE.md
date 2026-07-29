@@ -1,7 +1,9 @@
 # CONTENT_STRUCTURE.md
 
 # Concurso AI Platform
+
 ## Content Structure
+
 Version: 1.0
 
 ---

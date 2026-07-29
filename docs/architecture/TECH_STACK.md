@@ -1,7 +1,9 @@
 # TECH_STACK.md
 
 # Concurso AI Platform
+
 ## Technical Stack
+
 Version: 1.0
 
 ---

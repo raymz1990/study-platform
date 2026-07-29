@@ -34,9 +34,6 @@ describe('useBreadcrumbs', () => {
       wrapper: ({ children }) => <Wrapper path="/questoes">{children}</Wrapper>,
     })
 
-    expect(result.current).toEqual([
-      { label: 'Dashboard', path: '/' },
-      { label: 'Questões' },
-    ])
+    expect(result.current).toEqual([{ label: 'Dashboard', path: '/' }, { label: 'Questões' }])
   })
 })

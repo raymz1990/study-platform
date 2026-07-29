@@ -1,7 +1,9 @@
 # MILESTONES.md
 
 # Concurso AI Platform
+
 ## Project Milestones
+
 Version: 1.0
 
 ---
@@ -33,6 +35,28 @@ Concluído
 ---
 
 # Milestone 2
+
+MVP navegável
+
+Critérios
+
+Home
+
+✓ Dashboard (Task 005 concluída: KPIs, countdown, plano do dia, revisões, gráficos, progresso por disciplina)
+
+Sidebar
+
+Markdown
+
+Pesquisa
+
+Dark Mode
+
+Responsividade
+
+Status
+
+Em andamento
 
 MVP navegável
 

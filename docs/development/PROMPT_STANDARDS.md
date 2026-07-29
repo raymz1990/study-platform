@@ -1,7 +1,9 @@
 # PROMPT_STANDARDS.md
 
 # Concurso AI Platform
+
 ## Prompt Engineering Framework
+
 Version: 1.0
 
 ---

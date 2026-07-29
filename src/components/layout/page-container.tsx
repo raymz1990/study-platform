@@ -8,7 +8,11 @@ import { type HTMLAttributes } from 'react'
  */
 export type PageContainerProps = HTMLAttributes<HTMLDivElement>
 
-export function PageContainer({ className, children, ...props }: PageContainerProps): React.ReactElement {
+export function PageContainer({
+  className,
+  children,
+  ...props
+}: PageContainerProps): React.ReactElement {
   return (
     <div className={cn('mx-auto w-full max-w-6xl', className)} {...props}>
       {children}

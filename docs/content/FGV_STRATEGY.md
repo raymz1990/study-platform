@@ -1,7 +1,9 @@
 # FGV_STRATEGY.md
 
 # Concurso AI Platform
+
 ## Examination Board Strategy
+
 Board: FGV
 Version: 1.0
 

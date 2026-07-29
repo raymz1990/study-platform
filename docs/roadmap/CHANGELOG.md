@@ -1,6 +1,7 @@
 # CHANGELOG.md
 
 # Concurso AI Platform
+
 ## Changelog
 
 Este documento registra todas as alterações relevantes do projeto.
@@ -52,6 +53,32 @@ Deprecated
 Security
 
 Documentation
+
+---
+
+# [1.6.0] - 2026-07-28
+
+## Added
+
+- Dashboard completo (cockpit de estudos): página principal com hierarquia visual definida.
+- Componentes de Dashboard: `KpiCard`, `ExamCountdown`, `DailyPlanCard`, `ReviewQueueCard`, `ProgressChart` (Recharts), `DisciplineProgressList`, `StudyStreak`.
+- Serviços de leitura: `dashboard-service.ts` (dados mockados genéricos, 12 disciplinas) e `statistics-service.ts` (cálculos de percentual, taxa de acerto, countdown).
+- Tipos do Dashboard: `src/types/dashboard.ts` com interfaces baseadas em DATA_MODEL.md (`DailyPlan`, `ReviewItem`, `DisciplineProgress`, `Statistics`, `EvolutionPoint`, `StudyStreak`).
+- Configuração do concurso: `config/exam.json` com data da prova (2026-10-11), horas semanais (13.5) e semanas totais (11).
+- KPIs principais: horas estudadas, taxa de acerto, percentual do edital, revisões pendentes, dias até a prova, horas restantes, simulados realizados.
+- Gráfico de evolução temporal com Recharts: horas estudadas × taxa de acerto ao longo do tempo.
+- Plano do dia com lista de tarefas, prioridades e barra de progresso.
+- Fila de revisões com ordenação por urgência (urgente → atenção → normal).
+- Streak de estudos com recorde e última data de estudo.
+- Estados de loading: skeletons em todos os componentes do Dashboard.
+- Estado de erro: mensagem amigável com ícone e descrição.
+- Testes unitários: `statistics-service` (17 testes), `dashboard-service` (6 testes), `exam-countdown` (3 testes); total: 41/41 passando.
+- Componente foundation `Skeleton` para estados de carregamento.
+
+## Changed
+
+- `dashboard-page.tsx` reescrita: layout hierárquico (plano do dia → revisões → progresso → estatísticas → complementar).
+- Dependência `recharts` adicionada ao projeto (TECH_STACK.md §9).
 
 ---
 

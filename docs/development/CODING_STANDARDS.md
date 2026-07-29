@@ -1,7 +1,9 @@
 # CODING_STANDARDS.md
 
 # Concurso AI Platform
+
 ## Coding Standards
+
 Version: 1.0
 
 ---

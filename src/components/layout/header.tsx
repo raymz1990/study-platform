@@ -14,7 +14,7 @@ export function Header(): React.ReactElement {
   const { toggleMobile } = useSidebar()
 
   return (
-    <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 shadow-sm">
+    <header className="bg-background sticky top-0 z-30 flex h-14 items-center gap-4 border-b px-4 shadow-sm">
       {/* Menu mobile */}
       <Button
         variant="ghost"
@@ -28,7 +28,7 @@ export function Header(): React.ReactElement {
 
       {/* Logo */}
       <div className="flex items-center gap-2">
-        <GraduationCap className="h-6 w-6 text-primary" aria-hidden="true" />
+        <GraduationCap className="text-primary h-6 w-6" aria-hidden="true" />
         <span className="text-base font-semibold tracking-tight">Concurso AI</span>
       </div>
 

@@ -1,7 +1,9 @@
 # DECISIONS.md
 
 # Concurso AI Platform
+
 ## Architecture & Project Decisions
+
 Version: 1.0
 
 ---
@@ -546,11 +548,11 @@ Infraestrutura
 
 ### Contexto
 
-TECH_STACK.md (§20) definia apenas main + feature/bugfix/refactor, enquanto DEPLOYMENT.md definia main, develop, feature/*, bugfix/*, release/*, hotfix/*.
+TECH_STACK.md (§20) definia apenas main + feature/bugfix/refactor, enquanto DEPLOYMENT.md definia main, develop, feature/_, bugfix/_, release/_, hotfix/_.
 
 ### Decisão
 
-Unificar pelo modelo completo do DEPLOYMENT.md (Git Flow simplificado): main (produção), develop (integração), feature/*, bugfix/*, release/*, hotfix/*, refactor/* (integrada via develop). TECH_STACK.md atualizado.
+Unificar pelo modelo completo do DEPLOYMENT.md (Git Flow simplificado): main (produção), develop (integração), feature/_, bugfix/_, release/_, hotfix/_, refactor/* (integrada via develop). TECH_STACK.md atualizado.
 
 ### Motivo
 

@@ -1,7 +1,9 @@
 # DESIGN_SYSTEM.md
 
 # Concurso AI Platform
+
 ## Design System
+
 Version: 1.0
 
 ---

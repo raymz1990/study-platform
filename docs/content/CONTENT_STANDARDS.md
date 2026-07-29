@@ -1,7 +1,9 @@
 # CONTENT_STANDARDS.md
 
 # Concurso AI Platform
+
 ## Learning Content Specification
+
 Version: 1.0
 
 ---

@@ -1,7 +1,9 @@
 # AI_ENGINE.md
 
 # Concurso AI Platform
+
 ## AI Development Engine
+
 Version: 1.0
 
 ---

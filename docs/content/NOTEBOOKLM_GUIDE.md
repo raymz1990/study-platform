@@ -1,7 +1,9 @@
 # NOTEBOOKLM_GUIDE.md
 
 # Concurso AI Platform
+
 ## NotebookLM Integration Guide
+
 Version: 1.0
 
 ---

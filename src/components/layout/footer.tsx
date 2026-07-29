@@ -5,7 +5,7 @@
  */
 export function Footer(): React.ReactElement {
   return (
-    <footer className="border-t bg-background px-4 py-3 text-center text-xs text-muted-foreground">
+    <footer className="bg-background text-muted-foreground border-t px-4 py-3 text-center text-xs">
       DATAPREV — Perfil 10 — Gestão Econômico-Financeira — FGV — Prova: 11/10/2026
     </footer>
   )
