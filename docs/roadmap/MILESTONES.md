@@ -1,7 +1,9 @@
 # MILESTONES.md
 
 # Concurso AI Platform
+
 ## Project Milestones
+
 Version: 1.0
 
 ---
@@ -40,11 +42,13 @@ Critérios
 
 Home
 
-Dashboard
+✓ Dashboard (Task 005 concluída: KPIs, countdown, plano do dia, revisões, gráficos, progresso por disciplina)
 
 Sidebar
 
-Markdown
+✓ Markdown (Task 006 concluída: Markdown Viewer extensível com parser desacoplado, callouts, tabelas, código, headings com âncora, TOC)
+
+✓ Planner (Task 007 concluída: Study Planner com cronograma de 11 semanas, plano diário, revisões espaçadas, progresso persistente em localStorage)
 
 Pesquisa
 

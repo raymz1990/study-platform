@@ -15,8 +15,7 @@ const cardVariants = cva(
     variants: {
       variant: {
         default: '',
-        interactive:
-          'cursor-pointer hover:border-accent hover:shadow-md',
+        interactive: 'cursor-pointer hover:border-accent hover:shadow-md',
         outline: 'border-2',
         ghost: 'border-transparent bg-transparent shadow-none',
       },
@@ -28,8 +27,7 @@ const cardVariants = cva(
 )
 
 export interface CardProps
-  extends HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof cardVariants> {}
+  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {}
 
 function Card({ className, variant, ...props }: CardProps): React.ReactElement {
   return <div className={cn(cardVariants({ variant }), className)} {...props} />
@@ -43,12 +41,12 @@ function CardHeader({ className, ...props }: HTMLAttributes<HTMLDivElement>): Re
 
 CardHeader.displayName = 'CardHeader'
 
-function CardTitle({ className, ...props }: HTMLAttributes<HTMLHeadingElement>): React.ReactElement {
+function CardTitle({
+  className,
+  ...props
+}: HTMLAttributes<HTMLHeadingElement>): React.ReactElement {
   return (
-    <h3
-      className={cn('text-lg font-semibold leading-none tracking-tight', className)}
-      {...props}
-    />
+    <h3 className={cn('text-lg leading-none font-semibold tracking-tight', className)} {...props} />
   )
 }
 
@@ -58,7 +56,7 @@ function CardDescription({
   className,
   ...props
 }: HTMLAttributes<HTMLParagraphElement>): React.ReactElement {
-  return <p className={cn('text-sm text-muted-foreground', className)} {...props} />
+  return <p className={cn('text-muted-foreground text-sm', className)} {...props} />
 }
 
 CardDescription.displayName = 'CardDescription'

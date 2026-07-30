@@ -1,7 +1,9 @@
 # CONTRIBUTING.md
 
 # Concurso AI Platform
+
 ## Development Workflow & Contribution Guide
+
 Version: 1.0
 
 ---

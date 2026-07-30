@@ -1,7 +1,9 @@
 # COMPONENT_LIBRARY.md
 
 # Concurso AI Platform
+
 ## Component Library
+
 Version: 2.0
 
 ---

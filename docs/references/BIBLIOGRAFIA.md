@@ -1,6 +1,7 @@
 # BIBLIOGRAFIA.md
 
 # Concurso AI Platform
+
 ## Official References
 
 Version: 2.0
@@ -157,18 +158,18 @@ INSS — https://www.gov.br/inss
 
 # Controle
 
-| Título | Autor/Fonte | Ano | Versão | URL | Observações |
-|---|---|---|---|---|---|
-| Edital DATAPREV 2026 | FGV | 2026 | Oficial | https://conhecimento.fgv.br/concursos/dataprev26 | Documento primário |
-| Matemática Financeira e Suas Aplicações | Assaf Neto | 2016 | 14. ed. | — | Matemática Financeira |
-| Princípios de Administração Financeira | Gitman | 2010 | 12. ed. | — | Adm. Financeira / Avaliação de Projetos |
-| Avaliação de Empresas (Valuation) | Damodaran | 2012 | 2. ed. | — | Tópico valuation |
-| Investimentos | Bodie, Kane, Marcus | 2014 | 10. ed. | — | Duration, VaR |
-| Contabilidade Introdutória | Iudícibus et al. | 2010 | 11. ed. | — | Contabilidade Empresarial |
-| Contabilidade de Custos | Martins | 2018 | 11. ed. | — | Custos |
-| Orçamento Governamental | Giacomoni | 2016 | 15. ed. | — | Orçamento |
-| Moderna Gramática Portuguesa | Bechara | 2009 | 37. ed. | — | Português |
-| Artificial Intelligence: A Modern Approach | Russell, Norvig | 2021 | 4. ed. | — | Atualidades e IA |
+| Título                                     | Autor/Fonte         | Ano  | Versão  | URL                                              | Observações                             |
+| ------------------------------------------ | ------------------- | ---- | ------- | ------------------------------------------------ | --------------------------------------- |
+| Edital DATAPREV 2026                       | FGV                 | 2026 | Oficial | https://conhecimento.fgv.br/concursos/dataprev26 | Documento primário                      |
+| Matemática Financeira e Suas Aplicações    | Assaf Neto          | 2016 | 14. ed. | —                                                | Matemática Financeira                   |
+| Princípios de Administração Financeira     | Gitman              | 2010 | 12. ed. | —                                                | Adm. Financeira / Avaliação de Projetos |
+| Avaliação de Empresas (Valuation)          | Damodaran           | 2012 | 2. ed.  | —                                                | Tópico valuation                        |
+| Investimentos                              | Bodie, Kane, Marcus | 2014 | 10. ed. | —                                                | Duration, VaR                           |
+| Contabilidade Introdutória                 | Iudícibus et al.    | 2010 | 11. ed. | —                                                | Contabilidade Empresarial               |
+| Contabilidade de Custos                    | Martins             | 2018 | 11. ed. | —                                                | Custos                                  |
+| Orçamento Governamental                    | Giacomoni           | 2016 | 15. ed. | —                                                | Orçamento                               |
+| Moderna Gramática Portuguesa               | Bechara             | 2009 | 37. ed. | —                                                | Português                               |
+| Artificial Intelligence: A Modern Approach | Russell, Norvig     | 2021 | 4. ed.  | —                                                | Atualidades e IA                        |
 
 ---
 

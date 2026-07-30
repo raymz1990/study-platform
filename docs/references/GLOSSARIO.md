@@ -1,7 +1,9 @@
 # GLOSSARIO.md
 
 # Concurso AI Platform
+
 ## Glossário Oficial
+
 Version: 1.0
 
 ---

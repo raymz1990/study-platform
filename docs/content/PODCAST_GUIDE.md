@@ -1,7 +1,9 @@
 # PODCAST_GUIDE.md
 
 # Concurso AI Platform
+
 ## Podcast Generation Guide
+
 Version: 1.0
 
 ---

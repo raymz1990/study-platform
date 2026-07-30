@@ -1,7 +1,9 @@
 # UI_UX_GUIDELINES.md
 
 # Concurso AI Platform
+
 ## UI / UX Guidelines
+
 Version: 1.0
 
 ---

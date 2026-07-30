@@ -1,7 +1,9 @@
 # SYSTEM_ARCHITECTURE.md
 
 # Concurso AI Platform
+
 ### Architecture Specification
+
 Version: 1.0
 
 ---

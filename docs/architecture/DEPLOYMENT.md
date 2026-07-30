@@ -1,7 +1,9 @@
 # DEPLOYMENT.md
 
 # Concurso AI Platform
+
 ## Deployment Specification
+
 Version: 1.0
 
 ---

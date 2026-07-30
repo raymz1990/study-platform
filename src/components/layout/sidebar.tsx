@@ -55,10 +55,10 @@ export function Sidebar(): React.ReactElement {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed left-0 top-14 z-50 flex h-[calc(100vh-3.5rem)] flex-col border-r bg-background transition-all duration-200',
+          'bg-background fixed top-14 left-0 z-50 flex h-[calc(100vh-3.5rem)] flex-col border-r transition-all duration-200',
           /* Mobile: drawer */
           isMobileOpen ? 'translate-x-0' : '-translate-x-full',
-          'lg:translate-x-0 lg:static lg:h-[calc(100vh-3.5rem)]',
+          'lg:static lg:h-[calc(100vh-3.5rem)] lg:translate-x-0',
           /* Desktop: largura variável */
           isOpen ? 'w-64' : 'w-16'
         )}
@@ -71,7 +71,7 @@ export function Sidebar(): React.ReactElement {
           className="hidden lg:flex lg:items-center lg:justify-end lg:px-3 lg:py-2"
           aria-label={isOpen ? 'Recolher menu' : 'Expandir menu'}
         >
-          <div className="h-1 w-8 rounded-full bg-muted-foreground/30" />
+          <div className="bg-muted-foreground/30 h-1 w-8 rounded-full" />
         </button>
 
         {/* Navegação */}
@@ -79,7 +79,8 @@ export function Sidebar(): React.ReactElement {
           <ul className="space-y-1" role="menubar">
             {NAV_ITEMS.map((item) => {
               const Icon = item.icon
-              const isActive = location.pathname === item.path || location.pathname.startsWith(`${item.path}/`)
+              const isActive =
+                location.pathname === item.path || location.pathname.startsWith(`${item.path}/`)
 
               return (
                 <li key={item.id} role="none">
@@ -89,7 +90,7 @@ export function Sidebar(): React.ReactElement {
                     role="menuitem"
                     onClick={closeMobile}
                     className={cn(
-                      'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                      'focus-visible:ring-ring flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none',
                       !isOpen && 'lg:justify-center lg:px-2',
                       isActive
                         ? 'bg-primary text-primary-foreground'

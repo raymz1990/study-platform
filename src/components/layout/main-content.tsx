@@ -8,7 +8,11 @@ import { type HTMLAttributes } from 'react'
  */
 export type MainContentProps = HTMLAttributes<HTMLElement>
 
-export function MainContent({ className, children, ...props }: MainContentProps): React.ReactElement {
+export function MainContent({
+  className,
+  children,
+  ...props
+}: MainContentProps): React.ReactElement {
   return (
     <main
       className={cn('flex-1 overflow-y-auto p-4 lg:p-6', className)}

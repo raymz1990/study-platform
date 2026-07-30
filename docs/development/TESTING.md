@@ -1,7 +1,9 @@
 # TESTING.md
 
 # Concurso AI Platform
+
 ## Testing Strategy
+
 Version: 1.0
 
 ---

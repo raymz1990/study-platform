@@ -1,7 +1,9 @@
 # DATA_MODEL.md
 
 # Concurso AI Platform
+
 ## Data Model Specification
+
 Version: 1.0
 
 ---

@@ -1,8 +1,11 @@
 # FGV_EDITAL_ANALISE.md
 
 # Concurso AI Platform
+
 ## DATAPREV 2026
+
 ### Perfil 10 — Gestão Econômico-Financeira
+
 Version: 2.0
 Data de consolidação: 2026-07-27
 Fonte: DATAPREV_Edital.pdf (63 páginas, documento oficial)
@@ -101,21 +104,21 @@ A Prova Objetiva é composta por 70 questões de múltipla escolha, com 5 altern
 
 ## Módulo I — Conhecimentos Gerais (todos os perfis)
 
-| Disciplina | Questões | Peso | Pontuação Máxima |
-|---|---|---|---|
-| Língua Portuguesa | 12 | 1 | 12 |
-| Língua Inglesa | 12 | 1 | 12 |
-| Raciocínio Lógico Matemático | 5 | 1 | 5 |
-| Atualidades e Inteligência Artificial | 6 | 1 | 6 |
-| Legislação Acerca de Segurança da Informação e Proteção de Dados | 5 | 1 | 5 |
-| **Total Módulo I** | **40** | **1** | **40** |
+| Disciplina                                                       | Questões | Peso  | Pontuação Máxima |
+| ---------------------------------------------------------------- | -------- | ----- | ---------------- |
+| Língua Portuguesa                                                | 12       | 1     | 12               |
+| Língua Inglesa                                                   | 12       | 1     | 12               |
+| Raciocínio Lógico Matemático                                     | 5        | 1     | 5                |
+| Atualidades e Inteligência Artificial                            | 6        | 1     | 6                |
+| Legislação Acerca de Segurança da Informação e Proteção de Dados | 5        | 1     | 5                |
+| **Total Módulo I**                                               | **40**   | **1** | **40**           |
 
 ## Módulo II — Conhecimentos Específicos (Perfil 10)
 
-| Disciplina | Questões | Peso | Pontuação Máxima |
-|---|---|---|---|
-| Conhecimentos Específicos (bloco único) | 30 | 2,5 | 75 |
-| **Total Módulo II** | **30** | **2,5** | **75** |
+| Disciplina                              | Questões | Peso    | Pontuação Máxima |
+| --------------------------------------- | -------- | ------- | ---------------- |
+| Conhecimentos Específicos (bloco único) | 30       | 2,5     | 75               |
+| **Total Módulo II**                     | **30**   | **2,5** | **75**           |
 
 IMPORTANTE: o edital NÃO distribui as 30 questões específicas entre as 7 disciplinas do Perfil 10. A distribuição por disciplina apresentada neste documento é estimativa da plataforma, não dado oficial.
 
@@ -141,20 +144,20 @@ REGRA CRÍTICA: zerar qualquer disciplina elimina o candidato, independentemente
 
 # Disciplinas — Visão Consolidada
 
-| ID | Disciplina | Módulo | Questões (oficial) | Peso | Prioridade | Complexidade | Horas Estimadas | Status |
-|---|---|---|---|---|---|---|---|---|
-| disc_portugues | Língua Portuguesa | I | 12 | 1 | P1 | Alta | 60h | Não iniciada |
-| disc_ingles | Língua Inglesa | I | 12 | 1 | P1 | Média | 40h | Não iniciada |
-| disc_raciocinio_logico | Raciocínio Lógico Matemático | I | 5 | 1 | P2 | Média | 40h | Não iniciada |
-| disc_atualidades_ia | Atualidades e Inteligência Artificial | I | 6 | 1 | P3 | Baixa | 25h | Não iniciada |
-| disc_leg_seg_dados | Legislação de Segurança da Informação e Proteção de Dados | I | 5 | 1 | P2 | Média | 30h | Não iniciada |
-| disc_matematica_financeira | Matemática Financeira | II | ~5 (est.) | 2,5 | P1 | Alta | 50h | Não iniciada |
-| disc_adm_financeira | Administração Financeira | II | ~5 (est.) | 2,5 | P1 | Alta | 60h | Não iniciada |
-| disc_avaliacao_projetos | Avaliações Econômicas de Projetos | II | ~5 (est.) | 2,5 | P1 | Alta | 50h | Não iniciada |
-| disc_contabilidade_empresarial | Contabilidade Empresarial | II | ~5 (est.) | 2,5 | P1 | Alta | 55h | Não iniciada |
-| disc_custos | Custos | II | ~4 (est.) | 2,5 | P2 | Média | 40h | Não iniciada |
-| disc_orcamento | Orçamento | II | ~3 (est.) | 2,5 | P2 | Média | 30h | Não iniciada |
-| disc_leg_prev_trab | Legislação Previdenciária e Trabalhista | II | ~3 (est.) | 2,5 | P2 | Média | 45h | Não iniciada |
+| ID                             | Disciplina                                                | Módulo | Questões (oficial) | Peso | Prioridade | Complexidade | Horas Estimadas | Status       |
+| ------------------------------ | --------------------------------------------------------- | ------ | ------------------ | ---- | ---------- | ------------ | --------------- | ------------ |
+| disc_portugues                 | Língua Portuguesa                                         | I      | 12                 | 1    | P1         | Alta         | 60h             | Não iniciada |
+| disc_ingles                    | Língua Inglesa                                            | I      | 12                 | 1    | P1         | Média        | 40h             | Não iniciada |
+| disc_raciocinio_logico         | Raciocínio Lógico Matemático                              | I      | 5                  | 1    | P2         | Média        | 40h             | Não iniciada |
+| disc_atualidades_ia            | Atualidades e Inteligência Artificial                     | I      | 6                  | 1    | P3         | Baixa        | 25h             | Não iniciada |
+| disc_leg_seg_dados             | Legislação de Segurança da Informação e Proteção de Dados | I      | 5                  | 1    | P2         | Média        | 30h             | Não iniciada |
+| disc_matematica_financeira     | Matemática Financeira                                     | II     | ~5 (est.)          | 2,5  | P1         | Alta         | 50h             | Não iniciada |
+| disc_adm_financeira            | Administração Financeira                                  | II     | ~5 (est.)          | 2,5  | P1         | Alta         | 60h             | Não iniciada |
+| disc_avaliacao_projetos        | Avaliações Econômicas de Projetos                         | II     | ~5 (est.)          | 2,5  | P1         | Alta         | 50h             | Não iniciada |
+| disc_contabilidade_empresarial | Contabilidade Empresarial                                 | II     | ~5 (est.)          | 2,5  | P1         | Alta         | 55h             | Não iniciada |
+| disc_custos                    | Custos                                                    | II     | ~4 (est.)          | 2,5  | P2         | Média        | 40h             | Não iniciada |
+| disc_orcamento                 | Orçamento                                                 | II     | ~3 (est.)          | 2,5  | P2         | Média        | 30h             | Não iniciada |
+| disc_leg_prev_trab             | Legislação Previdenciária e Trabalhista                   | II     | ~3 (est.)          | 2,5  | P2         | Média        | 45h             | Não iniciada |
 
 Totais estimados
 
@@ -568,21 +571,21 @@ Observações FGV:
 Sequência obrigatória de estudo (respeitar ao planejar):
 
 Raciocínio Lógico (apoio, opcional)
-        ↓
+↓
 Matemática Financeira
-        ↓
+↓
 ┌───────┴───────────────┐
-↓                       ↓
-Administração Financeira   (Valor do dinheiro no tempo, taxas, fluxo de caixa)
-        ↓
-Avaliações Econômicas de Projetos   (VPL, TIR, TMA, risco)
+↓ ↓
+Administração Financeira (Valor do dinheiro no tempo, taxas, fluxo de caixa)
+↓
+Avaliações Econômicas de Projetos (VPL, TIR, TMA, risco)
 
 Contabilidade Empresarial
-        ↓
+↓
 ┌───────┴───────────────┐
-↓                       ↓
-Custos                  Administração Financeira (indicadores)
-        ↓
+↓ ↓
+Custos Administração Financeira (indicadores)
+↓
 Orçamento
 
 Disciplinas independentes (podem iniciar a qualquer momento):
@@ -634,16 +637,16 @@ Regras para o Planner:
 
 # Análise de Risco para Aprovação
 
-| Risco | Severidade | Mitigação |
-|---|---|---|
-| Prazo: ~11 semanas para ~650h estimadas | Crítica | Carga máxima semanal, priorização por peso × retorno, início imediato da cadeia quantitativa |
-| Zerar uma disciplina elimina (regra 9.17.b) | Crítica | Piso mínimo semanal em TODAS as disciplinas, inclusive Raciocínio Lógico e Legislação de Dados |
-| Perfil 10 sem vagas imediatas (só CR: 29) | Alta | Meta de nota ≥ 80 pontos (70%); simulados frequentes |
-| Português FGV (estilo interpretativo traiçoeiro) | Alta | Treino sistemático com questões FGV comentadas desde a semana 1 |
-| Inglês subestimado (12 questões) | Alta | Leitura diária curta + questões FGV; não deixar para a reta final |
-| Escopo aberto de Excel/R e Atualidades | Média | Delimitação própria documentada (este arquivo); revisão contínua de atualidades |
-| Cadeia de dependências quantitativas | Média | Matemática Financeira nas primeiras 2 semanas |
-| 4 horas para 70 questões (~3,4 min/questão) | Média | Simulados cronometrados no formato real desde o Milestone 3 |
+| Risco                                            | Severidade | Mitigação                                                                                      |
+| ------------------------------------------------ | ---------- | ---------------------------------------------------------------------------------------------- |
+| Prazo: ~11 semanas para ~650h estimadas          | Crítica    | Carga máxima semanal, priorização por peso × retorno, início imediato da cadeia quantitativa   |
+| Zerar uma disciplina elimina (regra 9.17.b)      | Crítica    | Piso mínimo semanal em TODAS as disciplinas, inclusive Raciocínio Lógico e Legislação de Dados |
+| Perfil 10 sem vagas imediatas (só CR: 29)        | Alta       | Meta de nota ≥ 80 pontos (70%); simulados frequentes                                           |
+| Português FGV (estilo interpretativo traiçoeiro) | Alta       | Treino sistemático com questões FGV comentadas desde a semana 1                                |
+| Inglês subestimado (12 questões)                 | Alta       | Leitura diária curta + questões FGV; não deixar para a reta final                              |
+| Escopo aberto de Excel/R e Atualidades           | Média      | Delimitação própria documentada (este arquivo); revisão contínua de atualidades                |
+| Cadeia de dependências quantitativas             | Média      | Matemática Financeira nas primeiras 2 semanas                                                  |
+| 4 horas para 70 questões (~3,4 min/questão)      | Média      | Simulados cronometrados no formato real desde o Milestone 3                                    |
 
 ---
 
@@ -702,9 +705,9 @@ Itens identificados no documento oficial que impactam o desenvolvimento da plata
 
 Registrar aqui qualquer retificação, comunicado ou alteração do edital publicada pela FGV após 27/07/2026.
 
-| Data | Fonte | Alteração | Impacto |
-|---|---|---|---|
-| — | — | Nenhuma até o momento | — |
+| Data | Fonte | Alteração             | Impacto |
+| ---- | ----- | --------------------- | ------- |
+| —    | —     | Nenhuma até o momento | —       |
 
 ---
 

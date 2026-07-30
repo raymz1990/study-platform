@@ -1,7 +1,9 @@
 # AI_ENGINE.md
 
 # Concurso AI Platform
+
 ## AI Development Engine
+
 Version: 1.0
 
 ---
@@ -350,3 +352,13 @@ Construir uma plataforma de estudos robusta, reutilizável e sustentável, mante
 - gerar documentação derivada.
 
 Quando houver dúvida, utilizar Kimi K3.
+
+## Long Running Tasks
+
+Se uma Task exigir mais de 70 passos de raciocínio:
+
+- interrompa o planejamento;
+- assuma que a arquitetura já foi validada;
+- comece imediatamente a implementação;
+- entregue resultados parciais sempre que concluir um bloco lógico;
+- nunca reanalise documentos já consolidados.
