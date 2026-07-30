@@ -1,0 +1,17 @@
+{
+  "theme": "system",
+  "dailyStudyMinutes": {
+    "monday": 90,
+    "tuesday": 90,
+    "wednesday": 90,
+    "thursday": 90,
+    "friday": 90,
+    "saturday": 180,
+    "sunday": 180
+  },
+  "weeklyTargetMinutes": 810,
+  "studyGoal": "Aprovação no concurso DATAPREV 2026 — Perfil 10 (Gestão Econômico-Financeira)",
+  "examDate": "2026-10-11",
+  "notificationsEnabled": false,
+  "version": 1
+}

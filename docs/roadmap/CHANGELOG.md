@@ -56,6 +56,91 @@ Documentation
 
 ---
 
+# [1.14.0] - 2026-07-30
+
+## Added
+
+- Página de Configurações completa (Task 012): `/configuracoes` com formulário de preferências de estudo, tema e dados da prova.
+- Configurações padrão em `config/defaults.json`: data da prova (2026-10-11), meta semanal (810 min), rotina diária de segunda a domingo.
+- Tipos de configurações (`src/types/settings.ts`): `UserSettings`, `DailyStudySchedule`, `ThemePreference`.
+- Serviço `settings-service.ts`: CRUD em localStorage (key `cap.settings`), validação rigorosa (0–16h/dia, data futura, meta ≤ 500 chars), emite evento `settings-changed` para integração cross-component.
+- Componente `ThemeSettings`: seleção light/dark/system com ícones Lucide e sincronização com `ThemeProvider` existente.
+- Componente `StudySettings`: grid 7 dias para rotina de estudo com inputs de horas por dia e meta semanal.
+- Componente `ExamSettings`: data da prova e objetivo pessoal com validação de data futura.
+- Componente `SettingsForm`: orquestra todos os sub-formulários com feedback visual, reset para padrões e persistência automática.
+- Testes unitários: `settings-service.test.ts` (13 testes cobrindo load, save, validate, reset, getters e evento).
+
+## Changed
+
+- `configuracoes-page.tsx`: reescrita de placeholder para página real com `SettingsForm`, estados de loading e salvamento.
+
+---
+
+# [1.13.0] - 2026-07-30
+
+## Added
+
+- Busca global instantânea (Task 011): modal de busca ativado pelo atalho `S` e fechado com `Esc`.
+- Motor de busca local com Fuse.js (`src/services/search-service.ts`): busca fuzzy em disciplinas, módulos e capítulos com resposta < 300 ms.
+- Índice de busca (`src/services/search-index-builder.ts`): gerado em build time a partir de `content/index.json`, com keywords enriquecidas por área.
+- Hook `use-search.ts`: orquestra estado da busca com debounce (150 ms), navegação por teclado (↑/↓/Enter) e integração com React Router.
+- Componentes de busca: `SearchModal` (overlay com foco trap e ARIA), `SearchInput` (com forwardRef), `SearchResults` (agrupados por tipo com sticky headers), `SearchResultItem` (highlight do termo encontrado).
+- Script `scripts/generate-index.ts`: gera `public/search-index.json` em build time para uso futuro (PWA/offline).
+- Integração com atalho `S`: `useKeyboardShortcuts` dispara evento `open-search-modal`; `SearchModal` escuta e abre.
+- Tipos de busca (`src/types/search.ts`): `SearchResult`, `SearchIndexEntry`, `SearchState`, `SearchConfig`.
+- Testes unitários: `search-service.test.ts` (7 testes: vazio, curto, exato, capítulo, keyword, fuzzy, limite, performance < 300 ms).
+
+## Changed
+
+- `AppLayout`: integra `<SearchModal />` como componente global.
+- `tsconfig.app.json`: inclui `scripts/` no array `include` para compatibilidade com build time.
+
+---
+
+# [1.12.0] - 2026-07-30
+
+## Added
+
+- Progress Tracker completo: página `/progresso` com métricas de estudo, cronômetro de sessão, meta semanal, streak, evolução e histórico.
+- Tipos de progresso (`src/types/progress.ts`): `StudySession`, `WeeklyGoal`, `SessionHistoryItem`, `ProgressData`.
+- Serviço `session-service.ts`: persistência de sessões de estudo em localStorage (schema v1, key `cap.study.sessions`).
+- Serviço `progress-service.ts`: cálculo de streak (dias consecutivos), metas semanais (810min = 13,5h), pontos de evolução, histórico agregado.
+- Hook `use-study-timer.ts`: cronômetro de sessão com estados `idle`/`running`/`paused`, integrado ao `session-service`.
+- Componente `ProgressCard`: card reutilizável de métrica com ícone, valor, label e variação.
+- Componente `StudyMetrics`: grid de 4 métricas principais (sessões, tempo total, média, taxa de acerto).
+- Componente `GoalTracker`: barra de progresso da meta semanal com percentual e tempo restante.
+- Componente `StudySession`: cronômetro com controles (iniciar, pausar, retomar, finalizar, interromper) e tempo formatado.
+- Testes unitários: `session-service.test.ts` (11 testes), `progress-service.test.ts` (19 testes), `use-study-timer.test.ts` (6 testes).
+
+## Changed
+
+- `progresso-page.tsx`: reescrita de placeholder para página completa com métricas, cronômetro, meta semanal, gráfico de evolução, streak e histórico de sessões.
+
+---
+
+# [1.11.0] - 2026-07-29
+
+## Added
+
+- Content Renderer (Capítulos): página de capítulo (`/disciplinas/:disciplineId/capitulos/:chapterId`) com renderização Markdown, TOC lateral, checklist de leitura e navegação entre capítulos.
+- Tipos de capítulo (`src/types/chapter.ts`): `ChapterContent`, `ChapterNavigation`, `ChapterFrontmatter`.
+- Serviço `content-service.ts` refatorado para `fetch`: carrega markdown de `/content/<disciplina>/<modulo>/<arquivo>.md` com compatibilidade total para GitHub Pages e testabilidade via `fetch` mockado.
+- Componente `ChapterHeader`: exibe título, metadados do frontmatter (disciplina, módulo, dificuldade, tempo estimado) e navegação de retorno.
+- Componente `ChecklistPanel`: checklist de leitura do capítulo com persistência em `localStorage` (`cap.chapter.checklist.<chapterId>`).
+- Componente `NextChapterLink`: link de navegação para o próximo capítulo com preview de título e módulo.
+- Componente `MermaidDiagram`: placeholder arquitetural para futuro suporte a diagramas Mermaid (não renderiza ainda, exibe fallback informativo).
+- Página `ChapterPage` (`src/pages/chapter-page.tsx`): estados loading (skeleton), erro (mensagem amigável) e vazio (Empty State); TOC flutuante com scroll spy via IntersectionObserver; integração com `MarkdownViewer`.
+- Rota dinâmica `/disciplinas/:disciplineId/capitulos/:chapterId` em `src/routes/index.tsx`.
+- Herança M4 (Gate 008): `disciplina-detalhe-page.tsx` carrega `00-roadmap.md` via `loadDisciplineRoadmap()` do content-service; fallback informativo quando o arquivo não existe.
+- Conteúdo de exemplo criado: `content/disc_portugues/00-roadmap.md` e `content/disc_portugues/01-fundamentos/morfologia.md`, copiados para `public/content/` para servir em runtime.
+- Testes unitários: `content-service.test.ts` (12 testes com fetch mockado), cobrindo carregamento de capítulo, roadmap, erro 404, parsing de frontmatter e navegação.
+
+## Changed
+
+- `disciplina-detalhe-page.tsx`: correção de template string mal escapado no fallback do roadmap; uso de cópia local `const d = discipline` para satisfazer TypeScript strict dentro de função async.
+
+---
+
 # [1.10.1] - 2026-07-29
 
 ## Added
@@ -111,84 +196,41 @@ Documentation
 
 ---
 
-# [1.12.0] - 2026-07-30
+# [1.9.0] - 2026-07-29
 
 ## Added
 
-- Progress Tracker completo: página `/progresso` com métricas de estudo, cronômetro de sessão, meta semanal, streak, evolução e histórico.
-- Tipos de progresso (`src/types/progress.ts`): `StudySession`, `WeeklyGoal`, `SessionHistoryItem`, `ProgressData`.
-- Serviço `session-service.ts`: persistência de sessões de estudo em localStorage (schema v1, key `cap.study.sessions`).
-- Serviço `progress-service.ts`: cálculo de streak (dias consecutivos), metas semanais (810min = 13,5h), pontos de evolução, histórico agregado.
-- Hook `use-study-timer.ts`: cronômetro de sessão com estados `idle`/`running`/`paused`, integrado ao `session-service`.
-- Componente `ProgressCard`: card reutilizável de métrica com ícone, valor, label e variação.
-- Componente `StudyMetrics`: grid de 4 métricas principais (sessões, tempo total, média, taxa de acerto).
-- Componente `GoalTracker`: barra de progresso da meta semanal com percentual e tempo restante.
-- Componente `StudySession`: cronômetro com controles (iniciar, pausar, retomar, finalizar, interromper) e tempo formatado.
-- Testes unitários: `session-service.test.ts` (11 testes), `progress-service.test.ts` (19 testes), `use-study-timer.test.ts` (6 testes).
+- Reatividade do toggle de tarefas via `useSyncExternalStore` em `use-task-progress.ts` e `use-planner-data.ts`: subscrição a `planner-progress-updated` + `storage` (sincronização entre abas). Marcar/desmarcar atualiza checkbox, barra de progresso e revisões sem reload.
+- Campos `disciplineName` e `topicName` ao `CompletedTaskRecord` (schema v2.1): nomes legíveis persistidos no momento do toggle, eliminando slugs na fila de revisões.
+- Função compartilhada `getCompletedTasksForReview()` em `planner-service.ts`: transformação única de `ProgressSnapshot → CompletedTask[]`, consumida por `dashboard-service.ts` e `use-planner-data.ts` (elimina duplicação M1).
+- Testes de persistência e migração (5 testes): round-trip v2, migração v1→v2, storage corrompido, array vazio preserva `hoursLogged`, `hoursLogged: null` tratado como `{}`.
 
 ## Changed
 
-- `progresso-page.tsx`: reescrita de placeholder para página completa com métricas, cronômetro, meta semanal, gráfico de evolução, streak e histórico de sessões.
+- `use-task-progress.ts`: `toggleTask` agora recebe 5 parâmetros (`taskId, disciplineId, disciplineName, topicId, topicName`) e usa `useSyncExternalStore`.
+- `use-planner-data.ts`: reescrito com `useSyncExternalStore`; consome `getCompletedTasksForReview()` do planner-service.
+- `dashboard-service.ts`: `evolution` retorna `[]` (sem `mockEvolution`); `streak` retorna `null` (sem `mockStreak`). `ProgressChart` e `StudyStreakComponent` exibem Empty State.
+- `dashboard-service.ts`: `calculateStatistics` retorna taxa de acerto `0` quando não há dados reais de questões (remove fórmula sintética `55 + 0.4×syllabus`).
+- `loadProgress()`: aceita `completedTasks: []` como schema v2 válido (checa tipo do campo, não tamanho); protege contra `hoursLogged: null`.
+- `DashboardData.streak`: tipo alterado para `StudyStreak | null`.
 
----
+## Fixed
 
-# [1.13.0] - 2026-07-30
+- C1: Toggle de tarefa agora re-renderiza a UI imediatamente (useSyncExternalStore + evento customizado).
+- A1: `mockEvolution` e `mockStreak` removidos do Dashboard; Empty States exibidos quando não há dados reais.
+- A3: Taxa de acerto sem dados reais agora exibe `0%` em vez de `55%` sintético.
+- M2: Fila de revisões exibe nomes legíveis (`disciplineName`/`topicName`), nunca slugs.
+- M3: `hoursLogged` preservado quando `completedTasks` é esvaziado.
 
-## Added
+## Removed
 
-- Busca global instantânea (Task 011): modal de busca ativado pelo atalho `S` e fechado com `Esc`.
-- Motor de busca local com Fuse.js (`src/services/search-service.ts`): busca fuzzy em disciplinas, módulos e capítulos com resposta < 300 ms.
-- Índice de busca (`src/services/search-index-builder.ts`): gerado em build time a partir de `content/index.json`, com keywords enriquecidas por área.
-- Hook `use-search.ts`: orquestra estado da busca com debounce (150 ms), navegação por teclado (↑/↓/Enter) e integração com React Router.
-- Componentes de busca: `SearchModal` (overlay com foco trap e ARIA), `SearchInput` (com forwardRef), `SearchResults` (agrupados por tipo com sticky headers), `SearchResultItem` (highlight do termo encontrado).
-- Script `scripts/generate-index.ts`: gera `public/search-index.json` em build time para uso futuro (PWA/offline).
-- Integração com atalho `S`: `useKeyboardShortcuts` dispara evento `open-search-modal`; `SearchModal` escuta e abre.
-- Tipos de busca (`src/types/search.ts`): `SearchResult`, `SearchIndexEntry`, `SearchState`, `SearchConfig`.
-- Testes unitários: `search-service.test.ts` (7 testes: vazio, curto, exato, capítulo, keyword, fuzzy, limite, performance < 300 ms).
+- `mockEvolution` e `mockStreak` de `dashboard-service.ts`.
+- Duplicação de transformação `ProgressSnapshot → CompletedTask[]` entre `dashboard-service.ts` e `use-planner-data.ts`.
+- Seção `Documentation` duplicada na entrada `[1.8.1]`.
 
-## Changed
+## Documentation
 
-- `AppLayout`: integra `<SearchModal />` como componente global.
-- `tsconfig.app.json`: inclui `scripts/` no array `include` para compatibilidade com build time.
-
----
-
-# [1.11.0] - 2026-07-29
-
-## Changed
-
-- `progresso-page.tsx`: reescrita de placeholder para página completa com métricas, cronômetro, meta semanal, gráfico de evolução, streak e histórico de sessões.
-
----
-
-# [1.11.0] - 2026-07-29
-
----
-
-# [1.11.0] - 2026-07-29
-
-## Added
-
-- Content Renderer (Capítulos): página de capítulo (`/disciplinas/:disciplineId/capitulos/:chapterId`) com renderização Markdown, TOC lateral, checklist de leitura e navegação entre capítulos.
-- Tipos de capítulo (`src/types/chapter.ts`): `ChapterContent`, `ChapterNavigation`, `ChapterFrontmatter`.
-- Serviço `content-service.ts` refatorado para `fetch`: carrega markdown de `/content/<disciplina>/<modulo>/<arquivo>.md` com compatibilidade total para GitHub Pages e testabilidade via `fetch` mockado.
-- Componente `ChapterHeader`: exibe título, metadados do frontmatter (disciplina, módulo, dificuldade, tempo estimado) e navegação de retorno.
-- Componente `ChecklistPanel`: checklist de leitura do capítulo com persistência em `localStorage` (`cap.chapter.checklist.<chapterId>`).
-- Componente `NextChapterLink`: link de navegação para o próximo capítulo com preview de título e módulo.
-- Componente `MermaidDiagram`: placeholder arquitetural para futuro suporte a diagramas Mermaid (não renderiza ainda, exibe fallback informativo).
-- Página `ChapterPage` (`src/pages/chapter-page.tsx`): estados loading (skeleton), erro (mensagem amigável) e vazio (Empty State); TOC flutuante com scroll spy via IntersectionObserver; integração com `MarkdownViewer`.
-- Rota dinâmica `/disciplinas/:disciplineId/capitulos/:chapterId` em `src/routes/index.tsx`.
-- Herança M4 (Gate 008): `disciplina-detalhe-page.tsx` carrega `00-roadmap.md` via `loadDisciplineRoadmap()` do content-service; fallback informativo quando o arquivo não existe.
-- Conteúdo de exemplo criado: `content/disc_portugues/00-roadmap.md` e `content/disc_portugues/01-fundamentos/morfologia.md`, copiados para `public/content/` para servir em runtime.
-- Testes unitários: `content-service.test.ts` (12 testes com fetch mockado), cobrindo carregamento de capítulo, roadmap, erro 404, parsing de frontmatter e navegação.
-
-## Changed
-
-- `disciplina-detalhe-page.tsx`: correção de template string mal escapado no fallback do roadmap; uso de cópia local `const d = discipline` para satisfazer TypeScript strict dentro de função async.
-
----
-
-# [1.10.0] - 2026-07-29
+- Re-verificação dos bloqueantes da 007c concluída nesta conversa (gate simplificado): C1, A1, A2, A3, M1–M4 todos verificados em código. **Task 008 liberada** para implementação.
 
 ---
 
@@ -242,45 +284,6 @@ Documentation
 - Parsing manual de `taskId` em `planner-page.tsx`.
 
 ---
-
-# [1.9.0] - 2026-07-29
-
-## Added
-
-- Reatividade do toggle de tarefas via `useSyncExternalStore` em `use-task-progress.ts` e `use-planner-data.ts`: subscrição a `planner-progress-updated` + `storage` (sincronização entre abas). Marcar/desmarcar atualiza checkbox, barra de progresso e revisões sem reload.
-- Campos `disciplineName` e `topicName` ao `CompletedTaskRecord` (schema v2.1): nomes legíveis persistidos no momento do toggle, eliminando slugs na fila de revisões.
-- Função compartilhada `getCompletedTasksForReview()` em `planner-service.ts`: transformação única de `ProgressSnapshot → CompletedTask[]`, consumida por `dashboard-service.ts` e `use-planner-data.ts` (elimina duplicação M1).
-- Testes de persistência e migração (5 testes): round-trip v2, migração v1→v2, storage corrompido, array vazio preserva `hoursLogged`, `hoursLogged: null` tratado como `{}`.
-
-## Changed
-
-- `use-task-progress.ts`: `toggleTask` agora recebe 5 parâmetros (`taskId, disciplineId, disciplineName, topicId, topicName`) e usa `useSyncExternalStore`.
-- `use-planner-data.ts`: reescrito com `useSyncExternalStore`; consome `getCompletedTasksForReview()` do planner-service.
-- `dashboard-service.ts`: `evolution` retorna `[]` (sem `mockEvolution`); `streak` retorna `null` (sem `mockStreak`). `ProgressChart` e `StudyStreakComponent` exibem Empty State.
-- `dashboard-service.ts`: `calculateStatistics` retorna taxa de acerto `0` quando não há dados reais de questões (remove fórmula sintética `55 + 0.4×syllabus`).
-- `loadProgress()`: aceita `completedTasks: []` como schema v2 válido (checa tipo do campo, não tamanho); protege contra `hoursLogged: null`.
-- `DashboardData.streak`: tipo alterado para `StudyStreak | null`.
-
-## Fixed
-
-- C1: Toggle de tarefa agora re-renderiza a UI imediatamente (useSyncExternalStore + evento customizado).
-- A1: `mockEvolution` e `mockStreak` removidos do Dashboard; Empty States exibidos quando não há dados reais.
-- A3: Taxa de acerto sem dados reais agora exibe `0%` em vez de `55%` sintético.
-- M2: Fila de revisões exibe nomes legíveis (`disciplineName`/`topicName`), nunca slugs.
-- M3: `hoursLogged` preservado quando `completedTasks` é esvaziado.
-
-## Removed
-
-- `mockEvolution` e `mockStreak` de `dashboard-service.ts`.
-- Duplicação de transformação `ProgressSnapshot → CompletedTask[]` entre `dashboard-service.ts` e `use-planner-data.ts`.
-- Seção `Documentation` duplicada na entrada `[1.8.1]`.
-
-## Documentation
-
-- Re-verificação dos bloqueantes da 007c concluída nesta conversa (gate simplificado): C1, A1, A2, A3, M1–M4 todos verificados em código. **Task 008 liberada** para implementação.
-
----
-
 
 # [1.8.0] - 2026-07-29
 
@@ -367,11 +370,6 @@ Documentation
   - Testes do content-parser expandidos para 14 testes: cobertura de aliases modernos, validação Zod, arrays YAML.
   - Total de testes após revisão: 74/74 passando.
 - Dependências: react-markdown, remark-gfm, remark-frontmatter, rehype-sanitize, unified.
-
-## Changed
-
-- `HeadingAnchor` gera IDs próprios via `slugify()` compartilhado com o parser, garantindo consistência entre DOM e TOC.
-- `content-parser.ts` remove rehype-slug e rehype-autolink-headings do pipeline padrão; sanitização simplificada.
 
 ---
 
