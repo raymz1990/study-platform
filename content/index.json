@@ -1,0 +1,342 @@
+{
+  "disciplines": [
+    {
+      "id": "disc_portugues",
+      "name": "Língua Portuguesa",
+      "order": 1,
+      "weight": 1,
+      "priority": 1,
+      "estimatedHours": 60,
+      "description": "Interpretação de textos, gramática, reescrita e inferência conforme padrão FGV. Disciplina contínua (segundas e quartas).",
+      "modules": [
+        {
+          "id": "mod_port_fundamentos",
+          "name": "Fundamentos",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_morfologia", "title": "Morfologia", "estimatedTime": 90, "difficulty": "medium" },
+            { "id": "chap_sintaxe", "title": "Sintaxe", "estimatedTime": 120, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_port_interpretacao",
+          "name": "Interpretação de Textos",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_inferencia", "title": "Inferência e Reescrita", "estimatedTime": 120, "difficulty": "high" },
+            { "id": "chap_coesao", "title": "Coesão e Coerência", "estimatedTime": 90, "difficulty": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_ingles",
+      "name": "Língua Inglesa",
+      "order": 2,
+      "weight": 1,
+      "priority": 1,
+      "estimatedHours": 40,
+      "description": "Compreensão de textos em inglês. Leitura, vocabulário e estratégias de prova. Disciplina contínua (terças).",
+      "modules": [
+        {
+          "id": "mod_ingles_leitura",
+          "name": "Compreensão de Leitura",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_vocabulario", "title": "Vocabulário Contextual", "estimatedTime": 90, "difficulty": "medium" },
+            { "id": "chap_gramatica_ingles", "title": "Gramática Aplicada", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_raciocinio_logico",
+      "name": "Raciocínio Lógico Matemático",
+      "order": 3,
+      "weight": 1,
+      "priority": 2,
+      "estimatedHours": 40,
+      "description": "Proposições, tabelas-verdade, equivalências lógicas, diagramas, conjuntos e problemas aritméticos.",
+      "modules": [
+        {
+          "id": "mod_rl_logica",
+          "name": "Lógica Formal",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_proposicoes", "title": "Proposições e Conectivos", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_tabelas_verdade", "title": "Tabelas-Verdade", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_rl_conjuntos",
+          "name": "Conjuntos e Diagramas",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_conjuntos", "title": "Teoria dos Conjuntos", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_diagramas", "title": "Diagramas Lógicos", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_atualidades_ia",
+      "name": "Atualidades e Inteligência Artificial",
+      "order": 4,
+      "weight": 1,
+      "priority": 3,
+      "estimatedHours": 25,
+      "description": "Atualidades dos últimos 6 meses, conceitos de IA, machine learning, LGPD e impactos sociais da tecnologia.",
+      "modules": [
+        {
+          "id": "mod_ia_conceitos",
+          "name": "Conceitos de IA",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_ml_basico", "title": "Machine Learning Básico", "estimatedTime": 60, "difficulty": "low" },
+            { "id": "chap_ia_etica", "title": "Ética e Regulamentação de IA", "estimatedTime": 45, "difficulty": "low" }
+          ]
+        },
+        {
+          "id": "mod_atualidades",
+          "name": "Atualidades",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_fatos_recentes", "title": "Fatos Relevantes (6 meses)", "estimatedTime": 45, "difficulty": "low" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_leg_seg_dados",
+      "name": "Legislação de Segurança da Informação e Proteção de Dados",
+      "order": 5,
+      "weight": 1,
+      "priority": 2,
+      "estimatedHours": 30,
+      "description": "LAI, Marco Civil da Internet, LGPD, Lei de Crimes Informáticos e boas práticas de segurança da informação.",
+      "modules": [
+        {
+          "id": "mod_lgpd",
+          "name": "LGPD",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_lgpd_principios", "title": "Princípios e Fundamentos", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_lgpd_direitos", "title": "Direitos do Titular", "estimatedTime": 45, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_lai_mci",
+          "name": "LAI e Marco Civil",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_lai", "title": "Lei de Acesso à Informação", "estimatedTime": 45, "difficulty": "medium" },
+            { "id": "chap_mci", "title": "Marco Civil da Internet", "estimatedTime": 45, "difficulty": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_matematica_financeira",
+      "name": "Matemática Financeira",
+      "order": 6,
+      "weight": 2,
+      "priority": 1,
+      "estimatedHours": 50,
+      "description": "Juros simples e compostos, taxas, capitalização, desconto, SAC, Price, SAM, VPL, TIR e fluxo de caixa.",
+      "modules": [
+        {
+          "id": "mod_mf_juros",
+          "name": "Juros e Taxas",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_juros_simples", "title": "Juros Simples", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_juros_compostos", "title": "Juros Compostos", "estimatedTime": 90, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_mf_amortizacao",
+          "name": "Amortização e Análise de Investimentos",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_sac_price", "title": "SAC, Price e SAM", "estimatedTime": 90, "difficulty": "high" },
+            { "id": "chap_vpl_tir", "title": "VPL e TIR", "estimatedTime": 90, "difficulty": "high" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_adm_financeira",
+      "name": "Administração Financeira",
+      "order": 7,
+      "weight": 2,
+      "priority": 1,
+      "estimatedHours": 60,
+      "description": "Capital de giro, tesouraria, finanças corporativas, estrutura de capital, risco x retorno e valuation.",
+      "modules": [
+        {
+          "id": "mod_admf_giro",
+          "name": "Capital de Giro e Tesouraria",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_capital_giro", "title": "Capital de Giro", "estimatedTime": 90, "difficulty": "medium" },
+            { "id": "chap_tesouraria", "title": "Gestão de Tesouraria", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_admf_valuation",
+          "name": "Valuation e Estrutura de Capital",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_custo_capital", "title": "Custo de Capital", "estimatedTime": 90, "difficulty": "high" },
+            { "id": "chap_valuation", "title": "Valuation", "estimatedTime": 120, "difficulty": "high" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_avaliacao_projetos",
+      "name": "Avaliações Econômicas de Projetos",
+      "order": 8,
+      "weight": 2,
+      "priority": 1,
+      "estimatedHours": 50,
+      "description": "TMA, VPL, TIR, payback, análise de sensibilidade, risco, estrutura a termo, duration e VaR.",
+      "modules": [
+        {
+          "id": "mod_avp_criterios",
+          "name": "Critérios de Avaliação",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_tma", "title": "Taxa Mínima de Atratividade", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_vpl_tir_avp", "title": "VPL e TIR Aplicados", "estimatedTime": 90, "difficulty": "high" }
+          ]
+        },
+        {
+          "id": "mod_avp_risco",
+          "name": "Risco e Cenários",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_sensibilidade", "title": "Análise de Sensibilidade", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_var", "title": "Value at Risk (VaR)", "estimatedTime": 60, "difficulty": "high" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_contabilidade_empresarial",
+      "name": "Contabilidade Empresarial",
+      "order": 9,
+      "weight": 2,
+      "priority": 1,
+      "estimatedHours": 55,
+      "description": "Demonstrações contábeis, indicadores, coligadas e controladas, Excel avançado e Linguagem R.",
+      "modules": [
+        {
+          "id": "mod_cont_demonstracoes",
+          "name": "Demonstrações Contábeis",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_bp", "title": "Balanço Patrimonial", "estimatedTime": 90, "difficulty": "medium" },
+            { "id": "chap_dre", "title": "DRE e DOAR", "estimatedTime": 90, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_cont_indicadores",
+          "name": "Indicadores e Análise",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_indicadores", "title": "Indicadores Financeiros", "estimatedTime": 90, "difficulty": "medium" },
+            { "id": "chap_excel_r", "title": "Excel Avançado e R", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_custos",
+      "name": "Custos",
+      "order": 10,
+      "weight": 2,
+      "priority": 2,
+      "estimatedHours": 40,
+      "description": "Métodos de custeio, margem de contribuição, ponto de equilíbrio, centros de custo e markup.",
+      "modules": [
+        {
+          "id": "mod_custos_metodos",
+          "name": "Métodos de Custeio",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_custeio_direto", "title": "Custeio Direto/Variável", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_custeio_absorvicao", "title": "Custeio por Absorção", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_custos_analise",
+          "name": "Análise de Custos",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_pe", "title": "Ponto de Equilíbrio", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_markup", "title": "Margem de Contribuição e Markup", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_orcamento",
+      "name": "Orçamento",
+      "order": 11,
+      "weight": 2,
+      "priority": 2,
+      "estimatedHours": 30,
+      "description": "Princípios orçamentários, proposta orçamentária de estatal, execução, indicadores e Orçamento Governamental.",
+      "modules": [
+        {
+          "id": "mod_orc_principios",
+          "name": "Princípios e Planejamento",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_principios_orc", "title": "Princípios Orçamentários", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_proposta", "title": "Proposta Orçamentária", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_orc_governamental",
+          "name": "Orçamento Governamental",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_execucao", "title": "Execução e Indicadores", "estimatedTime": 45, "difficulty": "medium" },
+            { "id": "chap_orc_gov", "title": "Orçamento Governamental", "estimatedTime": 45, "difficulty": "low" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "disc_leg_prev_trab",
+      "name": "Legislação Previdenciária e Trabalhista",
+      "order": 12,
+      "weight": 2,
+      "priority": 2,
+      "estimatedHours": 45,
+      "description": "RGPS, filiação, segurados, financiamento, FGTS, crimes, recursos e SST. Lei seca com recorte de incidência.",
+      "modules": [
+        {
+          "id": "mod_prev_rgps",
+          "name": "Previdenciário",
+          "order": 1,
+          "chapters": [
+            { "id": "chap_rgps", "title": "RGPS e Segurados", "estimatedTime": 90, "difficulty": "medium" },
+            { "id": "chap_fgts", "title": "FGTS", "estimatedTime": 60, "difficulty": "medium" }
+          ]
+        },
+        {
+          "id": "mod_trab_sst",
+          "name": "Trabalhista",
+          "order": 2,
+          "chapters": [
+            { "id": "chap_sst", "title": "Segurança e Saúde no Trabalho", "estimatedTime": 60, "difficulty": "medium" },
+            { "id": "chap_crimes", "title": "Crimes contra a Ordem Tributária", "estimatedTime": 45, "difficulty": "medium" }
+          ]
+        }
+      ]
+    }
+  ]
+}

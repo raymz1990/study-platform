@@ -1,0 +1,11 @@
+{
+  "template": {
+    "monday": { "type": "study", "discipline": "Língua Portuguesa", "duration": 90 },
+    "tuesday": { "type": "study", "discipline": "Língua Inglesa", "duration": 90 },
+    "wednesday": { "type": "study", "discipline": "Língua Portuguesa", "duration": 90 },
+    "thursday": { "type": "study", "discipline": "{{rotative}}", "duration": 90 },
+    "friday": { "type": "review", "discipline": "Revisão Espaçada", "duration": 90 },
+    "saturday": { "type": "study", "discipline": "{{module2}}", "duration": 180 },
+    "sunday": { "type": "study", "discipline": "{{module2}}", "duration": 180 }
+  }
+}

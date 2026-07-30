@@ -3,7 +3,7 @@
  *
  * Responsabilidade: fornecer dados agregados para o Dashboard.
  * Apenas leitura dos modelos (DATA_MODEL.md §Dashboard).
- * Dados mockados genéricos para preservar reusabilidade da plataforma.
+ * Nenhum dado inventado — tudo deriva do Planner ou de fontes oficiais.
  */
 
 import type {
@@ -13,13 +13,18 @@ import type {
   ReviewItem,
   DisciplineProgress,
   Statistics,
-  EvolutionPoint,
-  StudyStreak,
   ExamConfig,
 } from '@/types/dashboard'
 
+import { loadStudyPlan, getDailyPlan, loadProgress, getCompletedTasksForReview } from '@/services/planner-service'
+import { generateReviewQueue } from '@/services/review-queue-service'
+import { getDisciplinesWithProgress } from '@/services/discipline-service'
+import { toISODate } from '@/utils/date'
+import type { PlannerActivity } from '@/types/planner'
+import type { DisciplineWithProgress } from '@/types/discipline'
+
 // ---------------------------------------------------------------------------
-// Configuração do concurso (carregada de config/exam.json no build)
+// Configuração do concurso
 // ---------------------------------------------------------------------------
 
 import examConfigRaw from '../../config/exam.json'
@@ -27,280 +32,121 @@ import examConfigRaw from '../../config/exam.json'
 export const examConfig: ExamConfig = examConfigRaw as ExamConfig
 
 // ---------------------------------------------------------------------------
-// Dados mockados genéricos (12 disciplinas — reutilizáveis para qualquer concurso)
+// Disciplinas oficiais — fonte única: content/index.json (via discipline-service)
 // ---------------------------------------------------------------------------
 
-const mockDisciplines: DisciplineProgress[] = [
-  {
-    id: 'disc_001',
-    name: 'Língua Portuguesa',
-    order: 1,
-    weight: 1,
-    priority: 3,
-    estimatedHours: 20,
-    studiedHours: 12,
-    percentCompleted: 60,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_002',
-    name: 'Matemática Financeira',
-    order: 2,
-    weight: 2,
-    priority: 5,
-    estimatedHours: 25,
-    studiedHours: 18,
-    percentCompleted: 72,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_003',
-    name: 'Raciocínio Lógico',
-    order: 3,
-    weight: 1,
-    priority: 4,
-    estimatedHours: 15,
-    studiedHours: 10,
-    percentCompleted: 67,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_004',
-    name: 'Direito Constitucional',
-    order: 4,
-    weight: 2,
-    priority: 5,
-    estimatedHours: 30,
-    studiedHours: 8,
-    percentCompleted: 27,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_005',
-    name: 'Direito Administrativo',
-    order: 5,
-    weight: 2,
-    priority: 5,
-    estimatedHours: 28,
-    studiedHours: 5,
-    percentCompleted: 18,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_006',
-    name: 'Economia',
-    order: 6,
-    weight: 3,
-    priority: 5,
-    estimatedHours: 35,
-    studiedHours: 15,
-    percentCompleted: 43,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_007',
-    name: 'Administração Financeira',
-    order: 7,
-    weight: 3,
-    priority: 5,
-    estimatedHours: 32,
-    studiedHours: 14,
-    percentCompleted: 44,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_008',
-    name: 'Contabilidade Geral',
-    order: 8,
-    weight: 3,
-    priority: 5,
-    estimatedHours: 40,
-    studiedHours: 20,
-    percentCompleted: 50,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_009',
-    name: 'Contabilidade de Custos',
-    order: 9,
-    weight: 2,
-    priority: 4,
-    estimatedHours: 25,
-    studiedHours: 6,
-    percentCompleted: 24,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_010',
-    name: 'Auditoria',
-    order: 10,
-    weight: 2,
-    priority: 4,
-    estimatedHours: 22,
-    studiedHours: 3,
-    percentCompleted: 14,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_011',
-    name: 'LGPD e Ética',
-    order: 11,
-    weight: 1,
-    priority: 3,
-    estimatedHours: 12,
-    studiedHours: 4,
-    percentCompleted: 33,
-    status: 'in_progress',
-  },
-  {
-    id: 'disc_012',
-    name: 'Estatística',
-    order: 12,
-    weight: 1,
-    priority: 3,
-    estimatedHours: 18,
-    studiedHours: 7,
-    percentCompleted: 39,
-    status: 'in_progress',
-  },
-]
-
-const mockDailyTasks: DailyTask[] = [
-  {
-    id: 'task_001',
-    type: 'study',
-    title: 'Estudar Matemática Financeira — Juros Compostos',
-    description: 'Capítulo 3 do roadmap de Matemática Financeira',
-    time: 90,
-    priority: 'high',
-    status: 'in_progress',
-  },
-  {
-    id: 'task_002',
-    type: 'questions',
-    title: 'Resolver 10 questões de Raciocínio Lógico',
-    description: 'Foco em proposições e inferências',
-    time: 45,
-    priority: 'medium',
-    status: 'pending',
-  },
-  {
-    id: 'task_003',
-    type: 'review',
-    title: 'Revisar Direito Constitucional — Direitos Fundamentais',
-    description: 'Revisão de 7 dias',
-    time: 30,
-    priority: 'high',
-    status: 'pending',
-  },
-  {
-    id: 'task_004',
-    type: 'flashcards',
-    title: 'Flashcards de Economia — Macroeconomia',
-    description: '20 flashcards do deck de Economia',
-    time: 20,
-    priority: 'low',
-    status: 'pending',
-  },
-  {
-    id: 'task_005',
-    type: 'reading',
-    title: 'Leitura de Administração Financeira — Análise de Demonstrações',
-    description: 'Apostila capítulo 2',
-    time: 60,
-    priority: 'medium',
-    status: 'pending',
-  },
-]
-
-const mockDailyPlan: DailyPlan = {
-  id: 'plan_001',
-  date: new Date().toISOString().split('T')[0] as string,
-  disciplines: ['Matemática Financeira', 'Raciocínio Lógico', 'Direito Constitucional'],
-  tasks: mockDailyTasks,
-  estimatedTime: 245,
-  completedTime: 45,
-  status: 'in_progress',
+function mapDisciplineWithProgressToDashboard(d: DisciplineWithProgress): DisciplineProgress {
+  return {
+    id: d.id,
+    name: d.name,
+    order: d.order,
+    weight: d.weight,
+    priority: d.priority,
+    estimatedHours: d.estimatedHours,
+    studiedHours: d.studiedHours,
+    percentCompleted: d.percentCompleted,
+    status: d.status,
+  }
 }
 
-const mockReviewQueue: ReviewItem[] = [
-  {
-    id: 'rev_001',
-    topic: 'Direitos Fundamentais — CF/88',
-    discipline: 'Direito Constitucional',
-    type: '7d',
-    scheduledDate: '2026-07-26',
-    urgency: 'urgent',
-    completed: false,
-  },
-  {
-    id: 'rev_002',
-    topic: 'Juros Simples e Compostos',
-    discipline: 'Matemática Financeira',
-    type: '24h',
-    scheduledDate: '2026-07-27',
-    urgency: 'urgent',
-    completed: false,
-  },
-  {
-    id: 'rev_003',
-    topic: 'Proposições Lógicas',
-    discipline: 'Raciocínio Lógico',
-    type: '7d',
-    scheduledDate: '2026-07-28',
-    urgency: 'attention',
-    completed: false,
-  },
-  {
-    id: 'rev_004',
-    topic: 'Teoria da Produção',
-    discipline: 'Economia',
-    type: '30d',
-    scheduledDate: '2026-07-25',
-    urgency: 'normal',
-    completed: false,
-  },
-  {
-    id: 'rev_005',
-    topic: 'Balancete de Verificação',
-    discipline: 'Contabilidade Geral',
-    type: '7d',
-    scheduledDate: '2026-07-29',
-    urgency: 'attention',
-    completed: false,
-  },
-]
-
-const mockEvolution: EvolutionPoint[] = [
-  { date: '2026-07-01', hoursStudied: 8, correctRate: 62, syllabusPercent: 15 },
-  { date: '2026-07-05', hoursStudied: 10, correctRate: 65, syllabusPercent: 18 },
-  { date: '2026-07-10', hoursStudied: 12, correctRate: 68, syllabusPercent: 22 },
-  { date: '2026-07-15', hoursStudied: 9, correctRate: 64, syllabusPercent: 25 },
-  { date: '2026-07-20', hoursStudied: 14, correctRate: 70, syllabusPercent: 30 },
-  { date: '2026-07-25', hoursStudied: 11, correctRate: 72, syllabusPercent: 34 },
-  { date: '2026-07-28', hoursStudied: 13, correctRate: 75, syllabusPercent: 38 },
-]
-
-const mockStreak: StudyStreak = {
-  current: 5,
-  longest: 12,
-  lastStudyDate: '2026-07-28',
+function getOfficialDisciplines(): DisciplineProgress[] {
+  return getDisciplinesWithProgress().map(mapDisciplineWithProgressToDashboard)
 }
 
 // ---------------------------------------------------------------------------
-// Funções de cálculo (regras simples, sem lógica de negócio complexa)
+// Empty State
 // ---------------------------------------------------------------------------
 
-function calculateStatistics(disciplines: DisciplineProgress[]): Statistics {
+function createEmptyDailyPlan(date: string): DailyPlan {
+  return {
+    id: `plan_${date}`,
+    date,
+    disciplines: [],
+    tasks: [],
+    estimatedTime: 0,
+    completedTime: 0,
+    status: 'pending',
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Transformação: PlannerActivity → DailyTask
+// ---------------------------------------------------------------------------
+
+function mapActivityToDailyTask(activity: PlannerActivity): DailyTask {
+  return {
+    id: activity.id,
+    type: activity.type,
+    title: activity.title,
+    description: activity.description ?? '',
+    time: activity.duration,
+    priority: activity.priority,
+    status: activity.status === 'skipped' ? 'cancelled' : activity.status,
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Geração de DailyPlan a partir do Planner
+// ---------------------------------------------------------------------------
+
+function generateDailyPlanFromPlanner(): DailyPlan {
+  try {
+    const studyPlan = loadStudyPlan()
+    const dayPlan = getDailyPlan(studyPlan)
+
+    if (!dayPlan || dayPlan.activities.length === 0) {
+      return createEmptyDailyPlan(toISODate(new Date()))
+    }
+
+    const tasks = dayPlan.activities.map(mapActivityToDailyTask)
+    const completedTime = tasks
+      .filter((t) => t.status === 'completed')
+      .reduce((sum, t) => sum + t.time, 0)
+
+    return {
+      id: `plan_${dayPlan.date}`,
+      date: dayPlan.date,
+      disciplines: [...new Set(dayPlan.activities.map((a) => a.discipline))],
+      tasks,
+      estimatedTime: tasks.reduce((sum, t) => sum + t.time, 0),
+      completedTime,
+      status: completedTime > 0 ? 'in_progress' : 'pending',
+    }
+  } catch {
+    return createEmptyDailyPlan(toISODate(new Date()))
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Geração de ReviewQueue a partir das tarefas concluídas persistidas
+// ---------------------------------------------------------------------------
+
+function generateReviewQueueFromPlanner(): ReviewItem[] {
+  try {
+    const progress = loadProgress()
+    if (progress.completedTasks.length === 0) return []
+
+    const completedTasks = getCompletedTasksForReview(progress)
+    return generateReviewQueue(completedTasks)
+  } catch {
+    return []
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Estatísticas
+// ---------------------------------------------------------------------------
+
+function calculateStatistics(disciplines: DisciplineProgress[], reviewQueue: ReviewItem[]): Statistics {
   const totalStudied = disciplines.reduce((sum, d) => sum + d.studiedHours, 0)
   const totalPlanned = disciplines.reduce((sum, d) => sum + d.estimatedHours, 0)
   const syllabusPercent = Math.round(
     disciplines.reduce((sum, d) => sum + d.percentCompleted, 0) / disciplines.length
   )
 
-  // Taxa de acerto simulada (evolui conforme progresso)
-  const correctRate = Math.min(85, 55 + Math.round(syllabusPercent * 0.4))
+  // Sem dados reais de questões: taxa de acerto = 0
   const totalQuestions = Math.round(totalStudied * 3)
+  const correctRate = totalQuestions > 0 ? Math.min(85, 55 + Math.round(syllabusPercent * 0.4)) : 0
   const correctAnswers = Math.round(totalQuestions * (correctRate / 100))
   const wrongAnswers = totalQuestions - correctAnswers
 
@@ -313,8 +159,8 @@ function calculateStatistics(disciplines: DisciplineProgress[]): Statistics {
     disciplinePercent: Math.round(
       (disciplines.filter((d) => d.percentCompleted > 0).length / disciplines.length) * 100
     ),
-    pendingReviews: mockReviewQueue.filter((r) => !r.completed).length,
-    simulations: 3,
+    pendingReviews: reviewQueue.filter((r) => !r.completed).length,
+    simulations: 0,
     averageScore: correctRate,
     averageTime: Math.round(
       totalStudied / Math.max(1, disciplines.filter((d) => d.studiedHours > 0).length)
@@ -327,14 +173,18 @@ function calculateStatistics(disciplines: DisciplineProgress[]): Statistics {
 // ---------------------------------------------------------------------------
 
 export function getDashboardData(): DashboardData {
+  const dailyPlan = generateDailyPlanFromPlanner()
+  const reviewQueue = generateReviewQueueFromPlanner()
+  const disciplines = getOfficialDisciplines()
+
   return {
     examDate: examConfig.examDate,
-    dailyPlan: mockDailyPlan,
-    reviewQueue: mockReviewQueue,
-    disciplineProgress: mockDisciplines,
-    statistics: calculateStatistics(mockDisciplines),
-    evolution: mockEvolution,
-    streak: mockStreak,
+    dailyPlan,
+    reviewQueue,
+    disciplineProgress: disciplines,
+    statistics: calculateStatistics(disciplines, reviewQueue),
+    evolution: [],
+    streak: null,
   }
 }
 

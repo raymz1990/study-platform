@@ -117,7 +117,7 @@ export interface DashboardData {
   disciplineProgress: DisciplineProgress[]
   statistics: Statistics
   evolution: EvolutionPoint[]
-  streak: StudyStreak
+  streak: StudyStreak | null
 }
 
 // ---------------------------------------------------------------------------

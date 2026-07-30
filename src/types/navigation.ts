@@ -11,10 +11,6 @@ export interface BreadcrumbItem {
   label: string
   path?: string | undefined
 }
-export interface BreadcrumbItem {
-  label: string
-  path?: string
-}
 
 /** Definição de rota interna. */
 export interface AppRoute {

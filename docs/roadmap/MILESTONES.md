@@ -46,29 +46,9 @@ Home
 
 Sidebar
 
-Markdown
+✓ Markdown (Task 006 concluída: Markdown Viewer extensível com parser desacoplado, callouts, tabelas, código, headings com âncora, TOC)
 
-Pesquisa
-
-Dark Mode
-
-Responsividade
-
-Status
-
-Em andamento
-
-MVP navegável
-
-Critérios
-
-Home
-
-Dashboard
-
-Sidebar
-
-Markdown
+✓ Planner (Task 007 concluída: Study Planner com cronograma de 11 semanas, plano diário, revisões espaçadas, progresso persistente em localStorage)
 
 Pesquisa
 

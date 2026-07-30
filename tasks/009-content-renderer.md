@@ -46,6 +46,7 @@ content/<disciplina>/01-fundamentos/*.md       (conteúdo real, quando produzido
 ## Critérios de Aceite
 
 - [ ] Página de capítulo renderiza conteúdo Markdown completo com índice lateral.
+- [ ] **(Herdado do Gate 008 — M4)** Substituir a geração inline de roadmap na página de detalhe da disciplina (`disciplina-detalhe-page.tsx`) por carregamento real de `content/<disciplina>/00-roadmap.md` via `content-service`, com Empty State quando o arquivo não existir.
 - [ ] Metadados do documento exibidos (tempo estimado, nível, palavras-chave, versão).
 - [ ] Seções identificáveis: objetivos, pré-requisitos, desenvolvimento, resumo, glossário, checklist.
 - [ ] Mapas mentais renderizados com Mermaid.

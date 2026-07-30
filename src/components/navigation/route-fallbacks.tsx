@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/foundation/card'
 import { Button } from '@/components/foundation/button'
 import { LayoutDashboard } from 'lucide-react'
@@ -53,6 +54,8 @@ export function EmptyState({
 
 /** Página 404 — Not Found. */
 export function NotFoundPage(): React.ReactElement {
+  const navigate = useNavigate()
+
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center">
       <EmptyState
@@ -61,9 +64,7 @@ export function NotFoundPage(): React.ReactElement {
         icon={<LayoutDashboard className="h-12 w-12" />}
         action={{
           label: 'Voltar ao Dashboard',
-          onClick: () => {
-            window.location.href = '/'
-          },
+          onClick: () => navigate('/'),
         }}
       />
     </div>

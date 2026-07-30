@@ -6,14 +6,17 @@ import { RouteSkeleton, NotFoundPage } from '@/components/navigation/route-fallb
 const DashboardPage = lazy(() =>
   import('@/pages/dashboard-page').then((m) => ({ default: m.DashboardPage }))
 )
-const CronogramaPage = lazy(() =>
-  import('@/pages/cronograma-page').then((m) => ({ default: m.CronogramaPage }))
+const PlannerPage = lazy(() =>
+  import('@/pages/planner-page').then((m) => ({ default: m.PlannerPage }))
 )
 const DisciplinasPage = lazy(() =>
   import('@/pages/disciplinas-page').then((m) => ({ default: m.DisciplinasPage }))
 )
 const DisciplinaDetalhePage = lazy(() =>
   import('@/pages/disciplina-detalhe-page').then((m) => ({ default: m.DisciplinaDetalhePage }))
+)
+const ChapterPage = lazy(() =>
+  import('@/pages/chapter-page').then((m) => ({ default: m.ChapterPage }))
 )
 const QuestoesPage = lazy(() =>
   import('@/pages/questoes-page').then((m) => ({ default: m.QuestoesPage }))
@@ -48,9 +51,10 @@ export function AppRoutes(): React.ReactElement {
     <Suspense fallback={<RouteSkeleton />}>
       <Routes>
         <Route path="/" element={<DashboardPage />} />
-        <Route path="/cronograma" element={<CronogramaPage />} />
+        <Route path="/cronograma" element={<PlannerPage />} />
         <Route path="/disciplinas" element={<DisciplinasPage />} />
         <Route path="/disciplinas/:id" element={<DisciplinaDetalhePage />} />
+        <Route path="/disciplinas/:disciplineId/capitulos/:chapterId" element={<ChapterPage />} />
         <Route path="/questoes" element={<QuestoesPage />} />
         <Route path="/flashcards" element={<FlashcardsPage />} />
         <Route path="/revisoes" element={<RevisoesPage />} />

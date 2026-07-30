@@ -1,7 +1,7 @@
 # Task 008 — Página de Disciplina
 
 **Fase:** 2 — MVP de Estudos | **Milestone:** 2 — MVP navegável
-**Status:** Planejada | **Prioridade:** P0
+**Status:** Liberada (Gate 007c aprovado em 29/07/2026) | **Prioridade:** P0
 
 ---
 

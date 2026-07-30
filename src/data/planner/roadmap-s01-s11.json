@@ -1,0 +1,172 @@
+{
+  "examDate": "2026-10-11",
+  "startDate": "2026-07-27",
+  "totalWeeks": 11,
+  "weeks": [
+    {
+      "number": 1,
+      "label": "S01",
+      "startDate": "2026-07-27",
+      "module2": {
+        "discipline": "Matemática Financeira",
+        "topics": ["Juros simples e compostos", "Capitalização e desconto", "Taxas (nominal, efetiva, equivalente, real, aparente)"]
+      },
+      "thursday": {
+        "discipline": "Raciocínio Lógico",
+        "topics": ["Estruturas lógicas", "Proposições"]
+      },
+      "milestones": ["ms1"],
+      "hasSimulation": false
+    },
+    {
+      "number": 2,
+      "label": "S02",
+      "startDate": "2026-08-03",
+      "module2": {
+        "discipline": "Matemática Financeira",
+        "topics": ["Prestações", "SAC, Price, SAM", "VPL, TIR", "Fluxo de caixa"]
+      },
+      "thursday": {
+        "discipline": "Raciocínio Lógico",
+        "topics": ["Tabelas-verdade", "Equivalências lógicas"]
+      },
+      "milestones": ["ms1"],
+      "hasSimulation": false
+    },
+    {
+      "number": 3,
+      "label": "S03",
+      "startDate": "2026-08-10",
+      "module2": {
+        "discipline": "Administração Financeira",
+        "topics": ["Conceitos", "Capital de giro", "Tesouraria", "Contas a receber/pagar", "Planejamento de curto prazo"]
+      },
+      "thursday": {
+        "discipline": "Raciocínio Lógico",
+        "topics": ["Diagramas lógicos", "Lógica de primeira ordem"]
+      },
+      "milestones": [],
+      "hasSimulation": false
+    },
+    {
+      "number": 4,
+      "label": "S04",
+      "startDate": "2026-08-17",
+      "module2": {
+        "discipline": "Administração Financeira",
+        "topics": ["Finanças corporativas", "Estrutura de capital", "Alavancagem", "Fontes de financiamento", "Risco x retorno"]
+      },
+      "thursday": {
+        "discipline": "Raciocínio Lógico",
+        "topics": ["Problemas aritméticos", "Geométricos e matriciais"]
+      },
+      "milestones": ["ms2"],
+      "hasSimulation": false
+    },
+    {
+      "number": 5,
+      "label": "S05",
+      "startDate": "2026-08-24",
+      "module2": {
+        "discipline": "Administração Financeira / Avaliações de Projetos",
+        "topics": ["Valuation (valor intrínseco, custo de capital, múltiplos)", "Conceito de projetos", "Etapas", "TMA", "VPL/TIR/payback"]
+      },
+      "thursday": {
+        "discipline": "Legislação de Dados",
+        "topics": ["LAI (Lei 12.527/2011, cap. I–V)"]
+      },
+      "milestones": [],
+      "hasSimulation": false
+    },
+    {
+      "number": 6,
+      "label": "S06",
+      "startDate": "2026-08-31",
+      "module2": {
+        "discipline": "Avaliações de Projetos",
+        "topics": ["Parâmetros", "Sensibilidade e cenários", "Risco", "Projetos sociais", "Estrutura a termo", "Duration", "VaR"]
+      },
+      "thursday": {
+        "discipline": "Legislação de Dados",
+        "topics": ["Marco Civil (Lei 12.965/2014)", "Lei 12.737/2012"]
+      },
+      "milestones": ["ms3"],
+      "hasSimulation": true
+    },
+    {
+      "number": 7,
+      "label": "S07",
+      "startDate": "2026-09-07",
+      "module2": {
+        "discipline": "Contabilidade Empresarial",
+        "topics": ["Noções básicas", "Demonstrações contábeis (BP, DRE, DOAR, DFC)"]
+      },
+      "thursday": {
+        "discipline": "Legislação de Dados",
+        "topics": ["LGPD (Lei 13.709/2018, cap. I–IV)"]
+      },
+      "milestones": [],
+      "hasSimulation": false
+    },
+    {
+      "number": 8,
+      "label": "S08",
+      "startDate": "2026-09-14",
+      "module2": {
+        "discipline": "Contabilidade Empresarial / Custos",
+        "topics": ["Indicadores (liquidez, endividamento, atividade, rentabilidade)", "Coligadas e controladas", "Métodos de custeio"]
+      },
+      "thursday": {
+        "discipline": "Legislação de Dados",
+        "topics": ["LGPD (cap. VII–IX)", "Revisão geral"]
+      },
+      "milestones": ["ms4"],
+      "hasSimulation": true
+    },
+    {
+      "number": 9,
+      "label": "S09",
+      "startDate": "2026-09-21",
+      "module2": {
+        "discipline": "Custos / Orçamento",
+        "topics": ["Margem de contribuição", "Ponto de equilíbrio", "Centros de custo", "Markup", "Princípios orçamentários", "Proposta orçamentária de estatal"]
+      },
+      "thursday": {
+        "discipline": "Legislação Previdenciária",
+        "topics": ["RGPS — segurados, filiação e inscrição"]
+      },
+      "milestones": [],
+      "hasSimulation": true
+    },
+    {
+      "number": 10,
+      "label": "S10",
+      "startDate": "2026-09-28",
+      "module2": {
+        "discipline": "Orçamento",
+        "topics": ["Execução orçamentária", "Indicadores", "Orçamento Governamental"]
+      },
+      "thursday": {
+        "discipline": "Legislação Previdenciária",
+        "topics": ["Financiamento", "Arrecadação e recolhimento"]
+      },
+      "milestones": ["ms5"],
+      "hasSimulation": true
+    },
+    {
+      "number": 11,
+      "label": "S11",
+      "startDate": "2026-10-05",
+      "module2": {
+        "discipline": "Reta Final",
+        "topics": ["Revisão de erros dos simulados", "Flashcards", "Resumos executivos", "Revisão leve de fórmulas e lei seca"]
+      },
+      "thursday": {
+        "discipline": "Legislação Previdenciária / Atualidades",
+        "topics": ["FGTS, crimes, recursos, SST", "Atualidades e IA (revisão final)"]
+      },
+      "milestones": ["ms6"],
+      "hasSimulation": false
+    }
+  ]
+}
