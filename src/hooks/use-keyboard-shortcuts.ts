@@ -46,6 +46,12 @@ export function useKeyboardShortcuts(): void {
         return
       }
 
+      if (key === 's') {
+        event.preventDefault()
+        window.dispatchEvent(new CustomEvent('open-search-modal'))
+        return
+      }
+
       const path = SHORTCUTS[key]
       if (path !== undefined) {
         event.preventDefault()
