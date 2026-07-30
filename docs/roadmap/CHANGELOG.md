@@ -132,6 +132,35 @@ Documentation
 
 ---
 
+# [1.13.0] - 2026-07-30
+
+## Added
+
+- Busca global instantânea (Task 011): modal de busca ativado pelo atalho `S` e fechado com `Esc`.
+- Motor de busca local com Fuse.js (`src/services/search-service.ts`): busca fuzzy em disciplinas, módulos e capítulos com resposta < 300 ms.
+- Índice de busca (`src/services/search-index-builder.ts`): gerado em build time a partir de `content/index.json`, com keywords enriquecidas por área.
+- Hook `use-search.ts`: orquestra estado da busca com debounce (150 ms), navegação por teclado (↑/↓/Enter) e integração com React Router.
+- Componentes de busca: `SearchModal` (overlay com foco trap e ARIA), `SearchInput` (com forwardRef), `SearchResults` (agrupados por tipo com sticky headers), `SearchResultItem` (highlight do termo encontrado).
+- Script `scripts/generate-index.ts`: gera `public/search-index.json` em build time para uso futuro (PWA/offline).
+- Integração com atalho `S`: `useKeyboardShortcuts` dispara evento `open-search-modal`; `SearchModal` escuta e abre.
+- Tipos de busca (`src/types/search.ts`): `SearchResult`, `SearchIndexEntry`, `SearchState`, `SearchConfig`.
+- Testes unitários: `search-service.test.ts` (7 testes: vazio, curto, exato, capítulo, keyword, fuzzy, limite, performance < 300 ms).
+
+## Changed
+
+- `AppLayout`: integra `<SearchModal />` como componente global.
+- `tsconfig.app.json`: inclui `scripts/` no array `include` para compatibilidade com build time.
+
+---
+
+# [1.11.0] - 2026-07-29
+
+## Changed
+
+- `progresso-page.tsx`: reescrita de placeholder para página completa com métricas, cronômetro, meta semanal, gráfico de evolução, streak e histórico de sessões.
+
+---
+
 # [1.11.0] - 2026-07-29
 
 ---

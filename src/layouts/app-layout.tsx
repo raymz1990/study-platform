@@ -3,6 +3,7 @@ import { Sidebar } from '@/components/layout/sidebar'
 import { Footer } from '@/components/layout/footer'
 import { MainContent } from '@/components/layout/main-content'
 import { Breadcrumb } from '@/components/navigation/breadcrumb'
+import { SearchModal } from '@/components/search/search-modal'
 import { useSidebar } from '@/contexts/sidebar-context'
 import { useKeyboardShortcuts } from '@/hooks/use-keyboard-shortcuts'
 import { cn } from '@/lib/utils'
@@ -36,6 +37,7 @@ export function AppLayout({ children }: AppLayoutProps): React.ReactElement {
       </a>
 
       <Header />
+      <SearchModal />
 
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
