@@ -1,18 +1,16 @@
-import { Settings } from 'lucide-react'
+import { SettingsForm } from '@/components/settings/settings-form'
 
 export function ConfiguracoesPage(): React.ReactElement {
   return (
-    <div className="space-y-4">
+    <div className="mx-auto max-w-3xl space-y-6">
       <div>
         <h1 className="text-2xl font-bold tracking-tight">Configurações</h1>
-        <p className="text-muted-foreground text-sm">Preferências da plataforma.</p>
+        <p className="text-sm text-muted-foreground">
+          Personalize sua experiência de estudo.
+        </p>
       </div>
-      <div className="flex items-center justify-center rounded-lg border border-dashed p-12">
-        <div className="text-center">
-          <Settings className="text-muted-foreground mx-auto h-10 w-10" />
-          <p className="text-muted-foreground mt-2 text-sm">Configurações em construção.</p>
-        </div>
-      </div>
+
+      <SettingsForm />
     </div>
   )
 }
