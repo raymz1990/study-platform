@@ -33,7 +33,7 @@ tsconfig.node.json
 tailwind.config.ts
 postcss.config.js
 index.html
-.eslintrc / eslint.config.js
+eslint.config.js
 .prettierrc
 .gitignore
 src/main.tsx
@@ -61,19 +61,20 @@ config/
 ## Critérios de Aceite
 
 - [ ] Projeto criado com pnpm (nunca npm) e Vite + React + TypeScript.
-- [ ] TypeScript strict ativo; nenhum `any` permitido (regra de lint).
-- [ ] Tailwind CSS configurado com dark mode por classe.
+- [ ] TypeScript configurado em modo `strict`, incluindo `noImplicitAny`, `strictNullChecks` e `exactOptionalPropertyTypes`.
+- [ ] Tailwind CSS configurado para alternância de tema via classe `dark` aplicada ao elemento `<html>`.
 - [ ] shadcn/ui inicializado (components.json) com Lucide React.
 - [ ] ESLint + Prettier configurados e passando sem erros.
 - [ ] Estrutura de diretórios conforme TECH_STACK.md §21–22 e §34.
 - [ ] `pnpm dev` sobe a aplicação; `pnpm build` gera bundle sem erros.
 - [ ] Branch `feature/bootstrap` criada a partir de `develop` (ADR-009).
-- [ ] Nenhuma dependência fora da lista permitida (TECH_STACK.md §38).
+- [ ] Todas as dependências instaladas constam em TECH_STACK.md §38 ou são dependências transitivas.
 
 ## Checklist de Testes
 
 - [ ] `pnpm lint` executa sem erros.
 - [ ] `pnpm build` conclui sem erros de tipagem.
+- [ ] `pnpm preview` inicia corretamente o bundle de produção.
 - [ ] Aplicação renderiza página inicial vazia sem erros de console.
 - [ ] Alternância de tema (classe `dark` no `<html>`) funciona via Tailwind.
 

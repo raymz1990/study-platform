@@ -44,21 +44,23 @@ src/types/layout.ts
 ## Critérios de Aceite
 
 - [ ] AppLayout com Header + Sidebar + MainContent + Footer.
-- [ ] Sidebar recolhível com estado persistido (localStorage).
+- [ ] Estado expandido/recolhido da Sidebar persistido em localStorage e restaurado na inicialização.
 - [ ] Itens de navegação: Dashboard, Cronograma, Disciplinas, Questões, Flashcards, Revisões, Simulados, Podcasts, Progresso, Configurações.
-- [ ] Responsivo: sidebar fixa em desktop, drawer em mobile/tablet.
-- [ ] Dark mode aplicado em todo o shell.
-- [ ] Nenhum componente excede 300 linhas.
+- [ ] Sidebar fixa em desktop e apresentada como drawer sobreposto em tablet/mobile, preservando o conteúdo principal.
+- [ ] Todos os componentes do Shell utilizam exclusivamente os tokens do Design System, respeitando light/dark mode.
+- [ ] Componentes seguem os limites definidos em CODING_STANDARDS.md.
 - [ ] Navegação por teclado completa no shell (tab order lógico, skip link para conteúdo).
-- [ ] Estados de loading/erro/vazio previstos no MainContent.
+- [ ] MainContent suporta renderização consistente de estados de loading, erro e vazio fornecidos pelas páginas consumidoras.
 
 ## Checklist de Testes
 
 - [ ] Teste de renderização do AppLayout (React Testing Library).
 - [ ] Teste de responsividade (breakpoints desktop/tablet/mobile).
 - [ ] Teste do hook `use-sidebar` (toggle + persistência).
+- [ ] Estado da Sidebar restaurado corretamente após recarregar a aplicação.
 - [ ] Verificação de acessibilidade: landmarks semânticos (`header`, `nav`, `main`, `footer`), skip link.
 - [ ] Dark mode alternado sem perda de layout.
+- [ ] Não há overflow horizontal em nenhum breakpoint suportado.
 
 ## Entregáveis
 

@@ -1,81 +1,663 @@
-# Task 008 — Página de Disciplina
+# Task 008 — Discipline Module
 
-**Fase:** 2 — MVP de Estudos | **Milestone:** 2 — MVP navegável
-**Status:** Liberada (Gate 007c aprovado em 29/07/2026) | **Prioridade:** P0
+**Fase:** 2 — MVP de Estudos | **Milestone:** 2 — MVP navegável  
+**Status:** Planejada | **Prioridade:** P0
 
 ---
 
-## Objetivo
+# Objetivo
 
-Implementar as páginas de listagem de disciplinas e de detalhe de disciplina, com progresso, tempo estudado/estimado, roadmap, capítulos, questões, flashcards, resumo, podcast e checklist.
+Implementar o módulo completo de Disciplinas da plataforma, composto por:
 
-## Contexto
+- página de listagem das disciplinas;
+- página de detalhe da disciplina;
+- cálculo de progresso;
+- integração com o Planner;
+- integração com o Dashboard;
+- carregamento da estrutura oficial de conteúdo.
 
-Cada disciplina deve apresentar (UI_UX_GUIDELINES.md): descrição, progresso, tempo estudado, tempo estimado, roadmap, capítulos, questões, flashcards, resumo, podcast e checklist. As 12 disciplinas do Perfil 10 são definidas em FGV_EDITAL_ANALISE.md com IDs oficiais (disc_*), prioridades e horas estimadas. O conteúdo segue a estrutura oficial de pastas (TECH_STACK.md §34).
+A página de disciplina representa a entrada principal para todo o conteúdo produzido nas Tasks seguintes.
 
-## Documentos Obrigatórios
+Não produz conteúdo.
 
-- UI_UX_GUIDELINES.md (página da disciplina)
-- FGV_EDITAL_ANALISE.md (disciplinas, IDs, pesos, horas)
-- DATA_MODEL.md (Disciplina, Módulo, Capítulo)
-- COMPONENT_LIBRARY.md (Discipline Card, Topic Card, Learning Path)
-- TECH_STACK.md (§34 — estrutura de conteúdo)
-- ROADMAP_DISCIPLINAS.md (ordem oficial)
+Apenas organiza, apresenta e acompanha a evolução do estudo.
 
-## Arquivos Envolvidos
+---
+
+# Contexto
+
+Cada disciplina do concurso possui:
+
+- identificação oficial;
+- prioridade;
+- peso;
+- horas estimadas;
+- módulos;
+- capítulos;
+- roadmap;
+- materiais.
+
+Todas essas informações são definidas pelo edital analisado e organizadas em `content/index.json`.
+
+O módulo de disciplinas é responsável por apresentar essas informações e acompanhar o progresso do usuário.
+
+Todo o progresso é derivado do Planner.
+
+Nunca existe lógica paralela.
+
+---
+
+# Documentos Obrigatórios
+
+- SYSTEM_ARCHITECTURE.md
+- DATA_MODEL.md
+- CONTENT_STRUCTURE.md
+- CONTENT_STANDARDS.md
+- FGV_EDITAL_ANALISE.md
+- ROADMAP_DISCIPLINAS.md
+- UI_UX_GUIDELINES.md
+- COMPONENT_LIBRARY.md
+- CODING_STANDARDS.md
+- TECH_STACK.md
+
+---
+
+# Arquivos Envolvidos
 
 ```
-src/pages/disciplines-page.tsx           (listagem)
-src/pages/discipline-detail-page.tsx     (detalhe)
-src/components/learning/discipline-card.tsx
-src/components/learning/topic-card.tsx
-src/components/learning/learning-path.tsx
-src/components/learning/subject-checklist.tsx
-src/services/discipline-service.ts
-src/types/discipline.ts
-content/index.json                       (índice das 12 disciplinas — DATA_MODEL)
+src/pages/
+
+    disciplines-page.tsx
+    discipline-detail-page.tsx
+
+src/components/learning/
+
+    discipline-card.tsx
+    learning-path.tsx
+    topic-card.tsx
+    subject-checklist.tsx
+
+src/services/
+
+    discipline-service.ts
+
+src/types/
+
+    discipline.ts
+
+content/
+
+    index.json
+
+    disciplinas/
 ```
 
-## Dependências
+---
 
-- Task 004 — Navegação (rotas `/disciplinas`, `/disciplinas/:id`).
-- Task 006 — Visualizador Markdown (roadmap da disciplina).
-- Bloqueia: 009.
+# Dependências
+
+Task 004 — Navegação
+
+Task 006 — Markdown Viewer
+
+Task 007 — Study Planner & Review Engine
+
+Bloqueia:
+
+- Task 009
+- Task 010
+
+---
+
+# Responsabilidades
+
+O módulo de disciplinas é responsável por:
+
+- listar disciplinas;
+- apresentar progresso;
+- organizar capítulos;
+- organizar módulos;
+- apresentar roadmap;
+- disponibilizar acesso ao conteúdo;
+- disponibilizar acesso ao checklist;
+- disponibilizar estatísticas.
+
+Não pode:
+
+- gerar plano de estudos;
+- gerar revisões;
+- calcular semana;
+- controlar calendário.
+
+Essas responsabilidades pertencem ao Planner.
+
+---
+
+# Fonte Única da Verdade
+
+Todas as disciplinas devem ser carregadas exclusivamente de:
+
+```
+content/index.json
+```
+
+É proibido manter listas paralelas.
+
+É proibido manter arrays fixos.
+
+É proibido duplicar dados em componentes.
+
+---
+
+# IDs Oficiais
+
+Todo o projeto utiliza exclusivamente os IDs definidos em:
+
+```
+content/index.json
+```
+
+Formato obrigatório:
+
+```
+disc_portugues
+
+disc_ingles
+
+disc_contabilidade
+
+disc_administracao_financeira
+```
+
+Capítulos:
+
+```
+chap_introducao
+
+chap_morfologia
+
+chap_fluxo_caixa
+```
+
+Nunca utilizar:
+
+- slug
+- texto
+- nome da disciplina
+
+como identificador oficial.
+
+---
+
+# Estrutura Hierárquica
+
+A hierarquia oficial é:
+
+```
+Concurso
+
+↓
+
+Perfil
+
+↓
+
+Disciplina
+
+↓
+
+Módulo
+
+↓
+
+Capítulo
+
+↓
+
+Objeto de Estudo
+```
+
+Nunca inverter essa estrutura.
+
+---
+
+# Discipline Service
+
+O Discipline Service é o único responsável por:
+
+- carregar disciplinas;
+- localizar disciplina;
+- calcular progresso;
+- resolver IDs;
+- organizar capítulos;
+- calcular horas estudadas;
+- calcular horas restantes.
+
+Os componentes React nunca implementam essas regras.
+
+---
+
+# Resolvedores Oficiais
+
+Devem existir resolvedores únicos para IDs.
+
+Obrigatórios:
+
+```ts
+getDisciplineById()
+
+getDisciplineIdByName()
+
+getChapterById()
+
+getChapterIdByTitle()
+
+getDisciplines()
+
+getDisciplinesWithProgress()
+```
+
+Todos os módulos da aplicação devem utilizar essas funções.
+
+---
+
+# Integração com o Planner
+
+O progresso da disciplina deriva exclusivamente do Planner.
+
+Fluxo:
+
+```
+Planner
+
+↓
+
+CompletedTask
+
+↓
+
+Discipline Service
+
+↓
+
+Discipline Progress
+```
+
+Nunca existe persistência própria da disciplina.
+
+---
+
+# Integração com o Dashboard
+
+O Dashboard nunca calcula progresso.
+
+Sempre consome:
+
+```
+getDisciplinesWithProgress()
+```
+
+É proibido manter:
+
+- mapDisciplineToProgress()
+- arrays paralelos
+- mocks
+
+---
+
+# Cálculo de Progresso
+
+O progresso é calculado utilizando:
+
+- tarefas concluídas;
+- capítulos concluídos;
+- duração real.
+
+Nunca utilizar:
+
+- porcentagens fixas;
+- pesos arbitrários;
+- estimativas lineares.
+
+---
+
+# Horas Estudadas
+
+Horas estudadas devem ser derivadas de:
+
+- duração real das atividades concluídas
+
+Nunca utilizar:
+
+```
+1 tarefa = 1,5 horas
+```
+
+Caso a duração não exista:
+
+```
+0 horas
+```
+
+Nunca inventar valores.
+
+---
+
+# Roadmap
+
+Cada disciplina possui um roadmap.
+
+Arquivo obrigatório:
+
+```
+00-roadmap.md
+```
+
+Esse documento é renderizado exclusivamente pelo Markdown Viewer.
+
+O Discipline Module apenas solicita seu carregamento.
+
+Nunca interpreta Markdown.
+
+---
+
+# Estrutura de Conteúdo
+
+Cada disciplina deve seguir obrigatoriamente:
+
+```
+disciplina/
+
+    00-roadmap.md
+
+    modulo-01/
+
+    modulo-02/
+
+    modulo-03/
+```
+
+Capítulos pertencem aos módulos.
+
+Nunca diretamente à disciplina.
+
+---
+
+# Página de Listagem
+
+Cada card deve apresentar:
+
+- nome
+- prioridade
+- progresso
+- horas estudadas
+- horas restantes
+- percentual
+- status
+
+Os cards seguem a ordem oficial do edital.
+
+Nunca ordem alfabética.
+
+---
+
+# Página de Detalhe
+
+A página deve apresentar:
+
+- descrição
+- progresso
+- roadmap
+- módulos
+- capítulos
+- checklist
+- questões
+- flashcards
+- podcasts
+- estatísticas
+
+Caso algum conteúdo ainda não exista:
+
+mostrar Empty State.
+
+Nunca utilizar mocks.
+
+---
+
+# Checklist
+
+Cada capítulo possui um checklist.
+
+IDs obrigatórios:
+
+```
+checklist_{chapterId}
+```
+
+Nunca utilizar:
+
+```
+Date.now()
+
+timestamp
+
+random
+```
+
+Os IDs precisam ser determinísticos.
+
+---
+
+# Estados
+
+Toda página deve implementar:
+
+- Loading
+- Success
+- Error
+- Empty
+
+É proibido apresentar informações fictícias.
+
+---
+
+# Datas
+
+Todo cálculo de data utiliza exclusivamente:
+
+```
+utils/date.ts
+```
+
+É proibido utilizar diretamente:
+
+```
+toISOString()
+```
+
+para cálculos da aplicação.
+
+---
+
+# Acessibilidade
+
+Obrigatório:
+
+- navegação por teclado;
+- foco visível;
+- landmarks;
+- breadcrumbs;
+- ordem lógica de tabulação.
 
 ## Critérios de Aceite
 
-- [ ] Listagem das 12 disciplinas com card: nome, progresso, prioridade, horas estimadas/estudadas.
-- [ ] Ordenação conforme ordem oficial do ROADMAP_DISCIPLINAS.md.
-- [ ] Página de detalhe com todas as seções obrigatórias (descrição, progresso, roadmap, capítulos, questões, flashcards, resumo, podcast, checklist).
-- [ ] Roadmap da disciplina renderizado via MarkdownViewer (`00-roadmap.md`).
-- [ ] Capítulos agrupados por módulo (hierarquia DATA_MODEL).
-- [ ] Estados de estudo com cores semânticas (não iniciada/em andamento/concluída).
-- [ ] Estados: loading, erro, vazio (disciplina sem conteúdo ainda).
-- [ ] Breadcrumbs: Dashboard → Disciplinas → Disciplina.
+### Funcionalidades
+
+- [ ] Listagem contendo exatamente as 12 disciplinas do Perfil 10.
+- [ ] Ordenação seguindo `ROADMAP_DISCIPLINAS.md`.
+- [ ] Cards exibem:
+  - nome;
+  - prioridade;
+  - progresso;
+  - horas estimadas;
+  - horas estudadas;
+  - status.
+- [ ] Página de detalhe contendo:
+  - descrição;
+  - roadmap;
+  - módulos;
+  - capítulos;
+  - progresso;
+  - checklist;
+  - estatísticas;
+  - questões;
+  - flashcards;
+  - resumo;
+  - podcast.
+- [ ] Roadmap carregado através do Markdown Viewer.
+- [ ] Capítulos organizados por módulos.
+- [ ] Checklist sincronizado com o Progress Tracker.
+- [ ] Breadcrumb:
+  Dashboard → Disciplinas → Disciplina.
+
+### Arquitetura
+
+- [ ] `content/index.json` é a única fonte das disciplinas.
+- [ ] IDs oficiais (`disc_*`, `mod_*`, `chap_*`) utilizados em toda a aplicação.
+- [ ] Nenhum slug utilizado como identificador persistente.
+- [ ] Página não contém lógica de negócio.
+- [ ] Toda leitura realizada através de `discipline-service.ts`.
+
+### Interface
+
+- [ ] Loading.
+- [ ] Empty State.
+- [ ] Error State.
+- [ ] Dark Mode.
+- [ ] Responsividade Desktop / Tablet / Mobile.
+
+### Qualidade
+
+- [ ] `pnpm lint`
+- [ ] `pnpm build`
+- [ ] TypeScript strict.
+- [ ] Nenhum `any`.
+- [ ] Componentes ≤300 linhas.
+
+---
 
 ## Checklist de Testes
 
-- [ ] Teste de renderização da listagem com as 12 disciplinas (índice JSON).
-- [ ] Teste de detalhe com disciplina completa e com disciplina vazia.
-- [ ] Teste do `discipline-service` (carregamento e tipagem do índice).
-- [ ] Teste de navegação listagem → detalhe → retorno (breadcrumbs).
-- [ ] Verificação de responsividade dos cards nos 3 breakpoints.
-- [ ] Acessibilidade: cards navegáveis por teclado.
+### discipline-service
+
+- [ ] carregar índice.
+- [ ] buscar disciplina por ID.
+- [ ] resolver IDs oficiais.
+- [ ] calcular progresso.
+- [ ] horas estudadas.
+
+### Página
+
+- [ ] renderização das 12 disciplinas.
+- [ ] ordenação correta.
+- [ ] navegação listagem → detalhe.
+- [ ] breadcrumb.
+- [ ] roadmap markdown.
+- [ ] checklist.
+
+### Integração
+
+- [ ] progresso vindo do Planner.
+- [ ] progresso vindo do Progress Tracker.
+- [ ] Dashboard apresenta exatamente os mesmos percentuais.
+
+### UI
+
+- [ ] Desktop.
+- [ ] Tablet.
+- [ ] Mobile.
+- [ ] Dark Mode.
+- [ ] acessibilidade.
+- [ ] navegação por teclado.
+
+### Regressão
+
+- [ ] Toda a suíte existente permanece verde.
+
+---
 
 ## Entregáveis
 
-1. Página de listagem de disciplinas.
-2. Página de detalhe de disciplina.
-3. Índice oficial das 12 disciplinas em JSON (IDs do FGV_EDITAL_ANALISE.md).
-4. Componentes DisciplineCard, TopicCard, LearningPath.
-5. Testes.
+### Código
 
-## Estimativa de Esforço
+- Página de listagem.
+- Página de detalhe.
+- Discipline Service.
+- Componentes Learning.
+- Índice oficial.
 
-**12 horas** (duas páginas, componentes, índice de disciplinas, testes).
+### Testes
+
+- Unitários.
+- Integração.
+- Regressão.
+
+### Dados
+
+- `content/index.json`
+- IDs oficiais.
+- Estrutura preparada para Task 009.
+
+---
+
+## Fora do Escopo
+
+Não implementar:
+
+- Renderização do conteúdo dos capítulos.
+- Busca.
+- Flashcards.
+- Questões.
+- Podcast Player.
+- Export NotebookLM.
+- Progress Tracker.
+- Analytics.
+- Funcionalidades das Tasks 009 em diante.
+
+---
+
+## Estimativa
+
+**12 horas**
+
+- Estrutura das páginas.
+- Componentes.
+- Integração.
+- Testes.
+- Ajustes.
+
+---
+
+## Critério para Liberação da Task 009
+
+A Task somente será considerada concluída quando:
+
+- todas as disciplinas forem carregadas do índice oficial;
+- os IDs oficiais forem utilizados integralmente;
+- Planner, Dashboard e Discipline Page apresentarem exatamente o mesmo progresso;
+- o Roadmap estiver integrado ao Markdown Viewer;
+- todos os testes estiverem aprovados;
+- `pnpm build`;
+- `pnpm lint`;
+- Gate Review aprovado.
 
 ---
 
 ## Documentação
 
-Ao concluir: atualizar CHANGELOG.md (critério "Página de disciplinas" do M2).
+Ao concluir:
+
+- atualizar `CHANGELOG.md`;
+- atualizar `MILESTONES.md`;
+- registrar decisões arquiteturais relevantes, caso existam;
+- submeter ao Gate Review para liberação da **Task 009**.

@@ -114,9 +114,85 @@ A FGV adora questões de **classificação gramatical em contexto**. O truque é
 
 ## 8 Questões Comentadas
 
+### Questão 1 (FGV — adaptada)
+
+Leia o trecho abaixo:
+
+> *"O candidato **estudou** muito para alcançar a **aprovção**. O **sucesso** na prova exige **dedicação** constante."*
+
+Assinale a alternativa que apresenta a classificação morfológica correta das palavras destacadas, na ordem em que aparecem.
+
+a) Verbo, substantivo abstrato, substantivo abstrato, substantivo abstrato.
+b) Verbo, substantivo concreto, substantivo abstrato, substantivo abstrato.
+c) Substantivo, substantivo abstrato, substantivo concreto, substantivo abstrato.
+d) Verbo, substantivo abstrato, substantivo concreto, substantivo concreto.
+e) Verbo, substantivo concreto, substantivo concreto, substantivo abstrato.
+
+**Gabarito: A**
+
+**Comentário:**
+
+1. **"estudou"** → Verbo (expressa ação, flexionado em tempo/pessoa).
+2. **"aprovção"** → Substantivo abstrato (nomeia uma qualidade/resultado, não existe independentemente; depende da ação de aprovar).
+3. **"sucesso"** → Substantivo abstrato (estado/resultado, não é palpável).
+4. **"dedicação"** → Substantivo abstrato (nomeia ação/qualidade de dedicar).
+
+> [!attention]
+> A FGV costuma colocar "aprovção" como alternativa para "substantivo concreto", explorando a semelhança com "prova" (concreto). Sempre pergunte: "Eu posso tocar isso?" Se não puder, é abstrato.
+
+---
+
+### Questão 2 (FGV — adaptada)
+
+No trecho *"O **novo** funcionário trabalha **bem** e é **muito** eficiente"*, as palavras destacadas são, respectivamente:
+
+a) Advérbio, advérbio, advérbio.
+b) Adjetivo, advérbio, advérbio.
+c) Adjetivo, advérbio, adjetivo.
+d) Substantivo, advérbio, adjetivo.
+e) Adjetivo, adjetivo, advérbio.
+
+**Gabarito: B**
+
+**Comentário:**
+
+1. **"novo"** → Adjetivo (caracteriza o substantivo "funcionário"; flexiona em gênero/número: "nova funcionária").
+2. **"bem"** → Advérbio de modo (modifica o verbo "trabalha"; invariável — não flexiona).
+3. **"muito"** → Advérbio de intensidade (modifica o adjetivo "eficiente"; invariável neste contexto).
+
+> [!trap]
+> "Muito" pode ser pronome indefinido ("muitos estudantes"), advérbio ("muito bom") ou substantivo ("o muito"). A FGV ama essa troca. Veja o que a palavra modifica: se modifica substantivo → pronome; se modifica adjetivo/advérbio → advérbio; se substantivada → substantivo.
+
+
 *(Questões serão adicionadas na fase de produção de conteúdo.)*
 
 ## 9 Questões para Resolver
+
+### Questão 3
+
+Assinale a alternativa em que todas as palavras destacadas são **substantivos abstratos**:
+
+a) A **coragem** do soldado foi **elogiada**.
+b) A **beleza** da **poesia** emociona qualquer **leitor**.
+c) O **amor** e a **esperança** são **virtudes** essenciais.
+d) A **mesa** de **madeira** era antiga.
+e) O **carro** azul **chegou** cedo.
+
+**Gabarito: C**
+
+---
+
+### Questão 4
+
+No trecho *"Ela é **tão** inteligente que resolve **rápido** qualquer problema"*, as palavras destacadas são, respectivamente:
+
+a) Advérbio de intensidade, advérbio de modo.
+b) Adjetivo, advérbio de modo.
+c) Advérbio de modo, adjetivo.
+d) Pronome indefinido, advérbio de tempo.
+e) Advérbio de intensidade, adjetivo.
+
+**Gabarito: A**
 
 *(Serão disponibilizadas em breve.)*
 
@@ -145,6 +221,17 @@ graph TD
 ```
 
 ## 12 Flashcards
+
+| # | Frente | Verso |
+|---|--------|-------|
+| 1 | O que é um substantivo abstrato? | Nomeia qualidades, estados ou ações que não existem independentemente (ex: beleza, corrida, saudade). |
+| 2 | Qual a diferença entre "corrida" e "correr"? | "Corrida" é substantivo abstrato; "correr" é verbo. A função na frase decide. |
+| 3 | O que caracteriza o advérbio? | Modifica verbo, adjetivo ou outro advérbio; é invariável. |
+| 4 | Quando "bem" é advérbio e quando é substantivo? | Advérbio: "estudou bem"; Substantivo: "o bem". |
+| 5 | O que é superlativo absoluto sintético? | Forma que exige mudança radical: bom → ótimo, mau → péssimo, grande → máximo. |
+| 6 | Quais as flexões do adjetivo? | Gênero (bonito/bonita), número (bonito/bonitos), grau (comparativo/superlativo). |
+| 7 | O que é verbo irregular? | Apresenta alterações na raiz ou terminação (ser, ir, dar, estar). |
+| 8 | Quais as classes de advérbios? | Modo, tempo, lugar, negação, afirmação, dúvida. |
 
 *(Flashcards serão adicionados na fase de produção de conteúdo.)*
 

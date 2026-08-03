@@ -42,17 +42,17 @@ src/types/navigation.ts
 ## Critérios de Aceite
 
 - [ ] Rotas definidas: `/` (Dashboard), `/cronograma`, `/disciplinas`, `/disciplinas/:id`, `/questoes`, `/flashcards`, `/revisoes`, `/simulados`, `/podcasts`, `/progresso`, `/configuracoes`.
-- [ ] Lazy loading em todas as rotas de página.
-- [ ] Breadcrumbs refletindo a hierarquia da rota atual.
-- [ ] Item de menu ativo destacado conforme rota.
-- [ ] Atalhos de teclado D/Q/F/R/S/Esc funcionais e desativados durante digitação em inputs.
-- [ ] Mudança de página instantânea (sem reload; suspense com fallback skeleton).
-- [ ] Rota 404 com EmptyState e retorno ao Dashboard.
+- [ ] Todas as páginas são carregadas via React.lazy(), com Suspense e fallback visual consistente.
+- [ ] Breadcrumbs derivados exclusivamente da definição oficial de rotas, sem duplicação manual de labels.
+- [ ] Estado ativo do menu deriva exclusivamente da rota atual (React Router), sem controle manual de estado.
+- [ ] Atalhos globais possuem prioridade inferior aos elementos de entrada (input, textarea, contenteditable e componentes equivalentes).
+- [ ] A navegação ocorre exclusivamente pelo React Router, sem recarregamento completo da página (SPA).
+- [ ] Página 404 utiliza navegação SPA (`useNavigate`) para retornar ao Dashboard, sem recarregar a aplicação.
 
 ## Checklist de Testes
 
 - [ ] Teste de roteamento (navegação entre todas as rotas).
-- [ ] Teste dos atalhos de teclado (ativar + ignorar em campos de texto).
+- [ ] Atalhos não entram em conflito quando múltiplos componentes registram listeners.
 - [ ] Teste de breadcrumbs em rotas aninhadas (`/disciplinas/:id`).
 - [ ] Teste de fallback de suspense durante carregamento de rota.
 - [ ] Verificação de acessibilidade: foco movido para o conteúdo ao trocar de rota.

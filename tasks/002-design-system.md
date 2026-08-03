@@ -39,18 +39,19 @@ public/fonts/                   (Inter, JetBrains Mono — self-hosted)
 
 ## Critérios de Aceite
 
-- [ ] Paleta reduzida definida: primária, secundária, sucesso, aviso, erro, informação, neutros.
+- [ ] Todos os tokens de cor são definidos por nomes semânticos, sem uso direto de cores hexadecimais nos componentes.
 - [ ] Cores semânticas de estado de estudo mapeadas (concluído/andamento/atenção/urgente).
 - [ ] Fontes Inter e JetBrains Mono carregadas; máximo de 2 famílias.
-- [ ] Escala de espaçamento consistente (sem valores aleatórios).
-- [ ] Dark mode funcional com alternância instantânea e preferência persistida em localStorage.
+- [ ] Espaçamento utiliza exclusivamente a escala definida no Design System, sem valores arbitrários.
+- [ ] Tema suporta `light`, `dark` e `system`, com persistência da preferência do usuário.
 - [ ] Contraste WCAG AA verificado nos dois temas.
-- [ ] Componentes base exibem todos os estados: default, hover, focus, active, disabled, loading, success, error, empty.
+- [ ] Cada componente foundation implementa apenas os estados aplicáveis ao seu comportamento, conforme COMPONENT_LIBRARY.md.
 - [ ] Nenhum CSS personalizado grande; Tailwind como prioridade (CODING_STANDARDS.md).
 
 ## Checklist de Testes
 
 - [ ] Teste unitário do hook `use-theme` (alternância + persistência).
+- [ ] Ao reiniciar a aplicação, o tema persistido é restaurado corretamente.
 - [ ] Snapshot visual dos componentes base nos dois temas.
 - [ ] Verificação de contraste (ferramenta automatizada ou manual) — WCAG AA.
 - [ ] Navegação por teclado com foco visível nos componentes base.

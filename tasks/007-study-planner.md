@@ -1,83 +1,577 @@
-# Task 007 — Study Planner (Cronograma)
+# Task 007 — Study Planner & Review Engine
 
-**Fase:** 2 — MVP de Estudos | **Milestone:** 2 — MVP navegável
-**Status:** Planejada | **Prioridade:** P0
+**Fase:** 2 — MVP de Estudos | **Milestone:** 2 — MVP navegável  
+**Status:** Planejada | **Prioridade:** P0 (bloqueante)
 
 ---
 
-## Objetivo
+# Objetivo
 
-Implementar a página de Cronograma com visualizações Hoje/Semana/Mês, baseada no plano oficial de 11 semanas (ROADMAP_DISCIPLINAS.md), incluindo plano diário, tarefas e fila de revisões.
+Implementar a Camada 2 da arquitetura da plataforma: o **Study Planner**, responsável por transformar o cronograma oficial em um plano diário de estudos, gerar automaticamente a fila de revisões espaçadas, persistir o progresso do usuário e fornecer esses dados ao Dashboard.
 
-## Contexto
+O Planner **decide o que estudar**, mas **nunca produz conteúdo**.
 
-O cronograma oficial é definido em ROADMAP_DISCIPLINAS.md v2.0: padrão semanal fixo (seg/qua Português, ter Inglês, qui rotativa, sex revisão, fins de semana Módulo II), semanas S01–S11, prova em 11/10/2026. O Planner pertence à Camada 2 — decide, nunca gera conteúdo (SYSTEM_ARCHITECTURE.md §6). Modelos: Plano Diário, Tarefa, Revisão (DATA_MODEL.md). Mostrar apenas informações úteis (UI_UX_GUIDELINES.md).
+---
 
-## Documentos Obrigatórios
+# Contexto
 
-- ROADMAP_DISCIPLINAS.md (cronograma oficial S01–S11 — fonte única)
-- SYSTEM_ARCHITECTURE.md (§6, §9, §12 — camadas, fluxo diário, revisão espaçada)
-- DATA_MODEL.md (Plano Diário, Tarefa, Revisão, Disciplina)
-- UI_UX_GUIDELINES.md (cronograma)
-- COMPONENT_LIBRARY.md (Study Planner, Weekly Plan, Calendar)
-- FGV_EDITAL_ANALISE.md (disciplinas e prioridades)
+Esta task implementa a Camada 2 descrita em `SYSTEM_ARCHITECTURE.md`.
 
-## Arquivos Envolvidos
+Fluxo oficial:
+
+```
+ROADMAP_DISCIPLINAS.md
+        ↓
+roadmap-s01-s11.json
+        ↓
+planner-service
+        ↓
+Daily Plan
+        ↓
+Review Queue
+        ↓
+Dashboard
+```
+
+O Planner possui responsabilidade exclusiva sobre:
+
+- cronograma oficial;
+- cálculo da semana atual;
+- geração do plano diário;
+- geração da fila de revisões;
+- persistência do progresso.
+
+O Dashboard é apenas consumidor dessas informações.
+
+Toda a lógica deve ser determinística.
+
+Nenhum componente React implementa regras de negócio.
+
+---
+
+# Documentos Obrigatórios
+
+- ROADMAP_DISCIPLINAS.md
+- FGV_EDITAL_ANALISE.md
+- SYSTEM_ARCHITECTURE.md
+- DATA_MODEL.md
+- UI_UX_GUIDELINES.md
+- COMPONENT_LIBRARY.md
+- CODING_STANDARDS.md
+- TECH_STACK.md
+
+---
+
+# Arquivos Envolvidos
 
 ```
 src/pages/planner-page.tsx
-src/components/planner/study-planner.tsx
-src/components/planner/weekly-plan.tsx
-src/components/planner/daily-mission.tsx
-src/components/planner/planner-calendar.tsx
-src/components/planner/task-item.tsx
-src/services/planner-service.ts        (geração do plano a partir do roadmap)
-src/services/review-queue-service.ts   (fila de revisões espaçadas)
-src/types/planner.ts
-planner/roadmap-s01-s11.json           (cronograma oficial em JSON — DATA_MODEL)
-planner/weekly-template.json           (padrão semanal fixo)
+
+src/components/planner/
+    study-planner.tsx
+    daily-mission.tsx
+    weekly-plan.tsx
+    planner-calendar.tsx
+    task-item.tsx
+
+src/hooks/
+    use-planner-data.ts
+    use-task-progress.ts
+
+src/services/
+    planner-service.ts
+    review-queue-service.ts
+
+src/utils/
+    date.ts
+
+src/types/
+    planner.ts
+
+src/data/planner/
+    roadmap-s01-s11.json
+    weekly-template.json
 ```
-
-## Dependências
-
-- Task 005 — Dashboard (compartilha plano diário e revisões).
-- Task 004 — Navegação.
-- Bloqueia: 010 (progresso consome tarefas do planner).
-
-## Critérios de Aceite
-
-- [ ] Visualizações Hoje, Semana e Mês funcionais.
-- [ ] Cronograma oficial S01–S11 carregado de JSON (fonte única, regenerável — conteúdo determinístico).
-- [ ] Plano diário com tarefas tipadas (Estudo, Questões, Flashcards, Podcast, Revisão, Simulado, Leitura).
-- [ ] Fila de revisões com datas previstas (política 24h/7d/30d + adaptação ADR-008).
-- [ ] Semana atual destacada; prova 11/10/2026 marcada.
-- [ ] Tarefas marcáveis como concluídas, com persistência (localStorage).
-- [ ] Dependências de disciplinas respeitadas na ordenação (mapa do FGV_EDITAL_ANALISE.md).
-- [ ] Estados: loading, erro, vazio, sucesso.
-
-## Checklist de Testes
-
-- [ ] Teste unitário do `planner-service` (geração de plano diário a partir do template semanal).
-- [ ] Teste unitário do `review-queue-service` (cálculo de próximas revisões — módulo crítico, cobertura ≥ 90%).
-- [ ] Teste de integração Planner → Dashboard (plano do dia consistente nas duas telas).
-- [ ] Teste de persistência de tarefas concluídas.
-- [ ] Teste de regressão: semana corrente calculada corretamente a partir da data atual.
-- [ ] Verificação de acessibilidade e teclado no calendário.
-
-## Entregáveis
-
-1. Página de Cronograma com 3 visualizações.
-2. Serviços de planner e fila de revisões (testados, ≥ 90% de cobertura).
-3. Cronograma oficial S01–S11 em JSON.
-4. Integração do plano diário com o Dashboard.
-5. Testes.
-
-## Estimativa de Esforço
-
-**20 horas** (regras de negócio do planner, revisão espaçada, calendário, integração, testes).
 
 ---
 
+# Dependências
+
+- Task 004 — Navegação
+- Task 005 — Dashboard
+
+Bloqueia:
+
+- Task 008
+- Task 010
+
+---
+
+# Responsabilidades
+
+## Planner
+
+Responsável por:
+
+- carregar roadmap;
+- identificar semana atual;
+- identificar dia atual;
+- gerar plano diário;
+- gerar plano semanal;
+- gerar calendário mensal;
+- gerar fila de revisões;
+- persistir progresso.
+
+Não pode:
+
+- renderizar markdown;
+- conhecer disciplinas detalhadas;
+- carregar conteúdo;
+- gerar apostilas.
+
+---
+
+# Fonte Única da Verdade
+
+Existe apenas uma fonte para o cronograma.
+
+```
+src/data/planner/
+```
+
+É proibido manter cópias em outros diretórios.
+
+Todos os serviços devem consumir exatamente esses arquivos.
+
+---
+
+# Estrutura dos Dados
+
+## Weekly Template
+
+Define:
+
+- disciplina
+- duração
+- tipo
+- prioridade
+
+Nunca datas.
+
+---
+
+## Roadmap
+
+Define:
+
+- semanas S01–S11
+- datas
+- módulo ativo
+- objetivos
+- hasSimulation
+
+---
+
+## Daily Plan
+
+Contém:
+
+- data
+- semana
+- tarefas
+- tempo total
+- revisões previstas
+
+---
+
+## Review Queue
+
+Contém:
+
+- tarefa
+- disciplina
+- tópico
+- tipo da revisão
+- data prevista
+- prioridade
+
+---
+
+# Modelo de Persistência
+
+Persistência obrigatória em localStorage.
+
+Chave oficial:
+
+```
+cap.planner.progress
+```
+
+Schema obrigatório:
+
+```ts
+interface ProgressSnapshot {
+
+    completedTasks: CompletedTaskRecord[]
+
+    hoursLogged: Record<string, number>
+
+    lastUpdated: string
+
+}
+```
+
+Cada tarefa concluída deve armazenar:
+
+```ts
+interface CompletedTaskRecord {
+
+    taskId: string
+
+    completedDate: string
+
+    disciplineId: string
+
+    topicId: string
+
+}
+```
+
+É proibido reconstruir essas informações a partir do ID da tarefa.
+
+---
+
+# IDs
+
+Todas as tarefas devem possuir IDs estruturais estáveis.
+
+Formato obrigatório:
+
+```
+task_s{week}_{weekday}_{slot}
+```
+
+Exemplo:
+
+```
+task_s01_1_0
+task_s01_1_1
+task_s04_5_2
+```
+
+É proibido gerar IDs utilizando:
+
+- texto
+- slug
+- nome da disciplina
+- nome do tópico
+
+---
+
+# Semana Atual
+
+A semana deve ser calculada utilizando:
+
+- data inicial da semana
+- data final da semana
+
+Nunca pelo índice do loop.
+
+A identificação do dia da semana deve utilizar:
+
+```
+date.getDay()
+```
+
+Nunca:
+
+```
+índice do array
+```
+
+---
+
+# Datas
+
+Todos os cálculos devem utilizar exclusivamente:
+
+```
+utils/date.ts
+```
+
+Funções obrigatórias:
+
+- toISODate()
+- addDays()
+- diffDays()
+
+É proibido utilizar diretamente:
+
+```
+toISOString()
+```
+
+para cálculos de dias.
+
+---
+
+# Plano Diário
+
+O Planner gera automaticamente:
+
+- disciplina
+- tarefas
+- revisões
+- tempo previsto
+
+Tipos permitidos:
+
+- Study
+- Review
+- Questions
+- Flashcards
+- Podcast
+- Reading
+- Simulation
+
+---
+
+# Simulados
+
+O roadmap define:
+
+```
+hasSimulation
+```
+
+Sempre que verdadeiro:
+
+o Planner deve gerar automaticamente uma tarefa do tipo:
+
+```
+Simulation
+```
+
+---
+
+# Review Queue
+
+A fila de revisões segue a política oficial.
+
+Após conclusão:
+
+```
+24 horas
+
+↓
+
+7 dias
+
+↓
+
+30 dias
+```
+
+A Review Queue recebe objetos do tipo:
+
+```
+CompletedTask
+```
+
+Nunca deve reconstruir:
+
+- disciplina
+- tópico
+- datas
+
+a partir do taskId.
+
+---
+
+# Dashboard
+
+O Dashboard nunca gera informações.
+
+Sempre consome:
+
+- planner-service
+- review-queue-service
+
+É proibido:
+
+- recalcular plano diário
+- recalcular revisões
+- gerar dados próprios
+
+---
+
+# Estados da Interface
+
+Obrigatórios:
+
+- Loading
+- Success
+- Error
+- Empty
+
+Na ausência de dados reais:
+
+mostrar Empty State.
+
+Nunca utilizar mocks visíveis ao usuário.
+
+---
+
+# Critérios de Aceite
+
+- [ ] Visualização Hoje funcional.
+- [ ] Visualização Semana funcional.
+- [ ] Visualização Mês funcional.
+- [ ] Cronograma carregado exclusivamente de `src/data/planner`.
+- [ ] Plano diário gerado automaticamente.
+- [ ] Semana atual identificada corretamente.
+- [ ] Segunda-feira utiliza o template de segunda-feira.
+- [ ] Sexta-feira utiliza revisão.
+- [ ] Sábado e domingo utilizam Módulo II.
+- [ ] Simulados gerados automaticamente quando `hasSimulation = true`.
+- [ ] Revisões calculadas em 24h → 7d → 30d.
+- [ ] Dashboard consome exclusivamente o Planner.
+- [ ] Progresso persistido em `cap.planner.progress`.
+- [ ] IDs seguem o padrão `task_s{week}_{weekday}_{slot}`.
+- [ ] Datas calculadas utilizando `utils/date.ts`.
+- [ ] Nenhum cálculo utilizando `toISOString()`.
+- [ ] Nenhum mock exibido ao usuário.
+- [ ] Dark Mode completo.
+- [ ] Estados Loading, Error e Empty implementados.
+- [ ] Componentes acessíveis por teclado.
+
+---
+
+# Checklist de Testes
+
+## Planner
+
+- [ ] geração correta da semana atual.
+- [ ] geração correta do plano diário.
+- [ ] segunda-feira gera Português.
+- [ ] terça-feira gera Inglês.
+- [ ] quinta-feira gera disciplina rotativa.
+- [ ] sexta-feira gera Revisão.
+- [ ] sábado gera Módulo II.
+- [ ] domingo gera Módulo II.
+
+---
+
+## Review Queue
+
+- [ ] revisão 24h.
+- [ ] revisão 7 dias.
+- [ ] revisão 30 dias.
+- [ ] ordenação por prioridade.
+- [ ] ordenação por data.
+
+---
+
+## Persistência
+
+- [ ] saveProgress().
+- [ ] loadProgress().
+- [ ] migração v1 → v2.
+- [ ] snapshot vazio.
+- [ ] storage corrompido.
+- [ ] toggle adiciona completedDate.
+- [ ] toggle remove tarefa.
+
+---
+
+## Integração
+
+- [ ] Planner → Dashboard.
+- [ ] Dashboard utiliza somente planner-service.
+- [ ] atualização imediata após concluir tarefa.
+- [ ] sincronização entre Planner e Dashboard.
+
+---
+
+## Datas
+
+- [ ] timezone UTC-3.
+- [ ] mudança de mês.
+- [ ] mudança de semana.
+- [ ] início do roadmap.
+- [ ] fim do roadmap.
+
+---
+
+## Interface
+
+- [ ] teclado.
+- [ ] responsividade.
+- [ ] dark mode.
+- [ ] estados Loading.
+- [ ] estados Empty.
+- [ ] estados Error.
+
+---
+
+# Entregáveis
+
+1. Página de Cronograma.
+2. Planner Service.
+3. Review Queue Service.
+4. Hook de progresso.
+5. Hook de dados do Planner.
+6. JSON oficial do cronograma.
+7. JSON oficial do template semanal.
+8. Persistência do progresso.
+9. Integração completa com o Dashboard.
+10. Testes unitários e de integração.
+
+---
+
+# Estimativa de Esforço
+
+**22 horas**
+
+Inclui:
+
+- Planner
+- Review Engine
+- Persistência
+- Integração Dashboard
+- Calendário
+- Testes
+- Validação
+
+---
+
+# Definition of Done
+
+## Código
+
+- [ ] TypeScript strict.
+- [ ] Nenhum `any`.
+- [ ] ESLint sem erros.
+- [ ] Prettier aplicado.
+- [ ] Build sem erros.
+
+## Testes
+
+- [ ] Todos os testes passando.
+- [ ] Cobertura dos serviços críticos ≥ 90%.
+
+## Funcional
+
+- [ ] Planner totalmente funcional.
+- [ ] Dashboard consumindo Planner.
+- [ ] Revisões corretas.
+- [ ] Persistência correta.
+- [ ] Nenhum mock em produção.
+
 ## Documentação
 
-Ao concluir: atualizar CHANGELOG.md (critério "Cronograma" do M2).
+Ao concluir:
+
+- atualizar `CHANGELOG.md`;
+- atualizar `MILESTONES.md`;
+- registrar qualquer alteração estrutural no `DATA_MODEL.md` caso o schema do Planner evolua.

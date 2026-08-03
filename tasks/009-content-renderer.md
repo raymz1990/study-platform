@@ -1,84 +1,454 @@
 # Task 009 — Renderizador de Conteúdo (Capítulos e Tópicos)
 
-**Fase:** 2 — MVP de Estudos | **Milestone:** 2 — MVP navegável
-**Status:** Planejada | **Prioridade:** P0
+**Fase:** 2 — MVP de Estudos  
+**Milestone:** 2 — MVP navegável  
+**Status:** Planejada  
+**Prioridade:** P0
 
 ---
 
-## Objetivo
+# Objetivo
 
-Implementar a página de capítulo/tópico, que renderiza o conteúdo de estudo completo com todas as seções obrigatórias: objetivos, pré-requisitos, conteúdo, resumo, mapa mental, questões, flashcards, podcast, checklist final e link para o próximo capítulo.
+Implementar a infraestrutura completa de leitura de conteúdo da plataforma, permitindo a navegação e renderização de capítulos utilizando arquivos Markdown oficiais da estrutura `content/`, com suporte a metadados, Mermaid, checklist, glossário, persistência e navegação sequencial.
 
-## Contexto
+Esta task representa o ambiente onde o estudo efetivamente acontece.
 
-A página do capítulo é onde o estudo efetivamente acontece (UI_UX_GUIDELINES.md). O conteúdo segue a estrutura de 15 seções do CONTENT_STANDARDS.md e a hierarquia do CONTENT_STRUCTURE.md (reconciliada, ADR-007). Mapas mentais são textuais e compatíveis com Mermaid (TECH_STACK.md §10). Metadados obrigatórios em todo documento (id, disciplina, capítulo, tópicos, palavras-chave, nível, tempo, versão, atualização).
+---
 
-## Documentos Obrigatórios
+# Contexto
 
-- CONTENT_STANDARDS.md (15 seções obrigatórias, metadados)
-- CONTENT_STRUCTURE.md (estrutura de capítulo e tópico)
-- UI_UX_GUIDELINES.md (página do capítulo)
-- DATA_MODEL.md (Conteúdo, Capítulo, Tópico)
-- COMPONENT_LIBRARY.md (Markdown Viewer, Glossary Panel, Metadata Panel)
-- TECH_STACK.md (§10 — Mermaid)
+Após a conclusão da Task 008, todas as disciplinas possuem páginas próprias e navegação funcional.
 
-## Arquivos Envolvidos
+A Task 009 implementa a experiência completa de leitura.
+
+Todo conteúdo deverá ser carregado exclusivamente da estrutura oficial do projeto.
+
+```
+content/
+   disciplina/
+      00-roadmap.md
+      01-fundamentos/
+         01-introducao.md
+         02-...
+```
+
+O MarkdownViewer (Task 006) permanece responsável apenas pela renderização.
+
+Toda descoberta de arquivos, parsing de metadados, validação e carregamento deverá ocorrer através do `content-service`.
+
+A estrutura segue:
+
+- CONTENT_STRUCTURE.md
+- CONTENT_STANDARDS.md
+- DATA_MODEL.md
+- ADR-007
+
+Todo documento deverá possuir Frontmatter válido.
+
+---
+
+# Documentos Obrigatórios
+
+- CONTENT_STANDARDS.md
+- CONTENT_STRUCTURE.md
+- DATA_MODEL.md
+- UI_UX_GUIDELINES.md
+- COMPONENT_LIBRARY.md
+- TECH_STACK.md
+- FGV_EDITAL_ANALISE.md
+- ROADMAP_DISCIPLINAS.md
+
+---
+
+# Arquivos Envolvidos
 
 ```
 src/pages/chapter-page.tsx
-src/components/content/chapter-header.tsx      (objetivos, pré-requisitos, tempo)
-src/components/content/metadata-panel.tsx
-src/components/content/glossary-panel.tsx
-src/components/content/checklist-panel.tsx
-src/components/content/mermaid-diagram.tsx     (mapas mentais)
-src/components/content/next-chapter-link.tsx
-src/services/content-service.ts                (carregamento + parsing de metadados)
-src/types/chapter.ts
-content/<disciplina>/01-fundamentos/*.md       (conteúdo real, quando produzido)
+
+src/components/content/
+    chapter-header.tsx
+    metadata-panel.tsx
+    glossary-panel.tsx
+    checklist-panel.tsx
+    mermaid-diagram.tsx
+    next-chapter-link.tsx
+    previous-chapter-link.tsx
+
+src/services/
+    content-service.ts
+
+src/types/
+    chapter.ts
+
+content/
+    disciplina/
+        00-roadmap.md
+        01-fundamentos/
+            *.md
 ```
-
-## Dependências
-
-- Task 006 — Visualizador Markdown.
-- Task 008 — Página de Disciplina (navegação capítulo).
-- Bloqueia: 011 (busca indexa conteúdo), 014 (exportação NotebookLM).
-
-## Critérios de Aceite
-
-- [ ] Página de capítulo renderiza conteúdo Markdown completo com índice lateral.
-- [ ] **(Herdado do Gate 008 — M4)** Substituir a geração inline de roadmap na página de detalhe da disciplina (`disciplina-detalhe-page.tsx`) por carregamento real de `content/<disciplina>/00-roadmap.md` via `content-service`, com Empty State quando o arquivo não existir.
-- [ ] Metadados do documento exibidos (tempo estimado, nível, palavras-chave, versão).
-- [ ] Seções identificáveis: objetivos, pré-requisitos, desenvolvimento, resumo, glossário, checklist.
-- [ ] Mapas mentais renderizados com Mermaid.
-- [ ] Glossário em painel lateral acessível durante a leitura.
-- [ ] Checklist final interativo com persistência (localStorage).
-- [ ] Link "Próximo Capítulo" respeitando a ordem do roadmap da disciplina.
-- [ ] Conteúdo legível em longas sessões (tipografia, dark mode).
-- [ ] Estados: loading, erro, vazio (capítulo sem conteúdo).
-
-## Checklist de Testes
-
-- [ ] Teste do `content-service` (parsing de frontmatter/metadados).
-- [ ] Teste de renderização de capítulo com todas as seções.
-- [ ] Teste do checklist interativo (marcação + persistência).
-- [ ] Teste de renderização Mermaid (diagrama válido e fallback para erro).
-- [ ] Teste de navegação sequencial entre capítulos.
-- [ ] Verificação de acessibilidade (índice, painéis, foco).
-
-## Entregáveis
-
-1. Página de capítulo/tópico completa.
-2. Componentes de metadados, glossário, checklist, mapa mental.
-3. Serviço de conteúdo com parsing de metadados.
-4. Um capítulo de exemplo em Markdown (placeholder estrutural, sem conteúdo de estudo).
-5. Testes.
-
-## Estimativa de Esforço
-
-**14 horas** (página, componentes de apoio à leitura, Mermaid, serviços, testes).
 
 ---
 
-## Documentação
+# Dependências
 
-Ao concluir: atualizar CHANGELOG.md (critério "Página de tópicos" do M2).
+Obrigatórias
+
+- Task 006 — Markdown Viewer
+- Task 008 — Página de Disciplina
+
+Bloqueia
+
+- Task 011
+- Task 014
+
+---
+
+# Escopo
+
+## P0
+
+### 1. Carregamento oficial de conteúdo
+
+Implementar carregamento exclusivamente através do `content-service`.
+
+Não poderá existir conteúdo hardcoded.
+
+Todos os caminhos deverão ser resolvidos pelo serviço.
+
+---
+
+### 2. Parsing do Frontmatter
+
+Todo capítulo deverá possuir Frontmatter obrigatório.
+
+Campos mínimos:
+
+```
+id
+discipline
+module
+chapter
+title
+estimatedTime
+difficulty
+keywords
+version
+lastUpdated
+```
+
+Caso o Frontmatter esteja inválido:
+
+- não lançar exceção;
+- exibir Error State;
+- registrar erro de parsing.
+
+---
+
+### 3. Página de capítulo
+
+Renderizar:
+
+- Header
+- Objetivos
+- Pré-requisitos
+- Conteúdo
+- Resumo
+- Glossário
+- Checklist
+- Metadados
+- Próximo capítulo
+- Capítulo anterior
+
+---
+
+### 4. Mermaid
+
+Renderizar diagramas Mermaid.
+
+Caso o código esteja inválido:
+
+- não quebrar a página;
+- exibir fallback visual;
+- registrar erro.
+
+---
+
+### 5. Checklist
+
+Checklist persistido utilizando exatamente o mesmo modelo de progresso definido nas Tasks 007/010.
+
+Não criar nova estrutura de persistência.
+
+---
+
+### 6. Navegação
+
+Anterior / Próximo capítulo.
+
+A ordem deverá ser determinada pelo roadmap oficial.
+
+Nunca pela ordem alfabética.
+
+---
+
+### 7. Roadmap
+
+Requisito herdado da Task 008.
+
+A página da disciplina deverá carregar:
+
+```
+content/<disciplina>/00-roadmap.md
+```
+
+utilizando o mesmo `content-service`.
+
+Nunca gerar roadmap inline.
+
+---
+
+## P1
+
+### Empty States
+
+Capítulo inexistente
+
+Arquivo inexistente
+
+Glossário inexistente
+
+Mermaid inexistente
+
+Checklist vazio
+
+Roadmap inexistente
+
+---
+
+### Performance
+
+Carregar somente o capítulo atual.
+
+Não carregar toda a disciplina.
+
+---
+
+### Interface
+
+Dark Mode
+
+Responsividade
+
+Tipografia de leitura longa
+
+Índice lateral sincronizado
+
+---
+
+# Critérios de Aceite
+
+## Funcionalidades
+
+- [ ] Conteúdo carregado exclusivamente do diretório `content/`.
+- [ ] Nenhum conteúdo hardcoded.
+- [ ] Frontmatter obrigatório.
+- [ ] Parsing realizado pelo `content-service`.
+- [ ] Markdown Viewer apenas renderiza.
+- [ ] Roadmap carregado através do arquivo `00-roadmap.md`.
+- [ ] Glossário funcional.
+- [ ] Checklist persistido.
+- [ ] Mermaid renderizado.
+- [ ] Navegação anterior/próximo funcionando.
+- [ ] Ordem baseada no roadmap oficial.
+- [ ] Índice lateral sincronizado.
+- [ ] Estados Loading.
+- [ ] Error State.
+- [ ] Empty State.
+
+---
+
+## Arquitetura
+
+- [ ] Separação clara entre renderização e carregamento.
+- [ ] Nenhuma lógica de negócio na página.
+- [ ] Todo carregamento realizado pelo `content-service`.
+- [ ] MarkdownViewer reutilizado.
+- [ ] Persistência compartilhada com Progress Tracker.
+
+---
+
+## Interface
+
+- [ ] Dark Mode.
+- [ ] Desktop.
+- [ ] Tablet.
+- [ ] Mobile.
+- [ ] Tipografia otimizada para leitura longa.
+- [ ] Painéis laterais acessíveis.
+
+---
+
+## Qualidade
+
+- [ ] pnpm lint
+- [ ] pnpm build
+- [ ] TypeScript strict
+- [ ] Nenhum any
+- [ ] Componentes ≤300 linhas
+
+---
+
+# Checklist de Testes
+
+## content-service
+
+- [ ] carregar capítulo
+- [ ] carregar roadmap
+- [ ] parsing de Frontmatter
+- [ ] frontmatter inválido
+- [ ] arquivo inexistente
+- [ ] capítulo inexistente
+
+---
+
+## Mermaid
+
+- [ ] diagrama válido
+- [ ] diagrama inválido
+- [ ] fallback
+
+---
+
+## Checklist
+
+- [ ] marcar
+- [ ] desmarcar
+- [ ] persistência
+- [ ] recarregar página
+
+---
+
+## Navegação
+
+- [ ] próximo capítulo
+- [ ] capítulo anterior
+- [ ] ordem correta
+- [ ] breadcrumb
+
+---
+
+## Estados
+
+- [ ] loading
+- [ ] empty
+- [ ] error
+
+---
+
+## Interface
+
+- [ ] desktop
+- [ ] tablet
+- [ ] mobile
+- [ ] dark mode
+- [ ] acessibilidade
+- [ ] teclado
+
+---
+
+## Regressão
+
+- [ ] Toda a suíte permanece verde.
+
+---
+
+# Entregáveis
+
+## Código
+
+- Chapter Page
+- Content Service
+- Metadata Panel
+- Glossary Panel
+- Checklist Panel
+- Mermaid Component
+- Previous Chapter Link
+- Next Chapter Link
+
+---
+
+## Dados
+
+- Estrutura oficial de conteúdo
+- Capítulo modelo
+- Roadmap carregado do arquivo
+
+---
+
+## Testes
+
+- Unitários
+- Integração
+- Regressão
+
+---
+
+# Fora do Escopo
+
+Não implementar:
+
+- Busca.
+- Analytics.
+- Progress Tracker.
+- Flashcards.
+- Questões.
+- Podcasts.
+- NotebookLM.
+- Geração automática de conteúdo.
+- IA.
+- Qualquer funcionalidade das Tasks 010 em diante.
+
+---
+
+# Estimativa
+
+**14 horas**
+
+Incluindo:
+
+- Content Service
+- Parsing
+- Página
+- Mermaid
+- Checklist
+- Navegação
+- Testes
+
+---
+
+# Critério para Liberação da Task 010
+
+A Task será considerada concluída quando:
+
+- todo conteúdo for carregado exclusivamente da estrutura `content/`;
+- o roadmap for carregado de `00-roadmap.md`;
+- todos os metadados forem interpretados corretamente;
+- checklist persistir corretamente;
+- Mermaid funcionar com fallback;
+- anterior/próximo respeitarem o roadmap;
+- nenhum conteúdo estiver hardcoded;
+- todos os testes estiverem aprovados;
+- `pnpm build`;
+- `pnpm lint`;
+- Gate Review aprovado.
+
+---
+
+# Documentação
+
+Ao concluir:
+
+- atualizar `CHANGELOG.md`;
+- atualizar `MILESTONES.md`;
+- registrar eventuais decisões arquiteturais;
+- submeter ao Gate Review para liberação da **Task 010**.

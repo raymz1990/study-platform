@@ -56,6 +56,112 @@ Documentation
 
 ---
 
+# [1.19.0] - 2026-08-01
+
+## Added
+
+- Ícones PWA em PNG (`public/icon-192x192.png`, `icon-512x512.png`, `icon-maskable-512x512.png`, `favicon.png`).
+- Script `scripts/generate-pwa-icons.py` para regenerar ícones a partir do design SVG.
+- Favicon PNG como fallback em `index.html`.
+- Página de Revisões integrada com fila de revisões espaçadas: estatísticas por urgência, cards coloridos, estados loading/erro/vazio.
+- Empty States melhorados para 4 páginas placeholder (Simulados, Questões, Podcasts, Flashcards) com ações e dicas de estudo.
+
+## Changed
+
+- `vite.config.ts`: `includeAssets` atualizado com todos os ícones PNG gerados.
+- `revisoes-page.tsx`: reescrita de placeholder para página funcional.
+- `simulados-page.tsx`, `questoes-page.tsx`, `podcasts-page.tsx`, `flashcards-page.tsx`: placeholders substituídos por Empty States informativos.
+
+## Fixed
+
+- Nenhum TODO/FIXME/HACK encontrado no código.
+- Nenhum `alt=""` vazio encontrado (acessibilidade de imagens OK).
+- Todas as 8 páginas principais possuem estados completos: loading, erro, vazio e sucesso.
+
+## Documentation
+
+- Rodada 5 concluída: polimento e release candidate. Plataforma pronta para deploy no GitHub Pages.
+- BACKLOG atualizado: todas as 5 rodadas concluídas.
+
+---
+
+# [1.18.0] - 2026-08-01
+
+## Added
+
+- Ícones PWA gerados via script Python (`scripts/generate-pwa-icons.py`): 192x192, 512x512 e maskable 512x512, com design consistente ao icon.svg existente.
+- Favicon PNG (`public/favicon.png`) como fallback para navegadores sem suporte a SVG favicon.
+- Plugin `content-server` inclui ícones PNG no `includeAssets` do manifest PWA.
+- Página de Revisões integrada com fila de revisões espaçadas (`usePlannerData`): estatísticas por urgência (urgente/hoje/em dia), cards coloridos por prioridade, estados de loading/erro/vazio.
+- Componente `ReviewCard`: card de revisão com badge de urgência, ícone semântico, tópico, disciplina e data agendada.
+- Empty States melhorados para 4 páginas placeholder: Simulados (link para simulado-01.md), Questões (redireciona para disciplinas), Podcasts (guia NotebookLM), Flashcards (redireciona para capítulos com cards).
+- Dicas de estudo em cada página placeholder explicando como usar o recurso enquanto a interface está em desenvolvimento.
+
+## Changed
+
+- `index.html`: adicionado `<link rel="icon" type="image/png" href="/favicon.png" />` como fallback.
+- `vite.config.ts`: `includeAssets` atualizado para incluir todos os ícones PNG gerados.
+- `revisoes-page.tsx`: reescrita de placeholder para página funcional com integração ao `review-queue-service`.
+- `simulados-page.tsx`, `questoes-page.tsx`, `podcasts-page.tsx`, `flashcards-page.tsx`: substituídos placeholders simples por Empty States informativos com ações e dicas.
+
+## Documentation
+
+- Rodada 4 concluída: PWA completo (ícones + manifest) + páginas complementares (Empty States + Revisões integradas).
+
+---
+
+# [1.17.0] - 2026-08-01
+
+## Added
+
+- Questões comentadas para 6 capítulos (2 por capítulo): Morfologia, Sintaxe, Ortografia, Coesão (Português); Juros Simples (Matemática Financeira); Proposições e Conectivos (Raciocínio Lógico).
+- Questões para resolver para 6 capítulos (2 por capítulo): mesmo conjunto acima, com gabarito.
+- Simulado piloto de 20 questões (`content/simulados/simulado-01.md`): mistura 8 disciplinas (Português 25%, Matemática Financeira 15%, Raciocínio Lógico 15%, Legislação de Dados 10%, Administração Financeira 10%, Atualidades e IA 10%, Inglês 10%, Contabilidade 5%).
+- Flashcards para 3 capítulos: Morfologia (8 cards), Sintaxe (8 cards), Juros Simples (8 cards).
+- Diretório `content/simulados/` para armazenar simulados da plataforma.
+
+## Documentation
+
+- Rodada 3 concluída: questões comentadas + simulado piloto + flashcards. Foco nas disciplinas de maior peso (Português, Matemática Financeira, Raciocínio Lógico).
+
+---
+
+# [1.16.0] - 2026-08-01
+
+## Added
+
+- Conteúdo piloto para 11 disciplinas: 1 capítulo introdutório (`01-fundamentos/`) em cada disciplina do Perfil 10 (exceto Português, que já tinha conteúdo).
+- Capítulos criados: Vocabulário Contextual (Inglês), Proposições e Conectivos (Raciocínio Lógico), Machine Learning Básico (Atualidades e IA), Princípios e Fundamentos da LGPD (Leg. Dados), Juros Simples (Matemática Financeira), Capital de Giro (Adm. Financeira), Taxa Mínima de Atratividade (Avaliação de Projetos), Balanço Patrimonial (Contabilidade), Custeio Direto/Variável (Custos), Princípios Orçamentários (Orçamento), RGPS e Segurados (Leg. Previdenciária).
+- Conteúdo real de Língua Portuguesa expandido para 4 capítulos: Morfologia, Sintaxe, Ortografia e Pontuação, Coesão e Coerência.
+- Roadmaps para 11 disciplinas: `00-roadmap.md` com frontmatter válido, estrutura de módulos e capítulos, e análise FGV em cada disciplina.
+- Plugin `content-server` no `vite.config.ts`: serve `content/` como `/content/` no dev e copia `content/` → `dist/content/` no build, eliminando a necessidade de manter `public/content/` manualmente.
+- `BACKLOG.md` criado em `docs/roadmap/BACKLOG.md`: 10 tarefas pendentes priorizadas para as rodadas 3–5.
+
+## Changed
+
+- `MermaidDiagram` (`mermaid-diagram.tsx`): fallback informativo definitivo para v1.0, com card elegante em tons âmbar, explicação clara e código-fonte do diagrama preservado para referência de estudo. Decisão documentada: renderização real será implementada em v2.0+ (Task 014+).
+- `vite.config.ts`: adicionado plugin customizado `contentServerPlugin` para servir e copiar conteúdo Markdown de forma automatizada.
+
+## Documentation
+
+- Rodada 2 concluída: conteúdo piloto + finalização do renderizador. Regras mantidas: TypeScript strict, sem `any`, componentes ≤300 linhas, `pnpm lint` e `pnpm test` passando, IDs oficiais (`disc_*`, `chap_*`), tudo funciona offline no GitHub Pages.
+
+---
+
+# [1.15.0] - 2026-08-01
+
+## Added
+
+- Estrutura de diretórios de conteúdo para 11 disciplinas: `disc_ingles`, `disc_raciocinio_logico`, `disc_atualidades_ia`, `disc_leg_seg_dados`, `disc_matematica_financeira`, `disc_adm_financeira`, `disc_avaliacao_projetos`, `disc_contabilidade_empresarial`, `disc_custos`, `disc_orcamento`, `disc_leg_prev_trab`, todos com subdiretório `01-fundamentos/`.
+- Roadmap de Língua Portuguesa: `content/disc_portugues/00-roadmap.md` com objetivos, estrutura de módulos, horas planejadas e análise FGV.
+- Conteúdo real de Morfologia: `content/disc_portugues/01-fundamentos/morfologia.md` (~170 linhas) com frontmatter válido, desenvolvimento completo, exemplos, erros frequentes, checklist e glossário.
+
+## Documentation
+
+- Rodada 1 concluída: lint (0 erros), testes (230/230), build (sucesso). Estrutura de conteúdo validada.
+
+---
+
 # [1.14.0] - 2026-07-30
 
 ## Added

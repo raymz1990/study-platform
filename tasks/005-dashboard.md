@@ -7,7 +7,7 @@
 
 ## Objetivo
 
-Construir o Dashboard — tela principal da plataforma ("cockpit de estudos") — com plano do dia, revisões pendentes, contagem regressiva para a prova, progresso do edital, horas estudadas/restantes, taxa de acertos e gráficos de evolução.
+Construir o Dashboard — tela principal da plataforma ("cockpit de estudos") — com plano do dia, revisões pendentes, contagem regressiva para a prova, progresso do edital, horas estudadas/restantes, taxa de acertos (quando disponível pelo Progress Tracker) e gráficos de evolução.
 
 ## Contexto
 
@@ -51,8 +51,8 @@ config/exam.json                                 (data da prova: 2026-10-11)
 - [ ] Plano do dia visível no topo (disciplina do momento, tarefas, tempo previsto).
 - [ ] Revisões pendentes/vencidas destacadas (vermelho = urgente).
 - [ ] Percentual do edital e progresso por disciplina (12 disciplinas do FGV_EDITAL_ANALISE.md).
-- [ ] Horas estudadas vs. horas restantes (referência: 13h30/semana).
-- [ ] Taxa de acertos e gráfico de evolução temporal (Recharts).
+- [ ] Área preparada para exibição das horas estudadas e restantes, consumindo dados do Progress Tracker quando disponíveis.
+- [ ] Exibir taxa de acertos quando houver dados disponíveis. e gráfico de evolução temporal (Recharts).
 - [ ] Carregamento < 2 segundos; transições instantâneas.
 - [ ] Estados: loading (skeleton), erro, vazio (primeiro acesso), sucesso.
 - [ ] Cores apenas semânticas; dark mode completo.
@@ -71,7 +71,7 @@ config/exam.json                                 (data da prova: 2026-10-11)
 1. Página Dashboard completa.
 2. Componentes de KPI, countdown, plano diário, fila de revisões e gráficos.
 3. Serviços de leitura de estatísticas e progresso (tipados, sem lógica de negócio no componente).
-4. Dados mockados iniciais em JSON conforme DATA_MODEL.md.
+4. Fonte temporária de dados compatível com DATA_MODEL.md, claramente separada da implementação definitiva.
 5. Testes.
 
 ## Estimativa de Esforço
