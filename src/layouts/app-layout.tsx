@@ -4,6 +4,8 @@ import { Footer } from '@/components/layout/footer'
 import { MainContent } from '@/components/layout/main-content'
 import { Breadcrumb } from '@/components/navigation/breadcrumb'
 import { SearchModal } from '@/components/search/search-modal'
+import { OfflineIndicator } from '@/components/pwa/offline-indicator'
+import { UpdatePrompt } from '@/components/pwa/update-prompt'
 import { useSidebar } from '@/contexts/sidebar-context'
 import { useKeyboardShortcuts } from '@/hooks/use-keyboard-shortcuts'
 import { cn } from '@/lib/utils'
@@ -56,6 +58,9 @@ export function AppLayout({ children }: AppLayoutProps): React.ReactElement {
           <Footer />
         </div>
       </div>
+
+      <OfflineIndicator />
+      <UpdatePrompt />
     </div>
   )
 }
