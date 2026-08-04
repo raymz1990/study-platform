@@ -2,6 +2,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 import fs from 'fs'
 
@@ -71,6 +72,7 @@ export default defineConfig({
   base: '/study-platform/',
   plugins: [
     react(),
+    tailwindcss(),
     contentServerPlugin(),
     VitePWA({
       registerType: 'autoUpdate',

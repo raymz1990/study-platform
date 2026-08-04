@@ -15,10 +15,11 @@ import type { Chapter } from '@/types/discipline'
 import { slugify } from '@/utils/slugify'
 
 // ---------------------------------------------------------------------------
-// Base URL para conteúdo estático (public/content/ → /content/ no deploy)
+// Base URL para conteúdo estático (public/content/ → <base>/content/ no deploy)
+// Usa import.meta.env.BASE_URL para funcionar no subpath do GitHub Pages.
 // ---------------------------------------------------------------------------
 
-const CONTENT_BASE = '/content'
+const CONTENT_BASE = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/content`
 
 function resolveContentUrl(disciplineId: string, ...segments: string[]): string {
   return `${CONTENT_BASE}/${disciplineId}/${segments.join('/')}`

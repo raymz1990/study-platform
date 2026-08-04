@@ -15,7 +15,11 @@ export function SimuladosPage(): React.ReactElement {
           icon={<ClipboardList className="h-12 w-12" />}
           action={{
             label: 'Acessar conteúdo de estudo',
-            onClick: () => window.open('/content/simulados/simulado-01.md', '_blank'),
+            onClick: () =>
+              window.open(
+                `${import.meta.env.BASE_URL}content/simulados/simulado-01.md`,
+                '_blank'
+              ),
           }}
         />
       </div>
